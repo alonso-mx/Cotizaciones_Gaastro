@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '296160575746078');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=296160575746078&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Propuesta de Costeo · Clementina Café × Gaastro</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+/* ─── Variables de cliente (cambiar aquí para personalizar) ─── */
+:root{
+  --cliente: "Clementina Café";
+}
+
+/* ─── Cover ──────────────────────────────────────────────────── */
+.cover{background:var(--negro);color:#fff;min-height:95vh;display:flex;align-items:center;padding:80px 0;position:relative;overflow:hidden}
+.cover .mark-bg{position:absolute;right:-60px;bottom:-40px;width:560px;opacity:.06;pointer-events:none}
+.cover-inner{position:relative;z-index:2;max-width:800px}
+.prop-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.chip-prop{font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;padding:6px 16px;border-radius:999px}
+.chip-prop.azul{background:var(--azul);color:#fff}
+.chip-prop.amar{background:var(--amarillo);color:var(--negro)}
+.chip-prop.gris{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18)}
+.cover h1{font-size:clamp(2.4rem,6vw,4.6rem);color:#fff;line-height:1;margin-bottom:20px}
+.cover h1 em{color:var(--amarillo);font-style:normal}
+.cover .sub{font-size:1.15rem;color:rgba(255,255,255,.72);max-width:50ch;margin-bottom:36px;line-height:1.55}
+.cover-cta{display:flex;gap:14px;flex-wrap:wrap}
+.cover-stats{display:flex;gap:36px;margin-top:52px;padding-top:30px;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+.cstat .n{font-size:1.8rem;font-weight:900;color:var(--amarillo);line-height:1;display:block}
+.cstat small{font-size:.75rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;display:block}
+.vigencia-bar{display:inline-flex;align-items:center;gap:10px;background:rgba(243,202,64,.12);border:1px solid rgba(243,202,64,.3);border-radius:10px;padding:12px 20px;margin-top:32px;font-size:.88rem;color:rgba(255,255,255,.8)}
+.vigencia-bar strong{color:var(--amarillo)}
+
+/* ─── Sección de problema ────────────────────────────────────── */
+.dolor-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.dolor{background:#fff;border-radius:var(--radio);padding:28px 26px;border:1.5px solid var(--gris-cl);border-left:5px solid var(--azul)}
+.dolor .dnum{font-size:.68rem;font-weight:900;color:var(--azul);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.dolor h3{font-size:1.05rem;font-weight:900;text-transform:lowercase;color:var(--negro);margin-bottom:8px;line-height:1.2}
+.dolor p{font-size:.9rem;color:var(--gris);margin:0;line-height:1.5}
+
+/* ─── Consecuencia — dark ────────────────────────────────────── */
+.dark-sec{background:var(--negro);color:#fff;padding:96px 0}
+.dark-sec .eyebrow{color:var(--amarillo)}
+.dark-sec h2{color:#fff}
+.costo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.costo-stat{border-radius:var(--radio);padding:32px 26px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+.costo-stat .val{font-size:2.8rem;font-weight:900;color:var(--amarillo);line-height:1;margin-bottom:10px}
+.costo-stat h3{font-size:.96rem;font-weight:800;color:#fff;text-transform:lowercase;margin-bottom:6px}
+.costo-stat p{font-size:.86rem;color:rgba(255,255,255,.6);margin:0;line-height:1.5}
+.dark-quote{margin-top:52px;padding:24px 32px;border-left:4px solid var(--amarillo);font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.8);max-width:600px}
+
+/* ─── Solución ───────────────────────────────────────────────── */
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.sol-texto .divider{width:52px;height:4px;background:var(--amarillo);border-radius:2px;margin:20px 0}
+.sol-texto p{font-size:1.05rem;color:#2c2e38;margin-bottom:14px;line-height:1.6}
+.sol-check{list-style:none;padding:0;display:grid;gap:10px;margin-top:20px}
+.sol-check li{display:flex;align-items:flex-start;gap:12px;font-size:.96rem;color:#2c2e38}
+.sol-check li:before{content:"✓";font-weight:900;color:var(--azul);flex-shrink:0;margin-top:1px}
+.sol-img{border-radius:var(--radio);overflow:hidden;aspect-ratio:4/3;background:var(--gris-cl)}
+.sol-img img{width:100%;height:100%;object-fit:cover}
+
+/* ─── Proceso real (2 fases) ─────────────────────────────────── */
+.proceso-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:46px}
+.pfase{border-radius:var(--radio);padding:32px 28px;display:flex;flex-direction:column;gap:0}
+.pfase.pre{background:var(--gris-cl)}
+.pfase.exec{background:var(--azul)}
+.pfase-label{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.18em;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.pfase.pre .pfase-label{color:var(--azul)}
+.pfase.exec .pfase-label{color:var(--amarillo)}
+.pfase-label:before{content:'';display:block;width:28px;height:3px;border-radius:2px;background:currentColor}
+.paso{display:flex;gap:16px;align-items:flex-start;padding-bottom:20px;margin-bottom:0;position:relative}
+.paso:not(:last-child):after{content:'';position:absolute;left:17px;top:36px;bottom:0;width:2px;background:rgba(0,0,0,.08)}
+.pfase.exec .paso:not(:last-child):after{background:rgba(255,255,255,.15)}
+.paso-num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.82rem;flex-shrink:0;position:relative;z-index:1}
+.pfase.pre .paso-num{background:var(--azul);color:#fff}
+.pfase.exec .paso-num{background:var(--amarillo);color:var(--negro)}
+.paso-body h4{font-size:.92rem;font-weight:800;text-transform:lowercase;color:var(--negro);margin-bottom:3px;line-height:1.2}
+.pfase.exec .paso-body h4{color:#fff}
+.paso-body p{font-size:.8rem;color:var(--gris);margin:0;line-height:1.45}
+.pfase.exec .paso-body p{color:rgba(255,255,255,.65)}
+
+/* ─── Entregables ────────────────────────────────────────────── */
+.entreg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.entreg{border-radius:var(--radio);padding:22px 20px;background:#fff;border:1.5px solid var(--gris-cl);display:flex;gap:16px;align-items:flex-start;transition:border-color .15s,transform .15s}
+.entreg:hover{border-color:var(--azul);transform:translateY(-3px)}
+.entreg .ico{width:42px;height:42px;border-radius:11px;background:var(--azul);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem}
+.entreg h3{font-size:.96rem;font-weight:800;text-transform:lowercase;margin-bottom:4px;color:var(--negro)}
+.entreg p{font-size:.83rem;color:var(--gris);margin:0;line-height:1.45}
+.desde{display:inline-block;font-size:.63rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;padding:3px 8px;border-radius:999px;margin-top:7px}
+.desde.p1{background:#e8edff;color:var(--azul)}
+.desde.p2{background:#fff3cc;color:#7a5f00}
+.desde.p3{background:var(--negro);color:#fff}
+
+/* ─── Credencial Alonso ──────────────────────────────────────── */
+.azul-sec{background:var(--azul);color:#fff;padding:96px 0}
+.alonso-grid{display:grid;grid-template-columns:220px 1fr auto;gap:52px;align-items:start}
+.alonso-foto{width:220px;flex-shrink:0}
+.alonso-foto img{width:100%;border-radius:var(--radio);aspect-ratio:3/4;object-fit:cover;border:4px solid rgba(255,255,255,.15)}
+.alonso-texto .eyebrow{color:var(--amarillo)}
+.alonso-texto h2{color:#fff;margin-top:10px}
+.alonso-div{width:50px;height:4px;background:var(--amarillo);border-radius:2px;margin:20px 0}
+.alonso-texto p{font-size:1.02rem;color:rgba(255,255,255,.85);margin-bottom:14px;line-height:1.6}
+.alonso-texto .highlight{font-weight:800;color:#fff}
+.anums{display:grid;gap:0;min-width:200px}
+.anum{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.anum:first-child{padding-top:0}
+.anum:last-child{border-bottom:0;padding-bottom:0}
+.anum .av{font-size:2.6rem;font-weight:900;color:var(--amarillo);line-height:1;margin-bottom:6px}
+.anum p{font-size:.9rem;color:rgba(255,255,255,.78);margin:0;line-height:1.45}
+
+/* ─── Portafolio ─────────────────────────────────────────────── */
+.port-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:42px}
+.port-foto{border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:var(--gris-cl)}
+.port-foto img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.port-foto:hover img{transform:scale(1.07)}
+
+/* ─── Diferenciadores ────────────────────────────────────────── */
+.dif-grid{display:grid;gap:14px;margin-top:44px}
+.dif{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;border-radius:var(--radio);padding:28px 30px;background:#fff;border:1.5px solid var(--gris-cl);transition:border-color .15s}
+.dif:hover{border-color:var(--azul)}
+.dif .dn{font-size:2rem;font-weight:900;color:var(--azul);line-height:1;min-width:40px}
+.dif h3{font-size:1.05rem;font-weight:900;text-transform:lowercase;margin-bottom:6px;color:var(--negro)}
+.dif p{font-size:.93rem;color:var(--gris);margin:0;line-height:1.55}
+
+/* ─── Prueba social ──────────────────────────────────────────── */
+.social-sec{background:var(--negro);color:#fff;padding:96px 0}
+.social-sec .eyebrow{color:var(--amarillo)}
+.social-sec h2{color:#fff}
+.social-meta{font-size:.88rem;color:rgba(255,255,255,.45);margin-top:8px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+.qcard{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:var(--radio);padding:28px}
+.qcard .stars{color:var(--amarillo);letter-spacing:3px;margin-bottom:14px;font-size:.95rem}
+.qcard blockquote{font-style:italic;font-size:.95rem;color:rgba(255,255,255,.85);line-height:1.6;margin:0 0 20px}
+.qcard .quien{font-weight:800;font-size:.88rem;color:#fff}
+.qcard .quien span{display:block;font-weight:400;color:rgba(255,255,255,.45);font-size:.8rem;margin-top:2px}
+
+/* ─── Propuesta de precio ────────────────────────────────────── */
+.precio-sec{background:var(--gris-cl);padding:100px 0}
+.precio-sec .eyebrow{color:var(--azul)}
+.paquetes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px;align-items:stretch}
+.paq{border-radius:var(--radio);padding:32px 26px;display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--gris-cl);position:relative}
+.paq.dest{border-color:var(--azul);box-shadow:0 18px 52px rgba(19,43,214,.14)}
+.paq.prem{border-color:var(--amarillo)}
+.paq-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;padding:6px 16px;border-radius:999px}
+.paq-tag.azul{background:var(--azul);color:#fff}
+.paq-tag.amar{background:var(--amarillo);color:var(--negro)}
+.paq .pnum{font-size:.68rem;font-weight:900;color:var(--azul);letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+.paq h3{font-size:1.2rem;font-weight:900;text-transform:lowercase;line-height:1.1;margin-bottom:4px}
+.paq .modal{font-size:.78rem;color:var(--gris);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}
+.paq .modal.pres{color:var(--azul)}
+.paq-sep{height:1px;background:var(--gris-cl);margin:18px 0}
+.paq .precio-wrap .mxn{font-size:2.4rem;font-weight:900;color:var(--negro);line-height:1}
+.paq .precio-wrap .iva{font-size:.8rem;color:var(--gris);margin-top:3px}
+.paq-items{list-style:none;padding:0;display:grid;gap:8px;margin:20px 0 24px;flex:1}
+.paq-items li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;line-height:1.35}
+.paq-items li.si{color:#2c2e38}
+.paq-items li.si:before{content:"✓";color:var(--azul);font-weight:900;flex-shrink:0;margin-top:1px}
+.paq-items li.no{color:#b8bbc8}
+.paq-items li.no:before{content:"—";color:#d0d3de;flex-shrink:0}
+.paq .btn{width:100%;justify-content:center;margin-top:0}
+.paq .precio-wrap{margin-top:auto}
+
+/* ─── Tabla IVA ──────────────────────────────────────────────── */
+.iva-wrap{max-width:640px;margin:48px auto 0}
+
+/* ─── Cross-sell ─────────────────────────────────────────────── */
+.xsell{padding:80px 0;background:#fff;border-top:1px solid var(--gris-cl)}
+.xsell-header{text-align:center;margin-bottom:46px}
+.xsell-header .eyebrow{color:var(--gris)}
+.xsell-header h2{font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--negro);margin-top:6px}
+.xsell-header p{font-size:1rem;color:var(--gris);max-width:44ch;margin:10px auto 0;line-height:1.55}
+.xsell-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin:0 auto}
+.xcard{border-radius:var(--radio);border:1.5px solid var(--gris-cl);padding:32px 28px;display:flex;flex-direction:column;gap:0;transition:border-color .15s,transform .15s,box-shadow .15s}
+.xcard:hover{border-color:var(--azul);transform:translateY(-4px);box-shadow:0 16px 36px rgba(19,43,214,.1)}
+.xcard .xtag{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--azul);background:#eef2ff;padding:5px 12px;border-radius:999px;display:inline-block;margin-bottom:16px;align-self:flex-start}
+.xcard h3{font-size:1.12rem;font-weight:900;text-transform:lowercase;color:var(--negro);margin-bottom:6px;line-height:1.2}
+.xcard .xsub{font-size:.84rem;color:var(--gris);margin-bottom:18px;line-height:1.45}
+.xcard .xitems{list-style:none;padding:0;display:grid;gap:7px;margin-bottom:22px;flex:1}
+.xcard .xitems li{font-size:.86rem;color:#2c2e38;padding-left:20px;position:relative;line-height:1.35}
+.xcard .xitems li:before{content:"✓";position:absolute;left:0;color:var(--azul);font-weight:900}
+.xcard-sep{height:1px;background:var(--gris-cl);margin:0 0 18px}
+.xcard .xprecio{font-size:1.8rem;font-weight:900;color:var(--negro);line-height:1;margin-bottom:3px}
+.xcard .xnota{font-size:.76rem;color:var(--gris);margin-bottom:18px}
+.xcard .btn{width:100%;justify-content:center}
+
+/* ─── Siguiente paso CTA ─────────────────────────────────────── */
+.cta-sec{background:var(--amarillo);padding:96px 0;text-align:center}
+.cta-sec h2{color:var(--negro);font-size:clamp(2rem,4.5vw,3.2rem)}
+.cta-sec .sub{font-size:1.1rem;color:#3a3206;max-width:44ch;margin:14px auto 36px;line-height:1.55}
+.wa-btn{display:inline-flex;align-items:center;gap:12px;background:var(--negro);color:#fff;font-weight:800;font-size:1.05rem;padding:18px 38px;border-radius:999px;transition:transform .15s,box-shadow .15s;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(0,0,0,.32)}
+.vig-nota{margin-top:18px;font-size:.86rem;color:#6b5a10}
+.vig-nota strong{color:var(--negro)}
+
+/* ─── Condiciones ────────────────────────────────────────────── */
+.conds{background:#f0f2f7;padding:40px 0}
+.conds ul{list-style:none;display:grid;gap:8px;max-width:700px;margin:0 auto;padding:0}
+.conds li{font-size:.83rem;color:var(--gris);padding-left:18px;position:relative;line-height:1.5}
+.conds li:before{content:"·";position:absolute;left:5px;font-weight:900;color:var(--azul)}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media(max-width:900px){
+  .cover{min-height:auto;padding:72px 0}
+  .dolor-grid,.costo-stats,.sol-grid,.quotes,.paquetes,.xsell-cards{grid-template-columns:1fr}
+  .alonso-grid{grid-template-columns:1fr;gap:32px}
+  .alonso-foto{width:160px}
+  .proceso-wrap,.entreg-grid{grid-template-columns:1fr}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  .paq.dest{order:-1}
+}
+@media(max-width:560px){
+  .entreg-grid{grid-template-columns:1fr}
+  .cover-stats{gap:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://gaastro.mx"><img src="img/logo-azul.png" alt="Gaastro" /></a>
+    <ul id="menu">
+      <li><a href="https://gaastro.mx/catalogo.html">formatos.</a></li><li><a href="gaastro-os.html">gaastro os.</a></li>
+      <li><a href="https://gaastro.mx/academy.html">academy.</a></li>
+      <li><a href="https://gaastro.mx/asesoria.html">asesoría.</a></li>
+      <li><a href="https://gaastro.mx/consultoria.html">consultoría.</a></li>
+      <li><a href="https://gaastro.mx/contacto.html">contacto.</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-amarillo" href="#propuesta">ver propuesta</a>
+      <button class="burger" id="burger" aria-label="menú"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════════════
+  COVER — headline que engancha
+══════════════════════════════════════════════ -->
+<section class="cover">
+  <img class="mark-bg" src="img/mark-amarillo.png" alt="" aria-hidden="true" />
+  <div class="wrap">
+    <div class="cover-inner">
+      <div class="prop-chips">
+        <span class="chip-prop azul">propuesta de trabajo</span>
+        <span class="chip-prop amar">Clementina Café</span>
+        <span class="chip-prop gris">46 platillos · 33 bebidas · 8 mods · agosto 2026</span>
+      </div>
+      <h1>cada platillo que vendes<br>sin costear es dinero<br>que <em>regalas.</em></h1>
+      <p class="sub">esta propuesta fue preparada exclusivamente para Clementina Café. adentro encontrarás exactamente cómo vamos a ordenar los números de tu cocina — y lo que cuesta hacerlo.</p>
+      <div class="cover-cta">
+        <a class="btn btn-amarillo" href="#propuesta">ver mi propuesta</a>
+        <a class="btn btn-line-blanco" href="#problema">leer todo primero</a>
+      </div>
+      <div class="cover-stats">
+        <div class="cstat"><span class="n">+20</span><small>restaurantes transformados</small></div>
+        <div class="cstat"><span class="n">10</span><small>unidades operadas como director</small></div>
+        <div class="cstat"><span class="n">$0</span><small>cobrado sobre tus utilidades</small></div>
+      </div>
+      <div class="vigencia-bar">⏳ propuesta válida hasta el <strong>25 de septiembre de 2026</strong> — 30 días naturales</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  EL PROBLEMA — los 4 dolores
+══════════════════════════════════════════════ -->
+<section id="problema">
+  <div class="wrap">
+    <span class="eyebrow">el problema</span>
+    <h2>Clementina Café, ¿te suena familiar?</h2>
+    <p class="lead">esto no es una crítica — es la realidad de la mayoría de los restaurantes que operan sin un sistema de costeo. y el problema no es la falta de ganas: es que nadie te enseñó a hacerlo.</p>
+
+    <div class="dolor-grid">
+      <div class="dolor">
+        <div class="dnum">dolor 01</div>
+        <h3>las recetas no están estandarizadas</h3>
+        <p>cada cocinero las hace a su manera. el platillo nunca sale igual dos veces — y el cliente lo nota antes que tú. sin un recetario, no hay consistencia posible.</p>
+      </div>
+      <div class="dolor">
+        <div class="dnum">dolor 02</div>
+        <h3>no sabes cuánto te cuesta cada platillo</h3>
+        <p>preparas, vendes y cobras — pero no tienes el costo real de producción. ¿estás ganando en cada orden o la estás subsidiando sin saberlo?</p>
+      </div>
+      <div class="dolor">
+        <div class="dnum">dolor 03</div>
+        <h3>los precios los pusiste por intuición</h3>
+        <p>cobras lo que te parece o lo que cobra la competencia. sin un tabulador, no sabes si tu margen es suficiente para que el negocio sea sostenible.</p>
+      </div>
+      <div class="dolor">
+        <div class="dnum">dolor 04</div>
+        <h3>si tú no estás, la cocina no funciona igual</h3>
+        <p>no existe nada documentado que le diga a tu equipo cómo hacer las cosas. el negocio depende de ti para cada detalle — y eso no escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  LO QUE TE ESTÁ COSTANDO — consecuencia real
+══════════════════════════════════════════════ -->
+<section class="dark-sec">
+  <div class="wrap">
+    <span class="eyebrow">la consecuencia real</span>
+    <h2>lo que no ves en tu estado de cuenta.</h2>
+    <p class="lead" style="color:rgba(255,255,255,.65);margin-top:12px">operar sin costear no es neutro. cada día que pasa sin números claros, estás pagando un precio que no aparece en ninguna factura.</p>
+
+    <div class="costo-stats">
+      <div class="costo-stat">
+        <div class="val">15–30%</div>
+        <h3>se va en merma</h3>
+        <p>de tus ingredientes se pierden antes de llegar al plato. si no lo mides, tampoco lo contemplas en tu precio de venta.</p>
+      </div>
+      <div class="costo-stat">
+        <div class="val">?%</div>
+        <h3>es tu margen real</h3>
+        <p>nunca lo calculaste con certeza. puede ser positivo — o puede ser negativo. la incertidumbre es cara.</p>
+      </div>
+      <div class="costo-stat">
+        <div class="val">$0</div>
+        <h3>de control ante cambios</h3>
+        <p>cuando sube un insumo o cambias de proveedor, no tienes sistema para reaccionar. absorbes el golpe y ya.</p>
+      </div>
+    </div>
+
+    <blockquote class="dark-quote">el costeo no es un lujo de restaurantes grandes. es la base de cualquier negocio que quiera ser rentable, sin importar el tamaño.</blockquote>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  LA SOLUCIÓN — qué es el proyecto
+══════════════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sol-grid">
+      <div class="sol-texto">
+        <span class="eyebrow">la solución</span>
+        <h2>proyecto de costeo de menú <span style="color:var(--azul)">ga·astro.</span></h2>
+        <div class="sol-divider"></div>
+        <p>te entregamos tu menú completamente costeado, estandarizado y documentado — para que sepas exactamente qué ganas en cada venta y tu cocina funcione igual con o sin ti.</p>
+        <p>no es una consultoría genérica. es un proyecto a la medida de tu menú de 46 platillos, 33 bebidas y 8 modificadores. precio fijo desde el primer día, con contrato y sin sorpresas.</p>
+        <ul class="sol-check">
+          <li>sabes exactamente cuánto te cuesta cada platillo</li>
+          <li>tienes precios de venta con margen real calculado</li>
+          <li>tu cocina es replicable por cualquier miembro del equipo</li>
+          <li>tomas decisiones con números, no con corazonadas</li>
+        </ul>
+      </div>
+      <div class="sol-img">
+        <img src="img/costeo-solucion.jpg" alt="Proyecto de Costeo Gaastro" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  CÓMO FUNCIONA — proceso real
+══════════════════════════════════════════════ -->
+<section class="que" id="proceso">
+  <div class="wrap">
+    <span class="eyebrow">cómo funciona</span>
+    <h2>el proceso, paso a paso.</h2>
+    <p class="lead">nueve pasos con los que llevamos tu proyecto de principio a fin. tú no necesitas saber de costos — nosotros dirigimos el proceso.</p>
+
+    <div class="proceso-wrap">
+
+      <!-- Fase 1: antes de arrancar -->
+      <div class="pfase pre">
+        <div class="pfase-label">antes de arrancar</div>
+
+        <div class="paso">
+          <div class="paso-num">1</div>
+          <div class="paso-body">
+            <h4>eliges tu paquete</h4>
+            <p>revisas esta propuesta, decides el alcance que necesitas y nos escribes para confirmar.</p>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-num">2</div>
+          <div class="paso-body">
+            <h4>firmamos contrato</h4>
+            <p>precio fijo, alcance claro y cláusula de confidencialidad. lo que es de Clementina Café, se queda en Clementina Café.</p>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-num">3</div>
+          <div class="paso-body">
+            <h4>anticipo del 60%</h4>
+            <p>una vez firmado el contrato, se realiza el pago del anticipo y el proyecto queda agendado.</p>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-num">4</div>
+          <div class="paso-body">
+            <h4>recopilación de información (remota)</h4>
+            <p>nos compartes facturas, listado de proveedores, catálogo de insumos y las recetas que ya tengas documentadas. todo desde donde estés.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Fase 2: el proyecto -->
+      <div class="pfase exec">
+        <div class="pfase-label">el proyecto</div>
+
+        <div class="paso">
+          <div class="paso-num">5</div>
+          <div class="paso-body">
+            <h4>visita presencial</h4>
+            <p>agendamos la visita a tu restaurante — de 3 a 7 días de trabajo en cocina según el tamaño de tu menú. (paquetes 2 y 3)</p>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-num">6</div>
+          <div class="paso-body">
+            <h4>entrega del recetario de costeo</h4>
+            <p>te presentamos todos los entregables del paquete elegido para tu revisión y validación.</p>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-num">7</div>
+          <div class="paso-body">
+            <h4>autorizas los entregables</h4>
+            <p>revisas, haces los ajustes que necesites y firmas la autorización de los entregables finales.</p>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-num">8</div>
+          <div class="paso-body">
+            <h4>pago del 40% restante</h4>
+            <p>al autorizar los entregables, se liquida el saldo pendiente para liberar la carpeta completa.</p>
+          </div>
+        </div>
+
+        <div class="paso">
+          <div class="paso-num">9</div>
+          <div class="paso-body">
+            <h4>recibes tu carpeta completa</h4>
+            <p>te entregamos el paquete completo de archivos digitales. listo para operar con números.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  QUÉ OBTIENES — entregables
+══════════════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">entregables</span>
+    <h2>esto es lo que recibes al finalizar.</h2>
+    <p class="lead">todo lo que necesitas para que Clementina Café opere con orden, consistencia y rentabilidad real.</p>
+
+    <p class="note" style="margin-top:12px">el listado completo corresponde al <strong>Paquete 3</strong>. cada paquete incluye un subconjunto — revisa la sección de precios para ver el detalle.</p>
+
+    <div class="entreg-grid">
+      <div class="entreg"><div class="ico">📋</div><div><h3>recetario general</h3><p>tus 46 platillos, 33 bebidas y 8 modificadores documentados: ingredientes, porciones, procedimiento e imagen.</p><span class="desde p1">Paq. 1, 2 y 3</span></div></div>
+      <div class="entreg"><div class="ico">📊</div><div><h3>formato de costeo digital</h3><p>excel dinámico que recalcula automáticamente cuando actualizas el precio de cualquier insumo.</p><span class="desde p1">Paq. 1, 2 y 3</span></div></div>
+      <div class="entreg"><div class="ico">💰</div><div><h3>tabulador de precios</h3><p>precio de venta ideal por platillo, con el margen objetivo incluido y visible siempre.</p><span class="desde p1">Paq. 1, 2 y 3</span></div></div>
+      <div class="entreg"><div class="ico">🍳</div><div><h3>recetario operativo</h3><p>versión simplificada para uso diario — para que tu equipo la consulte al momento en cocina.</p><span class="desde p2">Paq. 2 y 3</span></div></div>
+      <div class="entreg"><div class="ico">📝</div><div><h3>reporte de estandarización</h3><p>análisis y recomendaciones de los procesos detectados durante el proyecto en tu cocina.</p><span class="desde p2">Paq. 2 y 3</span></div></div>
+      <div class="entreg"><div class="ico">📸</div><div><h3>fotografía de catálogo</h3><p>foto de cada receta sobre fondo blanco para tu recetario, menús y material interno.</p><span class="desde p2">Paq. 2 y 3</span></div></div>
+      <div class="entreg"><div class="ico">🎨</div><div><h3>fotografía comercial</h3><p>fotografía editorial de tus platillos con sistema visual de montaje incluido para marketing.</p><span class="desde p3">Solo Paq. 3</span></div></div>
+      <div class="entreg"><div class="ico">🍽</div><div><h3>guía de emplatado</h3><p>sistema visual por platillo para que cualquier persona de tu equipo replique la presentación.</p><span class="desde p3">Solo Paq. 3</span></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  ¿QUIÉN ES GAASTRO? — credencial de Alonso
+══════════════════════════════════════════════ -->
+<section class="azul-sec">
+  <div class="wrap">
+    <div class="alonso-grid">
+      <div class="alonso-foto">
+        <img src="img/alonso.jpg" alt="Alonso Herrera · Fundador Gaastro" />
+      </div>
+      <div class="alonso-texto">
+        <img src="img/logo-blanco.png" alt="Gaastro" style="height:32px;margin-bottom:26px" />
+        <span class="eyebrow">¿quién es gaastro?</span>
+        <h2>no somos consultores de escritorio.</h2>
+        <div class="alonso-div"></div>
+        <p>soy alonso — chef, administrador y fundador de ga·astro. empecé como cocinero en un grupo restaurantero en querétaro y llegué a ser director de operaciones y compras de <span class="highlight">10 unidades de negocio simultáneas.</span></p>
+        <p>durante más de 3 años diseñé y operé el sistema de costeo, estandarización, inventarios y compras para ese grupo. lo que le entrego a Clementina Café es lo que yo necesitaba cuando empecé — y que nadie tenía.</p>
+        <p><span class="highlight">entiendo tu cocina porque viví en una.</span></p>
+      </div>
+      <div class="anums">
+        <div class="anum"><div class="av">10</div><p>unidades de negocio costeadas y estandarizadas simultáneamente como director de operaciones</p></div>
+        <div class="anum"><div class="av">3+</div><p>años liderando compras, costeo y estandarización en grupo restaurantero</p></div>
+        <div class="anum"><div class="av">+20</div><p>restaurantes transformados con proyectos de costeo y consultoría a la medida</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  PORTAFOLIO — trabajo real
+══════════════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">portafolio</span>
+    <h2>trabajo real. resultados reales.</h2>
+    <p class="lead">fotografía de catálogo y proyectos de costeo de restaurantes con quienes ya trabajamos.</p>
+
+    <div class="port-grid">
+      <div class="port-foto"><img src="img/port-1.jpg" alt="" /></div>
+      <div class="port-foto"><img src="img/port-2.jpg" alt="" /></div>
+      <div class="port-foto"><img src="img/port-3.jpg" alt="" /></div>
+      <div class="port-foto"><img src="img/port-4.jpg" alt="" /></div>
+      <div class="port-foto"><img src="img/port-5.jpg" alt="" /></div>
+      <div class="port-foto"><img src="img/port-6.jpg" alt="" /></div>
+      <div class="port-foto"><img src="img/port-7.jpg" alt="" /></div>
+      <div class="port-foto"><img src="img/port-8.jpg" alt="" /></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  POR QUÉ GAASTRO — diferenciadores
+══════════════════════════════════════════════ -->
+<section class="que">
+  <div class="wrap">
+    <span class="eyebrow">por qué gaastro</span>
+    <h2>lo que nos hace diferentes.</h2>
+    <p class="lead">hay otras opciones para costearte el menú. pero solo una trabaja así.</p>
+
+    <div class="dif-grid">
+      <div class="dif">
+        <div class="dn">01</div>
+        <div>
+          <h3>monto fijo — nunca sobre tus utilidades</h3>
+          <p>somos la única opción que trabaja sobre un honorario fijo desde el día uno. no te cobramos porcentaje de ventas ni de ganancias. sabes exactamente cuánto inviertes antes de firmar.</p>
+        </div>
+      </div>
+      <div class="dif">
+        <div class="dn">02</div>
+        <div>
+          <h3>contrato que protege lo que acordamos</h3>
+          <p>firmamos contrato contigo. el alcance, los entregables y el precio quedan por escrito — sin sorpresas al final. también firmamos cláusula de confidencialidad. lo que es de Clementina Café, es de Clementina Café.</p>
+        </div>
+      </div>
+      <div class="dif">
+        <div class="dn">03</div>
+        <div>
+          <h3>cotización a la medida de tu menú</h3>
+          <p>esta propuesta está calculada para tus 46 platillos, 33 bebidas y 8 modificadores. no hay un precio único para todos — pagas exactamente por lo que tu restaurante necesita, nada más.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  PRUEBA SOCIAL — lo que dicen
+══════════════════════════════════════════════ -->
+<section class="social-sec">
+  <div class="wrap">
+    <span class="eyebrow">prueba social</span>
+    <h2>lo que dicen quienes ya lo hicieron.</h2>
+    <p class="social-meta">+20 restaurantes transformados · +150 en asesoría · +600 en cursos · +1,000 usando nuestros formatos</p>
+
+    <div class="quotes">
+      <div class="qcard">
+        <div class="stars">★★★★★</div>
+        <blockquote>"todo ha sido excelente. en el camino ya he ido mejorando mis recetas, pero cada vez me doy más cuenta de lo necesario que era. de lo único que me arrepiento es no haberlos contratado desde antes."</blockquote>
+        <div class="quien">Octavio C. <span>restaurante · proyecto de costeo</span></div>
+      </div>
+      <div class="qcard">
+        <div class="stars">★★★★★</div>
+        <blockquote>"modificamos los precios con base en lo que vimos y por fin estamos generando utilidades. el cambio se nota en una semana. no tuvimos quejas, y a los que preguntaron les explicamos y entendieron perfecto."</blockquote>
+        <div class="quien">Paulina G. <span>dueña de restaurante · costeo y precios</span></div>
+      </div>
+      <div class="qcard">
+        <div class="stars">★★★★★</div>
+        <blockquote>"haber trabajado con ustedes fue una de las mejores decisiones. hoy, un año después de terminar el proyecto, estamos abriendo nuestra segunda sucursal. nada de esto hubiera pasado sin este trabajo."</blockquote>
+        <div class="quien">Daniela N. <span>restaurante · consultoría integral</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  LA PROPUESTA — los 3 paquetes personalizados
+══════════════════════════════════════════════ -->
+<section class="precio-sec" id="propuesta">
+  <div class="wrap">
+    <span class="eyebrow">tu propuesta · Clementina Café · 46 platillos, 33 bebidas y 8 modificadores</span>
+    <h2>elige el alcance que necesitas.</h2>
+    <p class="lead">tres paquetes diseñados para tu menú. precio fijo, contrato firmado y sin cobros sobre tus utilidades — en cualquiera que elijas.</p>
+
+    <div class="paquetes">
+
+      <!-- PAQ 1 -->
+      <div class="paq">
+        <div class="paq-num">paquete 01</div>
+        <h3>recetario.</h3>
+        <div class="modal">📱 100% remoto</div>
+        <div class="paq-sep"></div>
+        <ul class="paq-items">
+          <li class="si">sesiones de trabajo conjunto por videollamada</li>
+          <li class="si">te guiamos en todo el proceso paso a paso</li>
+          <li class="si">recetario general de tus 46 platillos, 33 bebidas y 8 modificadores</li>
+          <li class="si">formato de costeo digital (excel dinámico)</li>
+          <li class="si">tabulador de precios de venta ideal</li>
+          <li class="si">capacitación para uso autónomo</li>
+          <li class="no">visita presencial al restaurante</li>
+          <li class="no">estandarización en cocina</li>
+          <li class="no">fotografía de catálogo</li>
+          <li class="no">fotografía comercial y de montaje</li>
+        </ul>
+        <div class="paq-sep"></div>
+        <div class="precio-wrap"><div class="mxn">$30,000</div><div class="iva">+ IVA · pago único</div></div>
+        <a class="btn btn-line" href="https://wa.me/524421374663?text=Hola%2C%20me%20interesa%20el%20Paquete%201%20%E2%80%94%20Recetario." target="_blank" rel="noopener">me interesa el paquete 1</a>
+      </div>
+
+      <!-- PAQ 2 — destacado -->
+      <div class="paq dest">
+        <div class="paq-tag azul">más completo</div>
+        <div class="paq-num">paquete 02</div>
+        <h3>estandarización.</h3>
+        <div class="modal pres">📍 visita presencial incluida</div>
+        <div class="paq-sep"></div>
+        <ul class="paq-items">
+          <li class="si">todo lo del paquete de recetario</li>
+          <li class="si">visita presencial a tu restaurante</li>
+          <li class="si">pruebas y estandarización de recetas en cocina</li>
+          <li class="si">recetario operativo para tu equipo</li>
+          <li class="si">reporte de estandarización con hallazgos</li>
+          <li class="si">fotografía de catálogo (fondo blanco) por receta</li>
+          <li class="si">formato de costeo digital (excel dinámico)</li>
+          <li class="si">tabulador de precios de venta ideal</li>
+          <li class="si">capacitación para uso autónomo</li>
+          <li class="no">fotografía comercial y de montaje editorial</li>
+        </ul>
+        <div class="paq-sep"></div>
+        <div class="precio-wrap"><div class="mxn">$44,700</div><div class="iva">+ IVA · pago único</div></div>
+        <a class="btn btn-azul" href="https://wa.me/524421374663?text=Hola%2C%20me%20interesa%20el%20Paquete%202%20%E2%80%94%20Estandarizaci%C3%B3n." target="_blank" rel="noopener">me interesa el paquete 2</a>
+      </div>
+
+      <!-- PAQ 3 — premium -->
+      <div class="paq prem">
+        <div class="paq-tag amar">paquete completo</div>
+        <div class="paq-num">paquete 03</div>
+        <h3>fotografía y montaje.</h3>
+        <div class="modal pres">📍 visita presencial incluida</div>
+        <div class="paq-sep"></div>
+        <ul class="paq-items">
+          <li class="si">todo lo del paquete de estandarización</li>
+          <li class="si">fotografía comercial editorial de tus platillos</li>
+          <li class="si">sistema visual de montaje por platillo</li>
+          <li class="si">guía de emplatado para tu equipo de cocina</li>
+          <li class="si">recetario visual con fotografía comercial</li>
+          <li class="si">fotografía de catálogo (fondo blanco) por receta</li>
+          <li class="si">formato de costeo digital (excel dinámico)</li>
+          <li class="si">tabulador de precios de venta ideal</li>
+          <li class="si">reporte de estandarización con hallazgos</li>
+          <li class="si">capacitación para uso autónomo</li>
+        </ul>
+        <div class="paq-sep"></div>
+        <div class="precio-wrap"><div class="mxn">$66,000</div><div class="iva">+ IVA · pago único</div></div>
+        <a class="btn btn-amarillo" href="https://wa.me/524421374663?text=Hola%2C%20me%20interesa%20el%20Paquete%203%20%E2%80%94%20Fotograf%C3%ADa%20y%20Montaje." target="_blank" rel="noopener">me interesa el paquete 3</a>
+      </div>
+
+    </div>
+
+    <!-- Leyenda anticipo -->
+    <div style="margin:36px 0 0;padding:28px 36px;background:var(--negro);border-radius:var(--radio);text-align:center">
+      <p style="font-size:1.15rem;font-weight:800;color:#fff;margin:0;line-height:1.5">para arrancar se requiere el <span style="color:var(--amarillo)">60% de anticipo</span> — el <span style="color:var(--amarillo)">40% restante</span> se paga al momento de la entrega del recetario de costeo.</p>
+    </div>
+
+    <!-- Tabla IVA -->
+    <div class="iva-wrap">
+      <div class="table-wrap">
+        <table class="ptable">
+          <thead>
+            <tr><th>paquete</th><th>subtotal</th><th>iva (16%)</th><th>total con iva</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>01 · recetario</td><td class="precio">$30,000</td><td>$4,800</td><td><strong>$34,800</strong></td></tr>
+            <tr><td>02 · estandarización</td><td class="precio">$44,700</td><td>$7,152</td><td><strong>$51,852</strong></td></tr>
+            <tr><td>03 · fotografía y montaje</td><td class="precio">$66,000</td><td>$10,560</td><td><strong>$76,560</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">precios en pesos mexicanos (MXN). iva aplicado conforme a la legislación fiscal vigente.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  CROSS-SELL — alternativas más accesibles
+══════════════════════════════════════════════ -->
+<section class="xsell">
+  <div class="wrap">
+    <div class="xsell-header">
+      <span class="eyebrow">otras opciones</span>
+      <h2>¿no está dentro de tu presupuesto?</h2>
+      <p>también puedes empezar más pequeño. estas dos opciones te dan las herramientas para avanzar por tu cuenta — con el mismo enfoque de Gaastro.</p>
+    </div>
+
+    <div class="xsell-cards">
+
+      <!-- Restaurant Brain -->
+      <div class="xcard">
+        <span class="xtag">formato digital</span>
+        <h3>restaurant brain.</h3>
+        <p class="xsub">sistema todo-en-uno para costear, estandarizar y controlar tu restaurante. 8 módulos en un solo archivo. lo descargas y lo usas a tu ritmo.</p>
+        <ul class="xitems">
+          <li>costeo de recetas con % food cost automático</li>
+          <li>catálogo de insumos con actualización masiva</li>
+          <li>tabulador de precios de venta sugerido</li>
+          <li>punto de equilibrio mensual y por escenario</li>
+          <li>control de inventarios, ventas y finanzas</li>
+          <li>funciona en Excel, Google Sheets, Mac y PC</li>
+        </ul>
+        <div class="xcard-sep"></div>
+        <div class="xprecio">$1,990 <span style="font-size:1rem;font-weight:500">mxn</span></div>
+        <p class="xnota">pago único · descarga inmediata · sin mensualidades</p>
+        <a class="btn btn-azul" href="https://gaastro.mx/restaurant-brain.html" target="_blank" rel="noopener">conocer Restaurant Brain →</a>
+      </div>
+
+      <!-- Asesoría Costeo y Estandarización -->
+      <div class="xcard">
+        <span class="xtag">asesoría 1-a-1</span>
+        <h3>asesoría en costeo y estandarización.</h3>
+        <p class="xsub">te enseñamos a hacerlo tú mismo en 6 sesiones por videollamada. trabajamos directo sobre tu menú, con formatos incluidos.</p>
+        <ul class="xitems">
+          <li>principios del costeo aplicados a tu cocina</li>
+          <li>creación y documentación de tus recetas</li>
+          <li>estandarización de procesos y porciones</li>
+          <li>definición de precios de venta con margen real</li>
+          <li>rentabilidad de tu menú platillo por platillo</li>
+          <li>formato de costeo y estandarización incluido</li>
+        </ul>
+        <div class="xcard-sep"></div>
+        <div class="xprecio">$6,600 <span style="font-size:1rem;font-weight:500">mxn</span></div>
+        <p class="xnota">6 sesiones · 1 hora cada una · formato incluido</p>
+        <a class="btn btn-line" href="https://gaastro.mx/asesoria.html" target="_blank" rel="noopener">conocer asesoría →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  SIGUIENTE PASO — CTA
+══════════════════════════════════════════════ -->
+<section class="cta-sec" id="cta">
+  <div class="wrap">
+    <h2>¿con cuál arrancamos,<br>Clementina Café?</h2>
+    <p class="sub">escríbenos indicando el paquete que elegiste. coordinamos los siguientes pasos, firmamos contrato y arrancamos.</p>
+    <a class="wa-btn" href="https://wa.me/524421374663?text=Hola%2C%20soy%20de%20Clementina%20Café.%20Vi%20la%20propuesta%20y%20quiero%20hablar%20sobre%20el%20proyecto%20de%20costeo." target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      escribir por whatsapp
+    </a>
+    <p class="vig-nota">propuesta válida hasta el <strong>25 de septiembre de 2026</strong> · 30 días naturales · precios en MXN + IVA</p>
+  </div>
+</section>
+
+
+<!-- CONDICIONES -->
+<section class="conds">
+  <div class="wrap">
+    <ul>
+      <li>esta propuesta fue preparada exclusivamente para Clementina Café y es confidencial.</li>
+      <li>los precios están en pesos mexicanos (MXN) y no incluyen IVA (16%).</li>
+      <li>propuesta válida por 30 días naturales a partir del envío — hasta el 25 de septiembre de 2026.</li>
+      <li>al confirmar, se firma contrato con alcance, entregables y fecha de entrega acordados.</li>
+      <li>se firma cláusula de confidencialidad — la información de Clementina Café no se comparte con terceros.</li>
+      <li>los paquetes 2 y 3 incluyen visita presencial. los gastos de traslado y hospedaje (si aplican) se cotizan por separado según ubicación.</li>
+      <li>el inicio del proyecto queda sujeto a disponibilidad de agenda al momento de la confirmación.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><img src="img/logo-blanco.png" alt="Gaastro" /></div>
+        <p style="max-width:30ch;color:#aab;margin-top:10px">restaurantes rentables y bajo control.</p>
+      </div>
+      <div>
+        <h4>explora</h4>
+        <a href="https://gaastro.mx/catalogo.html">formatos</a>
+        <a href="https://gaastro.mx/academy.html">academy</a>
+        <a href="https://gaastro.mx/asesoria.html">asesoría</a>
+        <a href="https://gaastro.mx/consultoria.html">consultoría</a>
+      </div>
+      <div>
+        <h4>contacto</h4>
+        <a href="mailto:info@gaastro.mx">info@gaastro.mx</a>
+        <a href="https://wa.me/message/O7WDAWI4IFZRB1" target="_blank" rel="noopener">whatsapp (442) 137-4663</a>
+        <a href="https://instagram.com/gaastro.mx" target="_blank" rel="noopener">instagram</a>
+      </div>
+      <div>
+        <h4>legal</h4>
+        <a href="https://gaastro.mx/facturacion.html">facturación</a>
+        <a href="https://gaastro.mx/aviso-de-privacidad.html">aviso de privacidad</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 ga·astro. todos los derechos reservados.</span>
+      <span>propuesta preparada para Clementina Café · confidencial</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',function(){m.classList.toggle('open')});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A')m.classList.remove('open')});
+
+  ['#propuesta','#problema','#proceso','#cta'].forEach(function(sel){
+    document.querySelectorAll('a[href="'+sel+'"]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        var t=document.querySelector(sel);
+        if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador · Gaastro</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --azul:       #132BD6;
+      --azul-lite:  rgba(19,43,214,0.16);
+      --azul-borde: rgba(19,43,214,0.40);
+      --amarillo:   #F3CA40;
+      --negro:      #101114;
+      --card:       #161921;
+      --input:      #1d2133;
+      --borde:      #252c3f;
+      --texto:      #eef0f6;
+      --sub:        #6b7a99;
+      --sub2:       #9aa3bf;
+    }
+    body {
+      background: var(--negro); color: var(--texto);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh; padding: 2rem 1.25rem 5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { text-align: center; margin-bottom: 2.5rem; }
+    .wordmark { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amarillo); }
+    header h1 { font-size: 1.6rem; font-weight: 600; margin-top: 0.4rem; letter-spacing: -0.02em; }
+    .badge-interno {
+      display: inline-block; margin-top: 0.6rem;
+      padding: 0.22rem 0.75rem; border-radius: 100px;
+      background: var(--azul-lite); border: 1px solid var(--azul-borde);
+      color: #7b9aff; font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .grid {
+      display: grid; grid-template-columns: 360px 1fr;
+      gap: 1.5rem; max-width: 1120px; margin: 0 auto; align-items: start;
+    }
+    @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+    .form-card {
+      background: var(--card); border: 1px solid var(--borde);
+      border-radius: 14px; padding: 1.5rem;
+      position: sticky; top: 1.5rem;
+    }
+    @media (max-width: 860px) { .form-card { position: static; } }
+    .sec-label {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--sub); margin-bottom: 0.9rem;
+    }
+    .field { margin-bottom: 0.8rem; }
+    label { display: block; font-size: 0.77rem; font-weight: 500; color: var(--sub2); margin-bottom: 0.28rem; }
+    input[type="text"], input[type="number"], input[type="email"],
+    input[type="tel"], select, textarea {
+      width: 100%; background: var(--input); border: 1px solid var(--borde);
+      border-radius: 8px; padding: 0.56rem 0.82rem; color: var(--texto);
+      font-size: 0.91rem; font-family: inherit; outline: none;
+      transition: border-color 0.18s; appearance: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--azul); }
+    input[type="number"] { -moz-appearance: textfield; }
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+    hr.sep { border: none; border-top: 1px solid var(--borde); margin: 1.1rem 0; }
+    .checks { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 0.85rem; }
+    .check-item {
+      display: flex; align-items: center; gap: 0.55rem;
+      cursor: pointer; font-size: 0.81rem; color: var(--texto); user-select: none;
+    }
+    .check-item input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--azul); cursor: pointer; flex-shrink: 0; }
+    .suc-row { display: flex; align-items: center; gap: 0.65rem; }
+    .suc-row label { margin: 0; white-space: nowrap; font-size: 0.81rem; color: var(--texto); font-weight: 400; }
+    .suc-row input { width: 70px; }
+    .suc-hint { font-size: 0.74rem; color: var(--sub); }
+    .results { display: flex; flex-direction: column; gap: 1rem; }
+    .scope-bar {
+      background: var(--card); border: 1px solid var(--borde);
+      border-radius: 10px; padding: 0.82rem 1.1rem;
+      display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; align-items: center;
+    }
+    .sc { font-size: 0.79rem; color: var(--sub2); }
+    .sc strong { color: var(--amarillo); font-weight: 600; }
+    .sc-total { margin-left: auto; font-size: 0.81rem; font-weight: 600; color: var(--texto); }
+    .mult-chip {
+      display: none; background: rgba(243,202,64,0.12);
+      border: 1px solid rgba(243,202,64,0.28); color: var(--amarillo);
+      font-size: 0.69rem; font-weight: 600; padding: 0.14rem 0.52rem;
+      border-radius: 100px; letter-spacing: 0.04em;
+    }
+    .mult-chip.on { display: inline-block; }
+    .paq-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .paq-row { grid-template-columns: 1fr; } }
+    .paq {
+      background: var(--card); border: 1px solid var(--borde);
+      border-radius: 14px; padding: 1.2rem; display: flex; flex-direction: column;
+    }
+    .paq.hi { border-color: var(--azul); }
+    .paq-label {
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--sub); margin-bottom: 0.8rem;
+    }
+    .paq.hi .paq-label { color: #6a8fff; }
+    .paq-items { list-style: none; display: flex; flex-direction: column; gap: 0.26rem; }
+    .paq-items li { font-size: 0.75rem; color: var(--sub2); display: flex; align-items: flex-start; gap: 0.38rem; }
+    .paq-items li::before { content: '·'; color: var(--amarillo); flex-shrink: 0; }
+    .visit-chip {
+      margin-top: 0.75rem; padding: 0.35rem 0.65rem;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--borde);
+      border-radius: 7px; font-size: 0.72rem; color: var(--sub2); line-height: 1.55;
+    }
+    .visit-chip span { color: var(--texto); font-weight: 500; }
+    .visit-chip.oculto { display: none; }
+    .paq-sep { border: none; border-top: 1px solid var(--borde); margin: 0.9rem 0 0.7rem; }
+    .paq-line { display: flex; justify-content: space-between; font-size: 0.77rem; color: var(--sub); margin-bottom: 0.26rem; }
+    .paq-total-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.5rem; }
+    .paq-total-lbl { font-size: 0.72rem; color: var(--sub2); font-weight: 500; }
+    .paq-total-val { font-size: 1.42rem; font-weight: 700; color: var(--texto); letter-spacing: -0.03em; }
+    .paq.hi .paq-total-val { color: var(--amarillo); }
+    .gos-tag {
+      margin-top: 0.8rem; padding: 0.42rem 0.62rem;
+      background: var(--azul-lite); border: 1px solid var(--azul-borde);
+      border-radius: 7px; font-size: 0.71rem; color: #7b9aff; line-height: 1.45;
+    }
+    .gos-tag strong { color: #a5baff; }
+    .actions { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+    .btn {
+      padding: 0.63rem 1.15rem; border-radius: 9px; border: none;
+      font-family: inherit; font-size: 0.84rem; font-weight: 600;
+      cursor: pointer; transition: opacity 0.15s, transform 0.1s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--amarillo); color: var(--negro); }
+    .btn-ghost { background: var(--input); color: var(--sub2); border: 1px solid var(--borde); }
+    .btn-save { background: var(--azul); color: #fff; }
+    .fb { font-size: 0.77rem; color: var(--amarillo); opacity: 0; transition: opacity 0.25s; }
+    .fb.on { opacity: 1; }
+
+    /* CRM */
+    .crm-wrap { max-width: 1120px; margin: 2.5rem auto 0; }
+    .crm-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;
+    }
+    .crm-title { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
+    .crm-count { font-size: 0.77rem; color: var(--sub); }
+    .crm-table-wrap { overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse;
+      background: var(--card); border: 1px solid var(--borde);
+      border-radius: 12px; overflow: hidden; font-size: 0.8rem;
+    }
+    thead th {
+      background: var(--input); padding: 0.65rem 0.9rem; text-align: left;
+      font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--sub); white-space: nowrap;
+      border-bottom: 1px solid var(--borde);
+    }
+    tbody tr { border-bottom: 1px solid var(--borde); transition: background 0.12s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(255,255,255,0.025); }
+    td { padding: 0.6rem 0.9rem; color: var(--texto); vertical-align: middle; }
+    td.dim { color: var(--sub2); }
+    td.mono { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .status-sel {
+      background: transparent; border: none; font-family: inherit;
+      font-size: 0.75rem; font-weight: 600; border-radius: 100px;
+      padding: 0.22rem 0.55rem; cursor: pointer; outline: none;
+      transition: opacity 0.15s;
+    }
+    .status-sel:hover { opacity: 0.8; }
+    .s-cotizado    { background: rgba(107,122,153,0.2); color: #9aa3bf; }
+    .s-propuesta   { background: rgba(243,202,64,0.15); color: var(--amarillo); }
+    .s-negociacion { background: rgba(255,165,0,0.15);  color: #ffb347; }
+    .s-cerrado     { background: rgba(52,211,153,0.15); color: #34d399; }
+    .s-perdido     { background: rgba(239,68,68,0.12);  color: #f87171; }
+    .notes-input {
+      background: transparent; border: none; color: var(--sub2);
+      font-size: 0.78rem; font-family: inherit; width: 100%; min-width: 140px;
+      outline: none; padding: 0;
+    }
+    .notes-input:focus { color: var(--texto); }
+    .notes-input::placeholder { color: var(--sub); }
+    .btn-del {
+      background: none; border: none; cursor: pointer; color: var(--sub);
+      font-size: 1rem; padding: 0.2rem 0.4rem; border-radius: 5px;
+      transition: color 0.15s, background 0.15s; line-height: 1;
+    }
+    .btn-del:hover { color: #f87171; background: rgba(239,68,68,0.1); }
+    .crm-empty {
+      padding: 2.5rem; text-align: center; color: var(--sub);
+      font-size: 0.84rem; display: none;
+    }
+    .crm-empty.on { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">Gaastro</div>
+  <h1>Cotizador de Proyectos</h1>
+  <span class="badge-interno">Uso interno</span>
+</header>
+
+<div class="grid">
+
+  <div class="form-card">
+    <div class="sec-label">Datos del cliente</div>
+    <div class="field">
+      <label>Nombre del cliente</label>
+      <input type="text" id="cliente" placeholder="Ej. Karla Mendoza" oninput="calc()">
+    </div>
+    <div class="field">
+      <label>Restaurante</label>
+      <input type="text" id="restaurante" placeholder="Ej. Taqueria El Padrino" oninput="calc()">
+    </div>
+    <div class="row-2">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="correo@email.com" oninput="calc()">
+      </div>
+      <div class="field">
+        <label>Telefono</label>
+        <input type="tel" id="tel" placeholder="442 000 0000" oninput="calc()">
+      </div>
+    </div>
+
+    <hr class="sep">
+    <div class="sec-label">Menu</div>
+    <div class="field">
+      <label>Tipo de establecimiento</label>
+      <select id="tipo" onchange="calc()">
+        <option value="1.00">Restaurante tradicional / Cafe</option>
+        <option value="1.25">Fast food / QSR</option>
+        <option value="1.30">Alitas / Salsas multiples</option>
+        <option value="1.40">Poke / Bowl / Build-your-own</option>
+        <option value="1.50">Pasteleria / Fine dining</option>
+        <option value="1.80">Multi-concepto (2+ marcas)</option>
+      </select>
+    </div>
+    <div class="row-2">
+      <div class="field">
+        <label>Platillos</label>
+        <input type="number" id="platillos" min="0" placeholder="0" oninput="calc()">
+      </div>
+      <div class="field">
+        <label>Bebidas</label>
+        <input type="number" id="bebidas" min="0" placeholder="0" oninput="calc()">
+      </div>
+    </div>
+    <div class="field">
+      <label>Modificadores / variantes</label>
+      <input type="number" id="mods" min="0" placeholder="0" oninput="calc()">
+    </div>
+
+    <hr class="sep">
+    <div class="sec-label">Ajustes de precio</div>
+    <div class="checks">
+      <label class="check-item">
+        <input type="checkbox" id="sinInfo" onchange="calc()">
+        Sin informacion previa escrita (+20%)
+      </label>
+      <label class="check-item">
+        <input type="checkbox" id="urgencia" onchange="calc()">
+        Urgencia express — menos de 21 dias (+25%)
+      </label>
+    </div>
+    <div class="suc-row">
+      <label>Sucursales adicionales</label>
+      <input type="number" id="sucursales" min="0" placeholder="0" oninput="calc()">
+      <span class="suc-hint">+35% c/u</span>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="scope-bar">
+      <div class="sc">Platillos: <strong id="s-p">0</strong></div>
+      <div class="sc">Bebidas: <strong id="s-b">0</strong></div>
+      <div class="sc">Mods: <strong id="s-m">0</strong></div>
+      <div class="sc">Subrecetas: <strong id="s-sr">0</strong></div>
+      <span class="mult-chip" id="mult-chip"></span>
+      <div class="sc-total">Total recetas: <span id="s-total">0</span></div>
+    </div>
+
+    <div class="paq-row">
+      <div class="paq">
+        <div class="paq-label">Paquete 1</div>
+        <ul class="paq-items">
+          <li>Costeo completo</li>
+          <li>Recetario estandarizado</li>
+          <li>100% remoto</li>
+        </ul>
+        <div class="visit-chip" id="v1">100% remoto — sin visita</div>
+        <hr class="paq-sep">
+        <div class="paq-line"><span>Subtotal</span><span id="p1-s">—</span></div>
+        <div class="paq-line"><span>IVA 16%</span><span id="p1-i">—</span></div>
+        <div class="paq-total-row">
+          <span class="paq-total-lbl">Total</span>
+          <span class="paq-total-val" id="p1-t">—</span>
+        </div>
+      </div>
+
+      <div class="paq hi">
+        <div class="paq-label">Paquete 2</div>
+        <ul class="paq-items">
+          <li>Costeo + Recetario</li>
+          <li>Fotografia fondo blanco</li>
+          <li>Visita al restaurante</li>
+        </ul>
+        <div class="visit-chip oculto" id="v2"></div>
+        <hr class="paq-sep">
+        <div class="paq-line"><span>Subtotal</span><span id="p2-s">—</span></div>
+        <div class="paq-line"><span>IVA 16%</span><span id="p2-i">—</span></div>
+        <div class="paq-total-row">
+          <span class="paq-total-lbl">Total</span>
+          <span class="paq-total-val" id="p2-t">—</span>
+        </div>
+      </div>
+
+      <div class="paq">
+        <div class="paq-label">Paquete 3</div>
+        <ul class="paq-items">
+          <li>Costeo + Recetario</li>
+          <li>Fotografia profesional</li>
+          <li>Inventarios + Compras</li>
+          <li>g·OS configurado + 1 ano</li>
+        </ul>
+        <div class="visit-chip oculto" id="v3"></div>
+        <hr class="paq-sep">
+        <div class="paq-line"><span>Subtotal</span><span id="p3-s">—</span></div>
+        <div class="paq-line"><span>IVA 16%</span><span id="p3-i">—</span></div>
+        <div class="paq-total-row">
+          <span class="paq-total-lbl">Total</span>
+          <span class="paq-total-val" id="p3-t">—</span>
+        </div>
+        <div class="gos-tag">
+          g·OS Total incluido<br>
+          <strong>$11,988 de valor / ano</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="copiarClaude()">Copiar para propuesta</button>
+      <button class="btn btn-ghost" onclick="copiarPrecios()">Copiar solo precios</button>
+      <button class="btn btn-save" onclick="guardarCotizacion()">Guardar cotizacion</button>
+      <span class="fb" id="fb"></span>
+    </div>
+  </div>
+</div>
+
+<div class="crm-wrap">
+  <div class="crm-header">
+    <div class="crm-title">Seguimiento de cotizaciones</div>
+    <div class="crm-count" id="crm-count"></div>
+  </div>
+  <div class="crm-table-wrap">
+    <table id="crm-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Restaurante</th>
+          <th>Contacto</th>
+          <th>Menu</th>
+          <th>Paq 1</th>
+          <th>Paq 2</th>
+          <th>Paq 3</th>
+          <th>Estado</th>
+          <th style="min-width:150px">Notas</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="crm-body"></tbody>
+    </table>
+    <div class="crm-empty" id="crm-empty">
+      Aun no hay cotizaciones guardadas. Llena el formulario y presiona <strong>Guardar cotizacion</strong>.
+    </div>
+  </div>
+</div>
+
+<script>
+  var T = {
+    platillo:   375,
+    bebida:     190,
+    mod:        190,
+    fotoP2:     190,
+    fotoP3:     375,
+    gosSetup:   125,
+    visitaP2:  6000,
+    visitaP3: 13000,
+    minP1:     9500,
+    iva:        0.16,
+    hrsPlatP2:  0.5,
+    hrsPlatP3:  1.0,
+    hrsJornada: 6
+  };
+
+  function gi(id)    { return document.getElementById(id); }
+  function ni(id)    { return parseInt(gi(id).value) || 0; }
+  function fi(id)    { return parseFloat(gi(id).value) || 1; }
+
+  function fmtN(v) {
+    var r = Math.round(v / 100) * 100;
+    return '$' + r.toLocaleString('es-MX');
+  }
+  function fmtE(v) {
+    return '$' + Math.round(v).toLocaleString('es-MX');
+  }
+
+  var lastP1 = 0, lastP2 = 0, lastP3 = 0;
+  var lastVP2 = '', lastVP3 = '';
+
+  function calc() {
+    var platillos  = ni('platillos');
+    var bebidas    = ni('bebidas');
+    var mods       = ni('mods');
+    var tipo       = fi('tipo');
+    var sucursales = ni('sucursales');
+    var sinInfo    = gi('sinInfo').checked;
+    var urgencia   = gi('urgencia').checked;
+
+    var sub = Math.round(platillos * 1.5);
+    var tot = platillos + bebidas + mods + sub;
+    gi('s-p').textContent   = platillos;
+    gi('s-b').textContent   = bebidas;
+    gi('s-m').textContent   = mods;
+    gi('s-sr').textContent  = sub;
+    gi('s-total').textContent = tot;
+
+    var chip = gi('mult-chip');
+    if (tipo > 1.00) { chip.textContent = 'x' + tipo.toFixed(2) + ' por tipo'; chip.classList.add('on'); }
+    else chip.classList.remove('on');
+
+    var mf = 1;
+    if (sinInfo)  mf += 0.20;
+    if (urgencia) mf += 0.25;
+    mf += sucursales * 0.35;
+
+    var doc = (platillos * T.platillo + bebidas * T.bebida + mods * T.mod) * tipo * mf;
+    var p1  = Math.max(doc, T.minP1);
+    var p2  = p1 + platillos * T.fotoP2 + T.visitaP2;
+    var p3  = p1 + platillos * T.fotoP3 + platillos * T.gosSetup * tipo + T.visitaP3;
+
+    lastP1 = p1; lastP2 = p2; lastP3 = p3;
+
+    var vacio = platillos === 0 && bebidas === 0 && mods === 0;
+    if (vacio) {
+      ['p1','p2','p3'].forEach(function(id) {
+        gi(id + '-s').textContent = '—';
+        gi(id + '-i').textContent = '—';
+        gi(id + '-t').textContent = '—';
+      });
+      gi('v1').classList.remove('oculto');
+      gi('v1').textContent = '100% remoto — sin visita';
+      gi('v2').classList.add('oculto'); gi('v2').innerHTML = '';
+      gi('v3').classList.add('oculto'); gi('v3').innerHTML = '';
+      lastVP2 = ''; lastVP3 = '';
+      return;
+    }
+
+    renderPaq('p1', p1);
+    renderPaq('p2', p2);
+    renderPaq('p3', p3);
+
+    // Horas de documentacion en sitio (recetas + subrecetas por separado)
+    var hrsDoc = platillos * 1.0 + sub * 1.0 + bebidas * 0.5 + mods * 0.5;
+    var hrsPhotoP2 = platillos * T.hrsPlatP2;
+    var hrsPhotoP3 = platillos * T.hrsPlatP3;
+
+    var diasDocP2  = Math.ceil(hrsDoc / T.hrsJornada);
+    var diasFotoP2 = Math.max(1, Math.ceil(hrsPhotoP2 / T.hrsJornada));
+    var diasDocP3  = Math.ceil(hrsDoc / T.hrsJornada);
+    var diasFotoP3 = Math.max(1, Math.ceil(hrsPhotoP3 / T.hrsJornada));
+
+    // En Paq2 Val trabaja sola: doc + foto secuencial
+    // En Paq3 Alonso (foto) y Val (doc) trabajan en paralelo
+    var visitDiasP2 = diasDocP2 + diasFotoP2 + 1; // +1 traslado
+    var visitDiasP3 = Math.max(diasDocP3, diasFotoP3) + 1;
+
+    lastVP2 = 'Doc: ' + diasDocP2 + 'd · Foto: ' + diasFotoP2 + 'd · Traslado: 1d = ' + visitDiasP2 + ' dias';
+    lastVP3 = 'Doc: ' + diasDocP3 + 'd · Foto: ' + diasFotoP3 + 'd (paralelo) · Traslado: 1d = ' + visitDiasP3 + ' dias';
+
+    gi('v1').classList.remove('oculto');
+    gi('v1').textContent = '100% remoto — sin visita';
+
+    gi('v2').classList.remove('oculto');
+    gi('v2').innerHTML =
+      'Doc <span>' + diasDocP2 + 'd</span>' +
+      ' + Foto <span>' + diasFotoP2 + 'd</span>' +
+      ' + Traslado <span>1d</span>' +
+      ' = <span>' + visitDiasP2 + ' dias</span>';
+
+    gi('v3').classList.remove('oculto');
+    gi('v3').innerHTML =
+      'Doc <span>' + diasDocP3 + 'd</span>' +
+      ' + Foto <span>' + diasFotoP3 + 'd</span>' +
+      ' (paralelo) + Traslado <span>1d</span>' +
+      ' = <span>' + visitDiasP3 + ' dias</span>';
+  }
+
+  function renderPaq(id, sub) {
+    var iva   = sub * T.iva;
+    var total = sub + iva;
+    gi(id + '-s').textContent = fmtN(sub);
+    gi(id + '-i').textContent = fmtN(iva);
+    gi(id + '-t').textContent = fmtN(total);
+  }
+
+  function copiarClaude() {
+    var cliente     = gi('cliente').value.trim()     || '[Cliente]';
+    var restaurante = gi('restaurante').value.trim() || '[Restaurante]';
+    var email       = gi('email').value.trim();
+    var tel         = gi('tel').value.trim();
+    var platillos   = ni('platillos');
+    var bebidas     = ni('bebidas');
+    var mods        = ni('mods');
+
+    var alcance = platillos + ' platillos';
+    if (bebidas > 0) alcance += ' y ' + bebidas + ' bebidas';
+    if (mods    > 0) alcance += ' y ' + mods + ' modificadores';
+
+    var contacto = '';
+    if (email) contacto += '\nEmail: ' + email;
+    if (tel)   contacto += '\nTel: ' + tel;
+
+    var texto =
+      'Vamos a hacer una nueva propuesta a nombre de ' + cliente +
+      '\nRestaurante: ' + restaurante + contacto +
+      '\nPlatillos: ' + alcance +
+      '\nPaq 1: ' + fmtE(lastP1) +
+      '\nPaq 2: ' + fmtE(lastP2) +
+      '\nPaq 3: ' + fmtE(lastP3);
+
+    copiar(texto, 'Copiado para Claude');
+  }
+
+  function copiarPrecios() {
+    var texto =
+      'Paq 1: ' + fmtE(lastP1) + ' + IVA = ' + fmtE(lastP1 * 1.16) +
+      '\nPaq 2: ' + fmtE(lastP2) + ' + IVA = ' + fmtE(lastP2 * 1.16) +
+      '\nPaq 3: ' + fmtE(lastP3) + ' + IVA = ' + fmtE(lastP3 * 1.16);
+    copiar(texto, 'Precios copiados');
+  }
+
+  function copiar(texto, msg) {
+    navigator.clipboard.writeText(texto).then(function() { flash(msg); });
+  }
+
+  function flash(msg) {
+    var fb = gi('fb');
+    fb.textContent = msg || 'Listo';
+    fb.classList.add('on');
+    setTimeout(function() { fb.classList.remove('on'); }, 2200);
+  }
+
+  /* ── CRM ── */
+  var CRM_KEY = 'gaastro_cotizaciones_v1';
+
+  function getCRM() {
+    try { return JSON.parse(localStorage.getItem(CRM_KEY) || '[]'); }
+    catch(e) { return []; }
+  }
+  function setCRM(data) { localStorage.setItem(CRM_KEY, JSON.stringify(data)); }
+
+  function guardarCotizacion() {
+    var cliente     = gi('cliente').value.trim();
+    var restaurante = gi('restaurante').value.trim();
+    if (!cliente && !restaurante) { flash('Agrega cliente o restaurante'); return; }
+    if (lastP1 === 0) { flash('Agrega platillos primero'); return; }
+
+    var platillos = ni('platillos');
+    var bebidas   = ni('bebidas');
+    var mods      = ni('mods');
+
+    var menu = platillos + ' platillos';
+    if (bebidas > 0) menu += ' · ' + bebidas + ' beb.';
+    if (mods    > 0) menu += ' · ' + mods + ' mods.';
+
+    var hoy   = new Date();
+    var fecha = hoy.toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' });
+
+    var c = {
+      id:          Date.now(),
+      fecha:       fecha,
+      cliente:     cliente     || '—',
+      restaurante: restaurante || '—',
+      email:       gi('email').value.trim(),
+      tel:         gi('tel').value.trim(),
+      menu:        menu,
+      p1:          Math.round(lastP1 * 1.16),
+      p2:          Math.round(lastP2 * 1.16),
+      p3:          Math.round(lastP3 * 1.16),
+      visitaP2:    lastVP2,
+      visitaP3:    lastVP3,
+      status:      'cotizado',
+      notas:       ''
+    };
+
+    var data = getCRM();
+    data.unshift(c);
+    setCRM(data);
+    renderCRM();
+    flash('Guardado en seguimiento');
+    setTimeout(function() {
+      document.querySelector('.crm-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+
+  var STATUS_MAP = {
+    cotizado:    { label: 'Cotizado',          cls: 's-cotizado'    },
+    propuesta:   { label: 'Propuesta enviada', cls: 's-propuesta'   },
+    negociacion: { label: 'En negociacion',    cls: 's-negociacion' },
+    cerrado:     { label: 'Cerrado',           cls: 's-cerrado'     },
+    perdido:     { label: 'Perdido',           cls: 's-perdido'     }
+  };
+
+  function renderCRM() {
+    var data  = getCRM();
+    var tbody = gi('crm-body');
+    var empty = gi('crm-empty');
+    var count = gi('crm-count');
+
+    tbody.innerHTML = '';
+
+    if (data.length === 0) {
+      empty.classList.add('on');
+      count.textContent = '';
+      return;
+    }
+    empty.classList.remove('on');
+    count.textContent = data.length + ' cotizacion' + (data.length !== 1 ? 'es' : '');
+
+    data.forEach(function(c) {
+      var tr = document.createElement('tr');
+
+      var contacto = '';
+      if (c.tel)   contacto += esc(c.tel);
+      if (c.email) contacto += (c.tel ? '<br>' : '') + esc(c.email);
+
+      var opts = Object.keys(STATUS_MAP).map(function(k) {
+        var s = STATUS_MAP[k];
+        return '<option value="' + k + '"' + (k === c.status ? ' selected' : '') + '>' + s.label + '</option>';
+      }).join('');
+
+      var curCls = (STATUS_MAP[c.status] || STATUS_MAP.cotizado).cls;
+
+      tr.innerHTML =
+        '<td class="dim">' + esc(c.fecha) + '</td>' +
+        '<td>' + esc(c.cliente) + '</td>' +
+        '<td>' + esc(c.restaurante) + '</td>' +
+        '<td class="dim" style="font-size:0.74rem;line-height:1.6">' + contacto + '</td>' +
+        '<td class="dim">' + esc(c.menu) + '</td>' +
+        '<td class="mono">' + fmtE(c.p1) + '</td>' +
+        '<td class="mono" style="color:var(--amarillo)">' + fmtE(c.p2) + '</td>' +
+        '<td class="mono">' + fmtE(c.p3) + '</td>' +
+        '<td><select class="status-sel ' + curCls + '" data-id="' + c.id + '" onchange="updateStatus(this)">' + opts + '</select></td>' +
+        '<td><input class="notes-input" placeholder="Agrega nota..." value="' + esc(c.notas) + '" data-id="' + c.id + '" onblur="updateNotes(this)"></td>' +
+        '<td><button class="btn-del" data-id="' + c.id + '" onclick="eliminar(this)" title="Eliminar">x</button></td>';
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function updateStatus(sel) {
+    var id   = Number(sel.dataset.id);
+    var data = getCRM();
+    var item = data.find(function(c) { return c.id === id; });
+    if (!item) return;
+    item.status = sel.value;
+    setCRM(data);
+    sel.className = 'status-sel ' + ((STATUS_MAP[sel.value] || STATUS_MAP.cotizado).cls);
+  }
+
+  function updateNotes(inp) {
+    var id   = Number(inp.dataset.id);
+    var data = getCRM();
+    var item = data.find(function(c) { return c.id === id; });
+    if (!item) return;
+    item.notas = inp.value;
+    setCRM(data);
+  }
+
+  function eliminar(btn) {
+    if (!confirm('Eliminar esta cotizacion?')) return;
+    var id   = Number(btn.dataset.id);
+    var data = getCRM().filter(function(c) { return c.id !== id; });
+    setCRM(data);
+    renderCRM();
+  }
+
+  function esc(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  calc();
+  renderCRM();
+</script>
+</body>
+</html>

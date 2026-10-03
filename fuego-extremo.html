@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Propuesta · Diagnóstico · Fuego Extremo · Gaastro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#132BD6;--azul-osc:#0d1f9c;--azul-dark:#0a1560;--amarillo:#F3CA40;
+  --negro:#141414;--tinta:#1a1e2e;--gris:#5b6070;--gris-cl:#e6e8ef;--blanco:#fff;--crema:#f5f6fb;--radio:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,Arial,sans-serif;color:var(--negro);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+h1,h2,h3,h4{line-height:1.08;letter-spacing:-.025em;text-transform:lowercase}
+h2{font-size:2.4rem;font-weight:900;margin-bottom:12px}
+h3{font-size:1.25rem;font-weight:800}
+p{margin-bottom:12px}
+.eyebrow{font-weight:900;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;color:var(--azul);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";width:26px;height:3px;background:var(--amarillo);border-radius:2px}
+section{padding:78px 0;position:relative}
+.lead{font-size:1.18rem;color:var(--gris);max-width:780px}
+em{color:var(--azul);font-style:normal;font-weight:900}
+.btn{display:inline-flex;align-items:center;gap:.55em;font-family:inherit;font-weight:800;font-size:1.02rem;text-transform:lowercase;padding:17px 34px;border-radius:999px;border:2px solid transparent;cursor:pointer;text-decoration:none;transition:transform .16s ease,box-shadow .16s ease}
+.btn:hover{transform:translateY(-3px)}
+.btn-amar{background:var(--amarillo);color:var(--negro);box-shadow:0 12px 30px rgba(243,202,64,.45)}
+.btn-amar:hover{box-shadow:0 18px 40px rgba(243,202,64,.55)}
+.btn-azul{background:var(--azul);color:#fff;box-shadow:0 12px 30px rgba(19,43,214,.35)}
+.logo{font-weight:900;font-size:1.45rem;letter-spacing:-.03em}
+.logo .dot{color:var(--azul)}
+
+.top{background:var(--negro);color:#fff;padding:15px 0}
+.top .wrap{display:flex;align-items:center;justify-content:space-between}
+.top .logo{color:#fff}.top .logo .dot{color:var(--amarillo)}
+.top .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--amarillo);font-weight:800}
+
+.cover{background:radial-gradient(1200px 600px at 80% -10%,#1e3af0 0%,transparent 55%),linear-gradient(155deg,#0a1560 0%,#132BD6 70%);color:#fff;padding:96px 0 88px;overflow:hidden}
+.cover:before{content:"";position:absolute;right:-120px;top:60px;width:360px;height:360px;background:var(--amarillo);opacity:.14;border-radius:64px;transform:rotate(28deg)}
+.cover:after{content:"";position:absolute;left:-90px;bottom:-90px;width:260px;height:260px;border:3px solid rgba(255,255,255,.12);border-radius:50%}
+.cover .wrap{position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(243,202,64,.16);border:1px solid rgba(243,202,64,.5);color:var(--amarillo);font-weight:800;font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;padding:8px 16px;border-radius:999px;margin-bottom:24px}
+.badge .d{width:8px;height:8px;background:var(--amarillo);border-radius:50%}
+.cover h1{font-size:3.5rem;font-weight:900;margin-bottom:20px;max-width:17ch;line-height:1.02}
+.cover h1 em{color:var(--amarillo)}
+.cover .lead{color:rgba(255,255,255,.92);font-size:1.28rem;max-width:640px}
+.chips{display:flex;gap:11px;flex-wrap:wrap;margin:30px 0 34px}
+.chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);padding:10px 18px;border-radius:999px;font-size:.85rem;font-weight:700;backdrop-filter:blur(4px)}
+.chip.amar{background:var(--amarillo);color:var(--negro);border-color:var(--amarillo)}
+.cstats{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.cstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:16px 22px;flex:1;min-width:150px}
+.cstat .n{font-size:1.7rem;font-weight:900;color:var(--amarillo);display:block;line-height:1}
+.cstat .l{font-size:.8rem;color:rgba(255,255,255,.82);margin-top:4px}
+@media(max-width:860px){.cover h1{font-size:2.2rem}.cover{padding:64px 0 60px}h2{font-size:1.7rem}}
+
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+.dsec{background:var(--crema)}
+.reto{background:#fff;border-radius:var(--radio);padding:30px 28px;border:1.5px solid var(--gris-cl);border-top:6px solid var(--azul);box-shadow:0 8px 30px rgba(19,43,214,.05);transition:transform .16s}
+.reto:hover{transform:translateY(-4px)}
+.reto .rn{display:inline-flex;width:38px;height:38px;border-radius:11px;background:var(--azul);color:#fff;font-weight:900;align-items:center;justify-content:center;margin-bottom:14px}
+.reto h3{font-size:1.1rem;line-height:1.22;margin-bottom:8px}
+.reto p{font-size:.94rem;color:var(--gris);margin:0}
+
+.dark{background:var(--tinta);color:#fff}
+.dark .eyebrow{color:var(--amarillo)}.dark .eyebrow:before{background:var(--amarillo)}
+.dark .lead{color:rgba(255,255,255,.84)}
+.costo{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+@media(max-width:860px){.costo{grid-template-columns:1fr}}
+.costo .box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:26px}
+.costo .val{font-size:1.4rem;font-weight:900;color:var(--amarillo);margin-bottom:8px;text-transform:lowercase}
+.costo .lbl{color:rgba(255,255,255,.82);font-size:.95rem}
+.dquote{margin-top:34px;padding:20px 28px;border-left:4px solid var(--amarillo);font-size:1.15rem;font-style:italic;color:rgba(255,255,255,.9);max-width:700px}
+
+.divider{width:56px;height:5px;background:var(--amarillo);border-radius:3px;margin:20px 0}
+.note{background:#fff8e1;border:1.5px solid var(--amarillo);border-radius:var(--radio);padding:22px 26px;font-size:1rem}
+.note b{color:var(--negro)}
+
+.area{background:#fff;border:1.5px solid var(--gris-cl);border-radius:var(--radio);padding:28px 26px;box-shadow:0 8px 30px rgba(0,0,0,.04);transition:transform .16s}
+.area:hover{transform:translateY(-4px)}
+.area .ahead{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.area .ic{width:50px;height:50px;border-radius:15px;background:linear-gradient(150deg,var(--azul),var(--azul-osc));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;flex-shrink:0;box-shadow:0 8px 20px rgba(19,43,214,.28)}
+.area .ak{font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:var(--azul)}
+.area h3{font-size:1.18rem;line-height:1.12}
+.area ul{list-style:none;display:grid;gap:9px;margin-top:2px}
+.area ul li{position:relative;padding-left:27px;color:#3a3f4f;font-size:.95rem}
+.area ul li:before{content:"✓";position:absolute;left:0;top:1px;width:18px;height:18px;background:#eef1ff;color:var(--azul);border-radius:6px;font-size:.7rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+
+.phase{background:#fff;border:1.5px solid var(--gris-cl);border-radius:var(--radio);padding:26px 22px;border-top:6px solid var(--azul)}
+.phase .fnum{font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--azul)}
+.phase .fq{display:inline-block;background:#eef1ff;color:var(--azul);font-size:.72rem;font-weight:800;padding:5px 13px;border-radius:999px;margin:9px 0 12px}
+.phase h3{font-size:1.05rem;margin-bottom:8px}
+.phase p{font-size:.9rem;color:var(--gris);margin:0}
+
+.entreg{background:var(--crema)}
+ul.clean{list-style:none;display:grid;gap:11px}
+ul.clean li{position:relative;padding-left:30px;color:#3a3f4f;font-size:1rem}
+ul.clean li:before{content:"✓";position:absolute;left:0;top:2px;width:20px;height:20px;background:var(--azul);color:#fff;border-radius:6px;font-size:.74rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+
+.resenas{background:var(--crema)}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px}
+@media(max-width:860px){.qgrid{grid-template-columns:1fr}}
+.qcard{background:#fff;border:1.5px solid var(--gris-cl);border-radius:var(--radio);padding:32px 30px;box-shadow:0 10px 34px rgba(0,0,0,.05);position:relative}
+.qcard .qmark{font-family:Georgia,serif;font-size:3.6rem;line-height:.5;color:var(--amarillo);font-weight:900;height:26px}
+.qcard .stars{color:var(--amarillo);font-size:1.05rem;letter-spacing:3px;margin:0 0 14px}
+.qcard .qt{font-size:1.06rem;color:#2b2f3d;font-style:italic;line-height:1.55;margin:0 0 18px}
+.qcard .qwho{font-weight:900;color:var(--negro);font-size:1rem}
+.qcard .qwho span{display:block;font-weight:600;font-style:normal;color:var(--gris);font-size:.82rem;text-transform:lowercase;margin-top:2px}
+.inv{background:var(--tinta);color:#fff;overflow:hidden}
+.inv:before{content:"";position:absolute;left:-100px;top:40px;width:300px;height:300px;border:3px solid rgba(255,255,255,.06);border-radius:50%}
+.inv .wrap{position:relative;z-index:2}
+.inv .eyebrow{color:var(--amarillo)}.inv .eyebrow:before{background:var(--amarillo)}
+.invgrid{display:grid;grid-template-columns:1fr .95fr;gap:26px;margin-top:10px}
+@media(max-width:860px){.invgrid{grid-template-columns:1fr}}
+.invbox{background:#fff;color:var(--negro);border-radius:24px;padding:36px;box-shadow:0 26px 60px rgba(0,0,0,.3)}
+.invbox .pk{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--azul)}
+.invbox .big{font-size:3.2rem;font-weight:900;color:var(--negro);line-height:1;margin:8px 0 2px}
+.invbox .big span{color:var(--azul);font-size:1.4rem}
+.invbox .sub{color:var(--gris);font-size:.95rem;margin-bottom:20px}
+.iline{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--gris-cl);font-size:.96rem;color:var(--gris)}
+.iline b{color:var(--negro);font-weight:800}
+.iline:last-of-type{border-bottom:none}
+.acredita{margin-top:20px;background:linear-gradient(120deg,#eef1ff,#f8f9ff);border:1.5px solid var(--azul);border-radius:16px;padding:20px 22px}
+.acredita .k{font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--azul);margin-bottom:6px}
+.acredita p{font-size:.98rem;color:var(--negro);margin:0}
+.acredita b{color:var(--azul)}
+.invside h3{color:#fff;margin-bottom:14px;font-size:1.3rem}
+.invside ul{list-style:none;display:grid;gap:11px}
+.invside ul li{position:relative;padding-left:28px;color:rgba(255,255,255,.9);font-size:.98rem}
+.invside ul li:before{content:"✓";position:absolute;left:0;top:0;color:var(--amarillo);font-weight:900}
+.invside .fine{color:rgba(255,255,255,.6);font-size:.82rem;margin-top:16px}
+
+.conds h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--azul);margin-bottom:14px}
+.conds ul{list-style:none;display:grid;gap:9px}
+.conds li{position:relative;padding-left:20px;font-size:.94rem;color:var(--gris)}
+.conds li:before{content:"·";position:absolute;left:5px;font-weight:900;color:var(--azul);font-size:1.3rem;top:-4px}
+
+.cta{background:radial-gradient(700px 400px at 50% 0%,#f7d868,transparent 70%),var(--amarillo);text-align:center}
+.cta h2{font-size:2.6rem}
+@media(max-width:860px){.cta h2{font-size:1.9rem}}
+
+.foot{background:var(--negro);color:#fff;text-align:center;padding:48px 0}
+.foot p{color:rgba(255,255,255,.6);font-size:.85rem;margin:0}
+.foot .ig{color:var(--amarillo);font-weight:800;font-size:.85rem;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <span class="logo">gaastro<span class="dot">·</span></span>
+  <span class="tag">propuesta de diagnóstico</span>
+</div></div>
+
+<!-- HERO -->
+<header class="cover"><div class="wrap">
+  <span class="badge"><span class="d"></span> propuesta hecha a la medida para fuego extremo</span>
+  <h1>antes de invertir en crecer, <em>veamos qué está pasando</em> por dentro</h1>
+  <p class="lead">Un diagnóstico completo del grupo en Villahermosa: menú, costos, operación, marca y ventas, para saber con números dónde se está yendo el dinero y cómo crecer en un mercado que se aprieta.</p>
+  <div class="chips">
+    <span class="chip amar">diagnóstico integral</span>
+    <span class="chip">2 a 3 sucursales</span>
+    <span class="chip">~1 mes</span>
+    <span class="chip">acreditable al proyecto</span>
+    <span class="chip">vigencia: 22 oct 2026</span>
+  </div>
+  <a class="btn btn-amar" href="https://wa.me/524421374663?text=Hola%2C%20soy%20de%20Fuego%20Extremo.%20Vi%20la%20propuesta%20de%20diagn%C3%B3stico%20y%20quiero%20avanzar." target="_blank" rel="noopener">quiero avanzar</a>
+  <div class="cstats">
+    <div class="cstat"><span class="n">+20</span><span class="l">restaurantes en consultoría</span></div>
+    <div class="cstat"><span class="n">+1,000</span><span class="l">restaurantes usan nuestros formatos</span></div>
+    <div class="cstat"><span class="n">+600</span><span class="l">alumnos en nuestros cursos</span></div>
+    <div class="cstat"><span class="n">+50 mil</span><span class="l">de comunidad en redes</span></div>
+  </div>
+</div></header>
+
+<!-- EL RETO -->
+<section class="dsec"><div class="wrap">
+  <div class="eyebrow">el reto</div>
+  <h2>crecer y aguantar, al mismo tiempo</h2>
+  <p class="lead" style="margin-bottom:32px">Fuego Extremo tiene marca y clientes. El reto de hoy es doble: destrabar las ventas y hacerlo justo cuando el entorno económico en Tabasco pide más cuidado que nunca con cada peso.</p>
+  <div class="grid g3">
+    <div class="reto"><div class="rn">1</div><h3>ventas estancadas</h3><p>El crecimiento se frenó y no está claro si es el mercado, el menú, la operación o la marca.</p></div>
+    <div class="reto"><div class="rn">2</div><h3>decidir a ciegas cuesta caro</h3><p>Sin conocer costos y rentabilidad reales, cada decisión de precio o de crecimiento es una apuesta.</p></div>
+    <div class="reto"><div class="rn">3</div><h3>un mercado que se aprieta</h3><p>La presión económica en Tabasco deja poco margen de error: hay que crecer sin desperdiciar.</p></div>
+  </div>
+</div></section>
+
+<!-- COSTO -->
+<section class="dark"><div class="wrap">
+  <div class="eyebrow">por qué empezar aquí</div>
+  <h2>no se arregla lo que no se ha <em>medido</em></h2>
+  <p class="lead">Meterse a un proyecto grande sin diagnóstico es como recetar sin revisar al paciente. El diagnóstico pone números donde hoy hay intuición, para que cada peso que inviertan después vaya al lugar correcto.</p>
+  <div class="costo">
+    <div class="box"><div class="val">las fugas</div><div class="lbl">merma, porciones y precios que se comen el margen sin que se noten.</div></div>
+    <div class="box"><div class="val">el menú</div><div class="lbl">qué platillos sostienen el negocio y cuáles lo están frenando.</div></div>
+    <div class="box"><div class="val">el mercado</div><div class="lbl">dónde está la oportunidad de venta que hoy no se está capturando.</div></div>
+  </div>
+  <div class="dquote">"un restaurante no quiebra por falta de clientes, quiebra por falta de control."</div>
+</div></section>
+
+<!-- QUÉ ES -->
+<section><div class="wrap">
+  <div class="eyebrow">qué es</div>
+  <h2>un diagnóstico que termina en un plan, no en un reporte</h2>
+  <div class="divider"></div>
+  <p class="lead">Entramos a fondo al grupo, cruzamos lo que dicen los números con lo que pasa en el piso, y salimos con un mapa claro: dónde están las fugas, qué está frenando las ventas y qué hay que hacer, en qué orden y con qué inversión. Es la base para decidir con certeza, no con corazonadas.</p>
+  <div class="note" style="margin-top:22px"><b>Creado por un chef, no por un ingeniero.</b> Gaastro nace de operar restaurantes de verdad. Miramos el negocio como quien ha estado en la cocina y en la caja, no desde una teoría.</div>
+</div></section>
+
+<!-- QUÉ ANALIZAMOS -->
+<section class="dsec"><div class="wrap">
+  <div class="eyebrow">qué analizamos</div>
+  <h2>el negocio completo, área por área</h2>
+  <p class="lead" style="margin-bottom:34px">El diagnóstico cubre las seis áreas que definen si un grupo crece o se estanca. Nada queda fuera del radar.</p>
+  <div class="grid g2">
+
+    <div class="area">
+      <div class="ahead"><div class="ic">A</div><div><div class="ak">área 1</div><h3>menú e ingeniería</h3></div></div>
+      <ul>
+        <li>Mix de ventas: qué se vende y qué no</li>
+        <li>Rentabilidad y popularidad por platillo</li>
+        <li>Estrellas, caballos y platillos a corregir</li>
+        <li>Estructura y precios de la carta</li>
+      </ul>
+    </div>
+
+    <div class="area">
+      <div class="ahead"><div class="ic">B</div><div><div class="ak">área 2</div><h3>costeo y rentabilidad</h3></div></div>
+      <ul>
+        <li>Food cost real del grupo</li>
+        <li>Costeo de recetas clave</li>
+        <li>Márgenes reales por producto</li>
+        <li>Dónde se está fugando el dinero</li>
+      </ul>
+    </div>
+
+    <div class="area">
+      <div class="ahead"><div class="ic">C</div><div><div class="ak">área 3</div><h3>operación y estandarización</h3></div></div>
+      <ul>
+        <li>Procesos de cocina, barra y servicio</li>
+        <li>Nivel de estandarización entre sucursales</li>
+        <li>Control de inventarios y compras</li>
+        <li>Dependencia de los dueños en la operación</li>
+      </ul>
+    </div>
+
+    <div class="area">
+      <div class="ahead"><div class="ic">D</div><div><div class="ak">área 4</div><h3>marca y branding</h3></div></div>
+      <ul>
+        <li>Consistencia de la marca entre sedes</li>
+        <li>Percepción y propuesta de valor</li>
+        <li>Identidad visual y experiencia en sucursal</li>
+        <li>Qué tan clara es la promesa al cliente</li>
+      </ul>
+    </div>
+
+    <div class="area">
+      <div class="ahead"><div class="ic">E</div><div><div class="ak">área 5</div><h3>marketing y ventas</h3></div></div>
+      <ul>
+        <li>Canales de atracción y su rendimiento</li>
+        <li>Causas reales del estancamiento de ventas</li>
+        <li>Ticket promedio y oportunidades de recompra</li>
+        <li>Presencia digital y contenido</li>
+      </ul>
+    </div>
+
+    <div class="area">
+      <div class="ahead"><div class="ic">F</div><div><div class="ak">área 6</div><h3>crecimiento y contexto económico</h3></div></div>
+      <ul>
+        <li>Palancas de crecimiento del grupo</li>
+        <li>Cómo resistir y crecer en el entorno de Tabasco</li>
+        <li>Prioridades de inversión de mayor retorno</li>
+        <li>Riesgos a cuidar en el corto plazo</li>
+      </ul>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- CÓMO FUNCIONA -->
+<section><div class="wrap">
+  <div class="eyebrow">cómo funciona</div>
+  <h2>semana por semana, en un mes</h2>
+  <p class="lead" style="margin-bottom:32px">Con visita presencial a las sucursales y análisis de la información del grupo. Cada semana avanza sobre una pregunta clave.</p>
+  <div class="grid g4">
+    <div class="phase"><div class="fnum">semana 1</div><div class="fq">¿dónde están hoy?</div><h3>estado real</h3><p>Visita a las sucursales, operación, marca y primeros números.</p></div>
+    <div class="phase"><div class="fnum">semana 2</div><div class="fq">¿dónde está la fuga?</div><h3>costos y menú</h3><p>Food cost, costeo, rentabilidad e ingeniería de menú.</p></div>
+    <div class="phase"><div class="fnum">semana 3</div><div class="fq">¿por qué no crece?</div><h3>mercado y marca</h3><p>Ventas, marketing, marca y contexto económico de Tabasco.</p></div>
+    <div class="phase"><div class="fnum">semana 4</div><div class="fq">¿a dónde ir?</div><h3>plan e inversión</h3><p>Hallazgos, plan de acción priorizado y propuesta del proyecto.</p></div>
+  </div>
+</div></section>
+
+<!-- ENTREGABLES -->
+<section class="entreg"><div class="wrap">
+  <div class="eyebrow">qué te llevas</div>
+  <h2>los entregables del diagnóstico</h2>
+  <div class="grid g2" style="margin-top:8px">
+    <ul class="clean">
+      <li>Reporte de diagnóstico con hallazgos por área</li>
+      <li>Radiografía de food cost y rentabilidad del menú</li>
+      <li>Diagnóstico de operación y estandarización</li>
+    </ul>
+    <ul class="clean">
+      <li>Diagnóstico de marca, marketing y ventas</li>
+      <li>Plan de acción priorizado, en orden y con impacto</li>
+      <li>Propuesta del proyecto de implementación con inversión</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- RESEÑAS -->
+<section class="resenas"><div class="wrap">
+  <div class="eyebrow">lo que dicen</div>
+  <h2>restaurantes que ya dieron el paso</h2>
+  <p class="lead" style="margin-bottom:6px">+20 restaurantes transformados en consultoría, de aperturas a negocios que necesitaban orden y rentabilidad.</p>
+  <div class="qgrid">
+    <div class="qcard">
+      <div class="qmark">&ldquo;</div>
+      <div class="stars">★★★★★</div>
+      <p class="qt">haber trabajado con ustedes fue una de las mejores decisiones que pude tomar; fue un game changer para poner todo en orden y sentar las bases del crecimiento. hoy, un año después de terminar el proyecto, estamos abriendo nuestra segunda sucursal y nada de esto hubiera pasado sin ustedes. ¡gracias infinitas por tanto!</p>
+      <div class="qwho">Daniela N.<span>restaurante · consultoría integral</span></div>
+    </div>
+    <div class="qcard">
+      <div class="qmark">&ldquo;</div>
+      <div class="stars">★★★★★</div>
+      <p class="qt">todo ha sido excelente. valeria, súper amable y muy preparada. en el camino ya he ido mejorando mis recetas, pero cada vez me doy más cuenta de lo necesario que era. de lo único que me arrepiento es no haberlos contratado desde antes 😂</p>
+      <div class="qwho">Octavio C.<span>restaurante · proyecto de costeo</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- INVERSIÓN -->
+<section class="inv"><div class="wrap">
+  <div class="eyebrow">inversión</div>
+  <h2>el primer paso, con el menor riesgo</h2>
+  <p class="lead" style="color:rgba(255,255,255,.84);margin-bottom:8px">Un monto fijo y claro para tener certeza antes de comprometerse a un proyecto grande.</p>
+  <div class="invgrid">
+    <div class="invbox">
+      <div class="pk">diagnóstico integral · grupo fuego extremo</div>
+      <div class="big">$15,000 <span>+ IVA</span></div>
+      <div class="sub">$17,400 con IVA · proyecto de ~1 mes</div>
+      <div class="iline"><span>Diagnóstico completo (6 áreas)</span><b>$15,000</b></div>
+      <div class="iline"><span>Viáticos a Villahermosa</span><b>se confirman al agendar</b></div>
+      <div class="iline"><span>Forma de pago</span><b>100% para agendar</b></div>
+      <div class="acredita">
+        <div class="k">lo mejor</div>
+        <p><b>El 100% de los $15,000 se descuenta</b> de la inversión del proyecto si deciden avanzar. El diagnóstico no es un gasto, es el primer pago del proyecto.</p>
+      </div>
+    </div>
+    <div class="invside">
+      <h3>incluye</h3>
+      <ul>
+        <li>Visita presencial a las sucursales</li>
+        <li>Análisis de las 6 áreas del negocio</li>
+        <li>Radiografía de food cost y rentabilidad</li>
+        <li>Plan de acción priorizado</li>
+        <li>Propuesta del proyecto con inversión</li>
+      </ul>
+      <p class="fine">Montos en pesos mexicanos, más IVA. Los viáticos y traslados a Villahermosa se confirman al agendar, según las sedes a visitar.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta"><div class="wrap">
+  <div class="eyebrow" style="color:var(--negro);justify-content:center">siguiente paso</div>
+  <h2>pongámosle números a fuego extremo</h2>
+  <p class="lead" style="color:var(--negro);margin:0 auto 28px">Esta propuesta tiene vigencia hasta el 22 de octubre de 2026. El siguiente paso es confirmar el diagnóstico y agendar la visita.</p>
+  <a class="btn btn-azul" href="https://wa.me/524421374663?text=Hola%2C%20soy%20de%20Fuego%20Extremo.%20Quiero%20agendar%20el%20diagn%C3%B3stico." target="_blank" rel="noopener">quiero agendar</a>
+</div></section>
+
+<!-- CONDICIONES -->
+<section><div class="wrap">
+  <div class="eyebrow">condiciones</div>
+  <div class="grid g2">
+    <div class="conds">
+      <h4>qué no incluye</h4>
+      <ul>
+        <li>Implementación de los cambios (eso es el proyecto)</li>
+        <li>Compra de equipo, insumos u obra</li>
+        <li>Trámites legales o sanitarios</li>
+        <li>Viáticos y traslados a Villahermosa</li>
+      </ul>
+    </div>
+    <div class="conds">
+      <h4>qué necesitamos de ti</h4>
+      <ul>
+        <li>Acceso a la información de ventas y del menú</li>
+        <li>Recorrido por las sucursales del grupo</li>
+        <li>Una persona de contacto que nos apoye</li>
+        <li>Pago del diagnóstico para agendar la visita</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.82rem;color:var(--gris);margin-top:22px">Propuesta hecha a la medida para Fuego Extremo. Vigencia: 30 días naturales a partir del envío. Precios en pesos mexicanos, más IVA. El costo del diagnóstico es 100% acreditable a la inversión del proyecto de implementación.</p>
+</div></section>
+
+<div class="foot"><div class="wrap">
+  <span class="logo" style="color:#fff">gaastro<span class="dot" style="color:var(--amarillo)">·</span></span>
+  <p style="margin:10px 0 6px">diagnóstico integral · propuesta para fuego extremo</p>
+  <p><a class="ig" href="https://instagram.com/gaastro.mx" target="_blank" rel="noopener">@gaastro.mx</a></p>
+</div></div>
+
+</body>
+</html>

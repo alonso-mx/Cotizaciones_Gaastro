@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Propuesta · Consultoría Integral · Carnitas Morelia · Gaastro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#132BD6;--azul-osc:#0d1f9c;--azul-dark:#0a1560;--amarillo:#F3CA40;
+  --negro:#141414;--tinta:#1a1e2e;--gris:#5b6070;--gris-cl:#e6e8ef;--blanco:#fff;--crema:#f5f6fb;--radio:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,Arial,sans-serif;color:var(--negro);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+h1,h2,h3,h4{line-height:1.08;letter-spacing:-.025em;text-transform:lowercase}
+h2{font-size:2.4rem;font-weight:900;margin-bottom:12px}
+h3{font-size:1.25rem;font-weight:800}
+p{margin-bottom:12px}
+.eyebrow{font-weight:900;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;color:var(--azul);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";width:26px;height:3px;background:var(--amarillo);border-radius:2px}
+section{padding:78px 0;position:relative}
+.lead{font-size:1.18rem;color:var(--gris);max-width:780px}
+em{color:var(--azul);font-style:normal;font-weight:900}
+.btn{display:inline-flex;align-items:center;gap:.55em;font-family:inherit;font-weight:800;font-size:1.02rem;text-transform:lowercase;padding:17px 34px;border-radius:999px;border:2px solid transparent;cursor:pointer;text-decoration:none;transition:transform .16s ease,box-shadow .16s ease}
+.btn:hover{transform:translateY(-3px)}
+.btn-amar{background:var(--amarillo);color:var(--negro);box-shadow:0 12px 30px rgba(243,202,64,.45)}
+.btn-amar:hover{box-shadow:0 18px 40px rgba(243,202,64,.55)}
+.btn-blanco{background:#fff;color:var(--azul);box-shadow:0 12px 30px rgba(0,0,0,.15)}
+.btn-azul{background:var(--azul);color:#fff;box-shadow:0 12px 30px rgba(19,43,214,.35)}
+.logo{font-weight:900;font-size:1.45rem;letter-spacing:-.03em}
+.logo .dot{color:var(--azul)}
+
+/* top */
+.top{background:var(--negro);color:#fff;padding:15px 0}
+.top .wrap{display:flex;align-items:center;justify-content:space-between}
+.top .logo{color:#fff}.top .logo .dot{color:var(--amarillo)}
+.top .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--amarillo);font-weight:800}
+
+/* HERO */
+.cover{background:radial-gradient(1200px 600px at 80% -10%,#1e3af0 0%,transparent 55%),linear-gradient(155deg,#0a1560 0%,#132BD6 70%);color:#fff;padding:96px 0 88px;overflow:hidden}
+.cover:before{content:"";position:absolute;right:-120px;top:60px;width:360px;height:360px;background:var(--amarillo);opacity:.14;border-radius:64px;transform:rotate(28deg)}
+.cover:after{content:"";position:absolute;left:-90px;bottom:-90px;width:260px;height:260px;border:3px solid rgba(255,255,255,.12);border-radius:50%}
+.cover .wrap{position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(243,202,64,.16);border:1px solid rgba(243,202,64,.5);color:var(--amarillo);font-weight:800;font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;padding:8px 16px;border-radius:999px;margin-bottom:24px}
+.badge .d{width:8px;height:8px;background:var(--amarillo);border-radius:50%}
+.cover h1{font-size:3.5rem;font-weight:900;margin-bottom:20px;max-width:17ch;line-height:1.02}
+.cover h1 em{color:var(--amarillo)}
+.cover .lead{color:rgba(255,255,255,.92);font-size:1.28rem;max-width:620px}
+.chips{display:flex;gap:11px;flex-wrap:wrap;margin:30px 0 34px}
+.chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);padding:10px 18px;border-radius:999px;font-size:.85rem;font-weight:700;backdrop-filter:blur(4px)}
+.chip.amar{background:var(--amarillo);color:var(--negro);border-color:var(--amarillo)}
+.cstats{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.cstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:16px 22px;flex:1;min-width:150px}
+.cstat .n{font-size:1.7rem;font-weight:900;color:var(--amarillo);display:block;line-height:1}
+.cstat .l{font-size:.8rem;color:rgba(255,255,255,.82);margin-top:4px}
+@media(max-width:860px){.cover h1{font-size:2.3rem}.cover{padding:64px 0 60px}h2{font-size:1.7rem}}
+
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+/* dolores */
+.dsec{background:var(--crema)}
+.dolor{background:#fff;border-radius:var(--radio);padding:30px 28px;border:1.5px solid var(--gris-cl);border-top:6px solid var(--azul);box-shadow:0 8px 30px rgba(19,43,214,.05);transition:transform .16s}
+.dolor:hover{transform:translateY(-4px)}
+.dolor .dn{display:inline-flex;width:38px;height:38px;border-radius:11px;background:var(--azul);color:#fff;font-weight:900;align-items:center;justify-content:center;margin-bottom:14px}
+.dolor h3{font-size:1.12rem;line-height:1.25}
+
+/* dark cost */
+.dark{background:var(--tinta);color:#fff}
+.dark .eyebrow{color:var(--amarillo)}
+.dark .eyebrow:before{background:var(--amarillo)}
+.dark .lead{color:rgba(255,255,255,.84)}
+.costo{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+@media(max-width:860px){.costo{grid-template-columns:1fr}}
+.costo .box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:26px}
+.costo .val{font-size:1.5rem;font-weight:900;color:var(--amarillo);margin-bottom:8px;text-transform:lowercase}
+.costo .lbl{color:rgba(255,255,255,.82);font-size:.95rem}
+.roi{margin-top:32px;background:linear-gradient(100deg,rgba(243,202,64,.16),rgba(243,202,64,.04));border:1px solid rgba(243,202,64,.4);border-left:5px solid var(--amarillo);border-radius:16px;padding:24px 28px;font-size:1.06rem;color:#fff;max-width:760px}
+.roi b{color:var(--amarillo)}
+
+/* solución */
+.divider{width:56px;height:5px;background:var(--amarillo);border-radius:3px;margin:20px 0}
+.note{background:#fff8e1;border:1.5px solid var(--amarillo);border-radius:var(--radio);padding:22px 26px;font-size:1rem}
+.note b{color:var(--negro)}
+
+/* frentes detallados */
+.frente{background:#fff;border:1.5px solid var(--gris-cl);border-radius:var(--radio);padding:30px 28px;box-shadow:0 8px 30px rgba(0,0,0,.04);transition:transform .16s}
+.frente:hover{transform:translateY(-4px)}
+.frente .fhead{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.frente .ic{width:52px;height:52px;border-radius:15px;background:linear-gradient(150deg,var(--azul),var(--azul-osc));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;flex-shrink:0;box-shadow:0 8px 20px rgba(19,43,214,.28)}
+.frente .fk{font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:var(--azul)}
+.frente h3{font-size:1.28rem;line-height:1.12}
+.frente ul{list-style:none;display:grid;gap:10px;margin-top:4px}
+.frente ul li{position:relative;padding-left:28px;color:#3a3f4f;font-size:.97rem}
+.frente ul li:before{content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;background:#eef1ff;color:var(--azul);border-radius:6px;font-size:.72rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+
+/* g·OS */
+.gos{background:radial-gradient(900px 500px at 15% 0%,#1e3af0 0%,transparent 60%),linear-gradient(150deg,#132BD6,#0a1560);color:#fff;overflow:hidden}
+.gos:after{content:"";position:absolute;right:-80px;top:-60px;width:300px;height:300px;background:var(--amarillo);opacity:.1;border-radius:60px;transform:rotate(24deg)}
+.gos .wrap{position:relative;z-index:2}
+.gos .eyebrow{color:var(--amarillo)}.gos .eyebrow:before{background:var(--amarillo)}
+.gos h2 em{color:var(--amarillo)}
+.gos .lead{color:rgba(255,255,255,.9)}
+.mods{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.mod{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.24);padding:11px 18px;border-radius:12px;font-weight:700;font-size:.92rem;display:flex;align-items:center;gap:9px}
+.mod .b{width:7px;height:7px;background:var(--amarillo);border-radius:50%}
+.gos-inc{margin-top:30px;background:var(--amarillo);color:var(--negro);border-radius:16px;padding:22px 26px;font-weight:700;font-size:1.05rem;display:flex;gap:14px;align-items:center}
+.gos-inc .tag{background:var(--negro);color:var(--amarillo);font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;padding:6px 12px;border-radius:999px;white-space:nowrap}
+
+/* fases */
+.phase{background:#fff;border:1.5px solid var(--gris-cl);border-radius:var(--radio);padding:26px 22px;border-top:6px solid var(--azul);position:relative}
+.phase .fnum{font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--azul)}
+.phase .fdur{display:inline-block;background:#eef1ff;color:var(--azul);font-size:.72rem;font-weight:800;padding:5px 13px;border-radius:999px;margin:9px 0 12px}
+.phase h3{font-size:1.08rem;margin-bottom:8px}
+.phase p{font-size:.9rem;color:var(--gris);margin:0}
+
+/* inversión */
+.inv{background:var(--tinta);color:#fff;overflow:hidden}
+.inv:before{content:"";position:absolute;left:-100px;top:40px;width:300px;height:300px;border:3px solid rgba(255,255,255,.06);border-radius:50%}
+.inv .wrap{position:relative;z-index:2}
+.inv .eyebrow{color:var(--amarillo)}.inv .eyebrow:before{background:var(--amarillo)}
+.invgrid{display:grid;grid-template-columns:1fr .95fr;gap:26px;margin-top:10px}
+@media(max-width:860px){.invgrid{grid-template-columns:1fr}}
+.invbox{background:#fff;color:var(--negro);border-radius:24px;padding:34px;box-shadow:0 26px 60px rgba(0,0,0,.3)}
+.invbox .pk{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--azul)}
+.invbox .big{font-size:3rem;font-weight:900;color:var(--negro);line-height:1;margin:8px 0 2px}
+.invbox .big span{color:var(--azul)}
+.invbox .sub{color:var(--gris);font-size:.9rem;margin-bottom:20px}
+.plan{display:grid;gap:12px}
+.pline{display:flex;align-items:center;gap:16px;background:var(--crema);border-radius:14px;padding:15px 18px}
+.pline .step{width:34px;height:34px;border-radius:10px;background:var(--azul);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem}
+.pline .txt{flex:1}
+.pline .txt .t{font-weight:800;font-size:.98rem}
+.pline .txt .s{font-size:.8rem;color:var(--gris)}
+.pline .amt{font-weight:900;color:var(--azul);white-space:nowrap;text-align:right}
+.pline .amt small{display:block;font-size:.72rem;color:var(--gris);font-weight:700}
+.pline.tot{background:var(--azul);color:#fff}
+.pline.tot .amt{color:#fff}.pline.tot .amt small{color:rgba(255,255,255,.8)}
+.pline.tot .txt .t{color:#fff}
+.invside h3{color:#fff;margin-bottom:14px;font-size:1.3rem}
+.invside ul{list-style:none;display:grid;gap:11px}
+.invside ul li{position:relative;padding-left:28px;color:rgba(255,255,255,.9);font-size:.98rem}
+.invside ul li:before{content:"✓";position:absolute;left:0;top:0;color:var(--amarillo);font-weight:900}
+.invside .fine{color:rgba(255,255,255,.6);font-size:.82rem;margin-top:16px}
+
+/* condiciones */
+.conds h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--azul);margin-bottom:14px}
+.conds ul{list-style:none;display:grid;gap:9px}
+.conds li{position:relative;padding-left:20px;font-size:.94rem;color:var(--gris)}
+.conds li:before{content:"·";position:absolute;left:5px;font-weight:900;color:var(--azul);font-size:1.3rem;top:-4px}
+
+/* cta */
+.cta{background:radial-gradient(700px 400px at 50% 0%,#f7d868,transparent 70%),var(--amarillo);text-align:center}
+.cta h2{font-size:2.6rem}
+@media(max-width:860px){.cta h2{font-size:1.9rem}.cover h1{font-size:2.1rem}}
+
+.foot{background:var(--negro);color:#fff;text-align:center;padding:48px 0}
+.foot p{color:rgba(255,255,255,.6);font-size:.85rem;margin:0}
+.foot .ig{color:var(--amarillo);font-weight:800;font-size:.85rem;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <span class="logo">gaastro<span class="dot">·</span></span>
+  <span class="tag">propuesta de consultoría integral</span>
+</div></div>
+
+<!-- HERO -->
+<header class="cover"><div class="wrap">
+  <span class="badge"><span class="d"></span> propuesta hecha a la medida para carnitas morelia</span>
+  <h1>ordenamos <em>carnitas morelia</em> por dentro para que crezca sin depender de ti</h1>
+  <p class="lead">Un proyecto donde entramos de lleno a tus dos sucursales: costos, menú, finanzas, equipo y sistema. Todo estandarizado, medible y replicable.</p>
+  <div class="chips">
+    <span class="chip amar">paquete integral</span>
+    <span class="chip">2 sucursales</span>
+    <span class="chip">g·OS incluido</span>
+    <span class="chip">~12 meses</span>
+    <span class="chip">vigencia: 12 sep 2026</span>
+  </div>
+  <a class="btn btn-amar" href="https://wa.me/524421374663?text=Hola%2C%20soy%20de%20Carnitas%20Morelia.%20Vi%20la%20propuesta%20de%20consultor%C3%ADa%20integral%20y%20quiero%20avanzar." target="_blank" rel="noopener">quiero avanzar</a>
+  <div class="cstats">
+    <div class="cstat"><span class="n">+20</span><span class="l">restaurantes en consultoría</span></div>
+    <div class="cstat"><span class="n">+1,000</span><span class="l">restaurantes usan nuestros formatos</span></div>
+    <div class="cstat"><span class="n">+600</span><span class="l">alumnos en nuestros cursos</span></div>
+    <div class="cstat"><span class="n">+50 mil</span><span class="l">de comunidad en redes</span></div>
+  </div>
+</div></header>
+
+<!-- DOLORES -->
+<section class="dsec"><div class="wrap">
+  <div class="eyebrow">dónde estás hoy</div>
+  <h2>lo que detectamos en carnitas morelia</h2>
+  <p class="lead" style="margin-bottom:32px">No son fallas de esfuerzo. Son las señales típicas de un negocio que creció con talento empírico, más rápido que su método.</p>
+  <div class="grid g3">
+    <div class="dolor"><div class="dn">1</div><h3>costeas al tanteo, sin saber tu rentabilidad real</h3></div>
+    <div class="dolor"><div class="dn">2</div><h3>la operación se cae cuando los dueños no están</h3></div>
+    <div class="dolor"><div class="dn">3</div><h3>cada sucursal opera distinto, sin estándar ni control</h3></div>
+  </div>
+</div></section>
+
+<!-- COSTO -->
+<section class="dark"><div class="wrap">
+  <div class="eyebrow">el costo de no actuar</div>
+  <h2>cada mes sin método, el negocio <em>paga la cuenta</em></h2>
+  <p class="lead">Lo que no se mide, se fuga. Y lo que se fuga en un restaurante casi siempre pesa más de lo que se siente.</p>
+  <div class="costo">
+    <div class="box"><div class="val">merma</div><div class="lbl">producto que se va sin venderse, porque no hay porción ni receta estándar.</div></div>
+    <div class="box"><div class="val">precio</div><div class="lbl">platillos vendidos por debajo de su costo real, sin que nadie lo note.</div></div>
+    <div class="box"><div class="val">tiempo</div><div class="lbl">los dueños resolviendo la operación en vez de hacer crecer el negocio.</div></div>
+  </div>
+  <div class="roi"><b>La cuenta rápida:</b> con ventas de entre $150 y $300 mil al mes por sucursal, bajar de 3 a 5 puntos de food cost (lo típico al costear y estandarizar) son entre $4,500 y $15,000 recuperados cada mes, por sucursal. Al año, en dos sucursales, eso paga el proyecto y sobra.</div>
+</div></section>
+
+<!-- SOLUCIÓN -->
+<section><div class="wrap">
+  <div class="eyebrow">la solución</div>
+  <h2>una transformación, no un reporte</h2>
+  <div class="divider"></div>
+  <p class="lead">La consultoría integral toma tu restaurante como proyecto. Diagnosticamos, diseñamos el modelo al que hay que llegar, implementamos cada frente contigo en las dos sucursales y transferimos el control a tu equipo. No entregamos un documento y nos vamos: dejamos el sistema instalado y funcionando.</p>
+  <div class="note" style="margin-top:22px"><b>Creado por un chef, no por un ingeniero.</b> Gaastro nace de operar restaurantes de verdad. Cada formato, cada proceso y cada número salió de la cocina y del piso, no de una teoría.</div>
+</div></section>
+
+<!-- FRENTES DETALLADOS -->
+<section class="dsec"><div class="wrap">
+  <div class="eyebrow">todo lo que incluye</div>
+  <h2>los cuatro frentes, área por área</h2>
+  <p class="lead" style="margin-bottom:34px">Este es el alcance completo del proyecto para tus dos sucursales. Cada frente tiene entregables concretos, nada queda al aire.</p>
+  <div class="grid g2">
+
+    <div class="frente">
+      <div class="fhead"><div class="ic">A</div><div><div class="fk">frente 1</div><h3>operación y estandarización</h3></div></div>
+      <ul>
+        <li>Recetas estándar costeadas de todo el menú, salsas y guarniciones</li>
+        <li>Fichas técnicas con gramajes, porciones y rendimiento</li>
+        <li>Manuales y SOPs de cocina, barra y servicio</li>
+        <li>Control de mermas y control de porciones</li>
+        <li>Operación idéntica y replicable entre las 2 sucursales</li>
+      </ul>
+    </div>
+
+    <div class="frente">
+      <div class="fhead"><div class="ic">B</div><div><div class="fk">frente 2</div><h3>menú e ingeniería de rentabilidad</h3></div></div>
+      <ul>
+        <li>Costo y margen real de cada platillo</li>
+        <li>Ingeniería de menú: qué deja, qué vende y qué quitar</li>
+        <li>Precios con método, no al tanteo</li>
+        <li>Definición de platillos ancla y de mayor margen</li>
+        <li>Recomendaciones de rediseño de la carta</li>
+      </ul>
+    </div>
+
+    <div class="frente">
+      <div class="fhead"><div class="ic">C</div><div><div class="fk">frente 3</div><h3>finanzas y control por sucursal</h3></div></div>
+      <ul>
+        <li>Estado de resultados por sucursal</li>
+        <li>Punto de equilibrio y metas de venta claras</li>
+        <li>Tablero semanal: food cost, ventas, ticket y mermas</li>
+        <li>Estructura de inventarios, compras y proveedores</li>
+        <li>Presupuesto y control de gastos</li>
+      </ul>
+    </div>
+
+    <div class="frente">
+      <div class="fhead"><div class="ic">D</div><div><div class="fk">frente 4</div><h3>equipo y autonomía</h3></div></div>
+      <ul>
+        <li>Organigrama y perfiles de puesto por sucursal</li>
+        <li>Responsabilidades claras por rol</li>
+        <li>Plan de capacitación y rutinas de operación</li>
+        <li>Esquema para reducir la dependencia de los dueños</li>
+        <li>Indicadores de desempeño del equipo</li>
+      </ul>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- QUÉ ES G·OS -->
+<section class="gos"><div class="wrap">
+  <div class="eyebrow">el sistema incluido</div>
+  <h2>¿qué es <em>g·OS</em>?</h2>
+  <p class="lead">g·OS es el sistema operativo de Gaastro para restaurantes: un punto de venta y un ERP en uno solo. Hoy usas FUDO para cobrar y hojas sueltas para todo lo demás. g·OS reúne, en un solo lugar y por sucursal, todo lo que hace que el orden se sostenga cuando nosotros terminemos.</p>
+  <div class="mods">
+    <span class="mod"><span class="b"></span> punto de venta</span>
+    <span class="mod"><span class="b"></span> recetario costeado</span>
+    <span class="mod"><span class="b"></span> inventarios</span>
+    <span class="mod"><span class="b"></span> compras y proveedores</span>
+    <span class="mod"><span class="b"></span> nómina</span>
+    <span class="mod"><span class="b"></span> ingeniería de menú</span>
+    <span class="mod"><span class="b"></span> tableros por sucursal</span>
+  </div>
+  <div class="gos-inc"><span class="tag">incluido en tu proyecto</span> Implementación y migración desde FUDO en las 2 sucursales, más la licencia durante todo el proyecto. Es la capa donde vive la transformación.</div>
+</div></section>
+
+<!-- CÓMO FUNCIONA -->
+<section><div class="wrap">
+  <div class="eyebrow">cómo funciona</div>
+  <h2>fase por fase, con hitos presenciales</h2>
+  <p class="lead" style="margin-bottom:32px">El modelo es híbrido: momentos clave en persona en tus sucursales, operación y seguimiento por remoto. Cada avance se documenta y se capacita.</p>
+  <div class="grid g4">
+    <div class="phase"><div class="fnum">fase 0</div><div class="fdur">1 mes</div><h3>diagnóstico</h3><p>Vemos el estado real y las fugas en las dos sucursales. Se acredita al proyecto.</p></div>
+    <div class="phase"><div class="fnum">fase 1</div><div class="fdur">4 a 8 semanas</div><h3>modelo objetivo</h3><p>Diseñamos el restaurante al que hay que llegar: recetas, procesos, finanzas y equipo.</p></div>
+    <div class="phase"><div class="fnum">fase 2</div><div class="fdur">7 a 9 meses</div><h3>implementación</h3><p>Instalamos los cambios frente por frente en ambas sucursales, con capacitación en cada entrega.</p></div>
+    <div class="phase"><div class="fnum">fase 3</div><div class="fdur">4 a 6 semanas</div><h3>transferencia</h3><p>Medimos resultados contra el diagnóstico y dejamos a tu equipo operando el sistema.</p></div>
+  </div>
+</div></section>
+
+<!-- INVERSIÓN -->
+<section class="inv"><div class="wrap">
+  <div class="eyebrow">inversión</div>
+  <h2>tu proyecto, con todo incluido</h2>
+  <p class="lead" style="color:rgba(255,255,255,.84);margin-bottom:8px">Precio cerrado por el proyecto completo. Sin sorpresas: lo que ves es lo que cuesta.</p>
+  <div class="invgrid">
+    <div class="invbox">
+      <div class="pk">paquete integral · 2 sucursales · g·OS incluido</div>
+      <div class="big">$265,000 <span>+ IVA</span></div>
+      <div class="sub">$307,400 con IVA · proyecto de ~12 meses</div>
+      <div class="plan">
+        <div class="pline"><div class="step">1</div><div class="txt"><div class="t">anticipo de arranque</div><div class="s">reserva el inicio del proyecto</div></div><div class="amt">$42,000<small>+ IVA · $48,720</small></div></div>
+        <div class="pline"><div class="step">2</div><div class="txt"><div class="t">12 mensualidades</div><div class="s">durante los ~12 meses del proyecto</div></div><div class="amt">$15,000<small>c/u + IVA · $17,400</small></div></div>
+        <div class="pline"><div class="step">3</div><div class="txt"><div class="t">cierre al entregar</div><div class="s">en la transferencia final</div></div><div class="amt">$43,000<small>+ IVA · $49,880</small></div></div>
+        <div class="pline tot"><div class="step" style="background:var(--amarillo);color:var(--negro)">=</div><div class="txt"><div class="t">total del proyecto</div></div><div class="amt">$265,000<small>+ IVA · $307,400</small></div></div>
+      </div>
+    </div>
+    <div class="invside">
+      <h3>todo esto está incluido</h3>
+      <ul>
+        <li>Diagnóstico integral acreditado</li>
+        <li>Los 4 frentes completos sobre las 2 sucursales</li>
+        <li>g·OS: implementación, migración desde FUDO y licencia durante el proyecto</li>
+        <li>Hitos presenciales en Aguascalientes</li>
+        <li>Capacitación y transferencia a tu equipo</li>
+        <li>Todos los entregables y formatos del proyecto</li>
+      </ul>
+      <p class="fine">Todos los montos son en pesos mexicanos, más IVA. Viáticos y traslados a Aguascalientes se cotizan aparte. La licencia mensual de g·OS continúa a tarifa normal al terminar el proyecto.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta"><div class="wrap">
+  <div class="eyebrow" style="color:var(--negro);justify-content:center">siguiente paso</div>
+  <h2>arranquemos la transformación de carnitas morelia</h2>
+  <p class="lead" style="color:var(--negro);margin:0 auto 28px">Esta propuesta tiene vigencia hasta el 12 de septiembre de 2026. El siguiente paso es confirmar el arranque y agendar el diagnóstico.</p>
+  <a class="btn btn-azul" href="https://wa.me/524421374663?text=Hola%2C%20soy%20de%20Carnitas%20Morelia.%20Quiero%20arrancar%20la%20consultor%C3%ADa%20integral." target="_blank" rel="noopener">quiero arrancar</a>
+</div></section>
+
+<!-- CONDICIONES -->
+<section><div class="wrap">
+  <div class="eyebrow">condiciones</div>
+  <div class="grid g2">
+    <div class="conds">
+      <h4>qué no incluye</h4>
+      <ul>
+        <li>Obra, remodelación o compra de equipo e insumos</li>
+        <li>Trámites legales o sanitarios</li>
+        <li>Sueldos del personal del restaurante</li>
+        <li>Pauta o inversión publicitaria</li>
+        <li>Viáticos y traslados a Aguascalientes</li>
+      </ul>
+    </div>
+    <div class="conds">
+      <h4>qué necesitamos de ti</h4>
+      <ul>
+        <li>Acceso a la información de las dos sucursales</li>
+        <li>Un responsable interno que sostenga los cambios</li>
+        <li>Disposición a implementar lo acordado</li>
+        <li>Pagos según el esquema del proyecto</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.82rem;color:var(--gris);margin-top:22px">Propuesta hecha a la medida para Carnitas Morelia. Vigencia: 30 días naturales a partir del envío. Precios en pesos mexicanos, más IVA.</p>
+</div></section>
+
+<div class="foot"><div class="wrap">
+  <span class="logo" style="color:#fff">gaastro<span class="dot" style="color:var(--amarillo)">·</span></span>
+  <p style="margin:10px 0 6px">consultoría integral · propuesta para carnitas morelia</p>
+  <p><a class="ig" href="https://instagram.com/gaastro.mx" target="_blank" rel="noopener">@gaastro.mx</a></p>
+</div></div>
+
+</body>
+</html>

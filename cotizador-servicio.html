@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cotiza tu programa de servicio · Gaastro</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --azul:#132BD6;--azul-osc:#0d1f9c;--amarillo:#F3CA40;--negro:#101114;
+  --gris:#5b5e6b;--gris-cl:#e7e9f0;--gris-bg:#f4f5f9;--blanco:#fff;--verde:#1f8a4c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,Arial,sans-serif;color:var(--negro);background:var(--gris-bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+h1,h2{line-height:1.08;letter-spacing:-.02em;font-weight:900;text-transform:lowercase}
+
+/* Header */
+header{background:#fff;border-bottom:1px solid var(--gris-cl);position:sticky;top:0;z-index:40}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo-txt{font-weight:900;font-size:1.4rem;letter-spacing:-.03em;color:var(--negro);text-decoration:none}
+.logo-txt .dot{color:var(--azul)}
+.nav small{font-size:.78rem;color:var(--gris);font-weight:600}
+
+/* Hero */
+.hero{background:var(--negro);color:#fff;padding:44px 0 40px}
+.hero .eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--amarillo);margin-bottom:14px}
+.hero h1{font-size:clamp(1.9rem,5vw,2.8rem);color:#fff;margin-bottom:14px}
+.hero h1 em{color:var(--amarillo);font-style:normal}
+.hero p{color:rgba(255,255,255,.76);font-size:1.05rem;max-width:60ch}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero .chip{font-size:.78rem;font-weight:700;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:rgba(255,255,255,.85);padding:7px 14px;border-radius:999px}
+
+/* Form card */
+main{padding:30px 0 70px}
+.card{background:#fff;border:1px solid var(--gris-cl);border-radius:20px;padding:30px;box-shadow:0 18px 50px rgba(16,17,20,.05)}
+
+/* Progress */
+.prog-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.prog-top .pl{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--azul)}
+.prog-top .pt{font-size:.9rem;font-weight:700;color:var(--gris)}
+.prog{height:8px;background:var(--gris-cl);border-radius:999px;overflow:hidden;margin-bottom:28px}
+.prog i{display:block;height:100%;background:var(--azul);border-radius:999px;transition:width .3s ease;width:14%}
+
+/* Steps */
+fieldset{border:0;margin:0;padding:0;min-width:0}
+.step{display:none;animation:fade .25s ease}
+.step.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.step h2{font-size:1.5rem;margin-bottom:6px}
+.step .sub{color:var(--gris);font-size:.97rem;margin-bottom:24px}
+
+/* Fields */
+.field{margin-bottom:20px}
+.field .q{display:block;font-weight:700;margin-bottom:7px;font-size:1rem}
+.field .help{font-size:.85rem;color:var(--gris);margin:-2px 0 9px}
+.req{color:var(--azul);font-weight:900}
+input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{
+  width:100%;padding:13px 15px;border:1.5px solid var(--gris-cl);border-radius:12px;
+  font-family:inherit;font-size:1rem;background:#fff;color:var(--negro);transition:border-color .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px rgba(19,43,214,.1)}
+textarea{min-height:110px;resize:vertical}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235b5e6b' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:42px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+
+/* Option pills (radio + checkbox) */
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opts.col{flex-direction:column;align-items:stretch}
+.opt{position:relative;flex:0 0 auto}
+.opts.col .opt{flex:1 1 auto}
+.opt input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0}
+.opt span{display:block;padding:11px 17px;border:1.5px solid var(--gris-cl);border-radius:12px;font-weight:600;font-size:.94rem;cursor:pointer;transition:.15s;background:#fff;color:#33353f}
+.opt input:checked + span{border-color:var(--azul);background:#eef1ff;color:var(--azul)}
+.opt input:focus-visible + span{box-shadow:0 0 0 3px rgba(19,43,214,.18)}
+.opt.chk span{padding-left:42px;position:relative}
+.opt.chk span:before{content:"";position:absolute;left:15px;top:50%;transform:translateY(-50%);width:16px;height:16px;border:2px solid var(--gris-cl);border-radius:5px;background:#fff}
+.opt.chk input:checked + span:before{background:var(--azul);border-color:var(--azul);content:"✓";color:#fff;font-size:.7rem;font-weight:900;display:flex;align-items:center;justify-content:center;line-height:12px}
+
+/* software con costo */
+.swlist{display:grid;gap:10px}
+.swrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.swrow .opt span{min-width:180px}
+.swcost{display:none;align-items:center;gap:7px}
+.swrow.on .swcost{display:flex}
+.swcost .pfx{font-weight:800;color:var(--gris)}
+.swcost .sfx{font-size:.85rem;color:var(--gris);white-space:nowrap}
+.swcost input[type=number]{width:140px}
+.swcost input[type=text]{width:150px}
+@media(max-width:520px){.swrow .opt,.swrow .opt span{width:100%}.swcost{width:100%}.swcost input[type=number]{flex:1}}
+
+/* honeypot */
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+
+/* Nav buttons */
+.actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:30px;padding-top:22px;border-top:1px solid var(--gris-cl)}
+.btn{display:inline-flex;align-items:center;gap:.5em;font-family:inherit;font-weight:800;font-size:1rem;padding:14px 26px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-2px)}
+.btn-azul{background:var(--azul);color:#fff;box-shadow:0 8px 22px rgba(19,43,214,.28)}
+.btn-line{background:transparent;border-color:var(--gris-cl);color:var(--negro)}
+.btn-amar{background:var(--amarillo);color:var(--negro);box-shadow:0 8px 22px rgba(243,202,64,.35)}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+
+/* Thanks */
+.thanks{display:none;text-align:center;padding:20px 10px}
+.thanks.on{display:block}
+.thanks .ic{width:76px;height:76px;border-radius:50%;background:#e7f6ec;color:var(--verde);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 20px}
+.thanks h2{font-size:1.9rem;margin-bottom:12px}
+.thanks p{color:var(--gris);font-size:1.05rem;max-width:52ch;margin:0 auto 26px}
+.wa{display:inline-flex;align-items:center;gap:10px;background:var(--negro);color:#fff;font-weight:800;padding:15px 30px;border-radius:999px;text-decoration:none}
+
+footer{text-align:center;color:var(--gris);font-size:.82rem;padding:0 0 40px}
+footer a{color:var(--azul);text-decoration:none;font-weight:700}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo-txt" href="https://gaastro.mx"><img src="img/logo-azul.png" alt="Gaastro" style="height:30px;width:auto;display:block"></a>
+    <small>servicio y experiencia</small>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">capacitación · experiencia del cliente · venta en piso</div>
+    <h1>cuéntanos cómo atiende tu equipo<br>y te preparamos <em>tu propuesta.</em></h1>
+    <p>con estas respuestas diseñamos un programa a la medida para capacitar a tu personal, mejorar la experiencia de tu cliente y hacer que tu equipo venda más en cada mesa. toma unos 7 minutos y no te compromete a nada.</p>
+    <div class="meta">
+      <span class="chip">~7 minutos</span>
+      <span class="chip">tus datos, seguros</span>
+      <span class="chip">sin compromiso</span>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <div class="card">
+
+      <div id="progWrap">
+        <div class="prog-top">
+          <span class="pl" id="progLabel">paso 1 de 8</span>
+          <span class="pt" id="progTitle">tu negocio</span>
+        </div>
+        <div class="prog"><i id="progBar"></i></div>
+      </div>
+
+      <form id="form" name="cotizador-servicio" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="cotizador-servicio" />
+        <p class="hp"><label>No llenar este campo: <input name="bot-field" /></label></p>
+
+        <fieldset class="step active" data-title="tu negocio">
+          <h2>tu negocio y contacto</h2>
+          <p class="sub">para saber con quién hablamos y cómo seguirte.</p>
+          
+<div class="grid2">
+<div class="field"><label class="q">nombre del negocio o marca <span class="req">*</span></label><input type="text" name="negocio" placeholder="ej. Casa Nogal" required /></div>
+<div class="field"><label class="q">giro o tipo de cocina</label><input type="text" name="giro" placeholder="ej. cafetería, mariscos, bar" /></div>
+<div class="field"><label class="q">tu nombre <span class="req">*</span></label><input type="text" name="contacto" placeholder="nombre y apellido" required /></div>
+<div class="field"><label class="q">tu puesto</label><input type="text" name="puesto" placeholder="dueño, gerente, socio" /></div>
+<div class="field"><label class="q">whatsapp <span class="req">*</span></label><input type="tel" name="whatsapp" placeholder="10 dígitos" required /></div>
+<div class="field"><label class="q">correo <span class="req">*</span></label><input type="email" name="correo" placeholder="tu@correo.com" required /></div>
+<div class="field"><label class="q">instagram o sitio web</label><input type="text" name="redes" placeholder="@tu_marca" /></div>
+<div class="field"><label class="q">años operando</label><select name="antiguedad"><option value="">elige una opción</option><option>aún no abrimos</option><option>menos de 1 año</option><option>1 a 3 años</option><option>3 a 10 años</option><option>más de 10 años</option></select></div>
+</div>
+<div class="field"><label class="q">¿quién toma la decisión de contratar?</label><div class="opts"><label class="opt"><input type="radio" name="decisor" value="yo"><span>yo</span></label><label class="opt"><input type="radio" name="decisor" value="yo con mis socios"><span>yo con mis socios</span></label><label class="opt"><input type="radio" name="decisor" value="otra persona o un consejo"><span>otra persona o un consejo</span></label></div></div>
+
+        </fieldset>
+        <fieldset class="step" data-title="sucursales">
+          <h2>sucursales y ubicación</h2>
+          <p class="sub">define cuántas veces se repite el trabajo y si hay viáticos.</p>
+          
+<div class="grid2">
+<div class="field"><label class="q">¿cuántas sucursales tienen? <span class="req">*</span></label><input type="number" name="sucursales" placeholder="ej. 1" required min="1"/></div>
+<div class="field"><label class="q">¿cuántas quieres incluir en este proyecto? <span class="req">*</span></label><input type="number" name="sucursales_proyecto" placeholder="ej. 1" required min="1"/></div>
+</div>
+<div class="field"><label class="q">¿en qué ciudad está cada sucursal a incluir? <span class="req">*</span></label><textarea name="ciudades" placeholder="ej. Querétaro centro, Juriquilla, San Juan del Río" required></textarea></div>
+<div class="field"><label class="q">¿todas las sucursales tienen el mismo menú y formato de servicio?</label><div class="opts"><label class="opt"><input type="radio" name="mismo_formato" value="sí, iguales"><span>sí, iguales</span></label><label class="opt"><input type="radio" name="mismo_formato" value="parecidas con diferencias"><span>parecidas con diferencias</span></label><label class="opt"><input type="radio" name="mismo_formato" value="son conceptos distintos"><span>son conceptos distintos</span></label><label class="opt"><input type="radio" name="mismo_formato" value="solo tengo una"><span>solo tengo una</span></label></div></div>
+<div class="field"><label class="q">formato de servicio</label><p class="help">marca todos los que apliquen</p><div class="opts"><label class="opt chk"><input type="checkbox" name="formato[]" value="servicio a la mesa"><span>servicio a la mesa</span></label><label class="opt chk"><input type="checkbox" name="formato[]" value="barra"><span>barra</span></label><label class="opt chk"><input type="checkbox" name="formato[]" value="mostrador o autoservicio"><span>mostrador o autoservicio</span></label><label class="opt chk"><input type="checkbox" name="formato[]" value="para llevar"><span>para llevar</span></label><label class="opt chk"><input type="checkbox" name="formato[]" value="delivery propio"><span>delivery propio</span></label><label class="opt chk"><input type="checkbox" name="formato[]" value="eventos o banquetes"><span>eventos o banquetes</span></label></div></div>
+<div class="field"><label class="q">¿planean abrir más sucursales?</label><div class="opts"><label class="opt"><input type="radio" name="expansion" value="sí, en los próximos 12 meses"><span>sí, en los próximos 12 meses</span></label><label class="opt"><input type="radio" name="expansion" value="tal vez"><span>tal vez</span></label><label class="opt"><input type="radio" name="expansion" value="no"><span>no</span></label></div></div>
+
+        </fieldset>
+        <fieldset class="step" data-title="tu equipo">
+          <h2>tu equipo de piso</h2>
+          <p class="sub">el número de personas define grupos, sesiones y el precio.</p>
+          
+<div class="field"><label class="q">personas de cara al cliente por sucursal <span class="req">*</span></label><p class="help">todas las que atienden clientes: meseros, hosts, cajeros, barra, capitanes, repartidores. si varía por sucursal, pon el promedio</p><input type="number" name="personas_piso" placeholder="ej. 14" required min="1"/></div>
+<div class="grid2">
+<div class="field"><label class="q">meseros</label><input type="number" name="n_meseros" placeholder="0" min="0"/></div>
+<div class="field"><label class="q">hosts o recepción</label><input type="number" name="n_hosts" placeholder="0" min="0"/></div>
+<div class="field"><label class="q">cajeros</label><input type="number" name="n_cajeros" placeholder="0" min="0"/></div>
+<div class="field"><label class="q">barra o baristas</label><input type="number" name="n_barra" placeholder="0" min="0"/></div>
+<div class="field"><label class="q">capitanes o líderes de piso</label><input type="number" name="n_lideres" placeholder="0" min="0"/></div>
+<div class="field"><label class="q">gerentes de turno</label><input type="number" name="n_gerentes" placeholder="0" min="0"/></div>
+</div>
+<div class="field"><label class="q">¿cuántos turnos tienen?</label><div class="opts"><label class="opt"><input type="radio" name="turnos" value="1 turno"><span>1 turno</span></label><label class="opt"><input type="radio" name="turnos" value="2 turnos"><span>2 turnos</span></label><label class="opt"><input type="radio" name="turnos" value="más de 2"><span>más de 2</span></label></div></div>
+<div class="field"><label class="q">¿todo el equipo podría juntarse a la vez para capacitarse?</label><div class="opts col"><label class="opt"><input type="radio" name="equipo_junto" value="sí"><span>sí</span></label><label class="opt"><input type="radio" name="equipo_junto" value="solo por turnos"><span>solo por turnos</span></label><label class="opt"><input type="radio" name="equipo_junto" value="difícil, hay que dividir en varios grupos"><span>difícil, hay que dividir en varios grupos</span></label></div></div>
+<div class="field"><label class="q">días y horarios en que se podría capacitar</label><input type="text" name="horario" placeholder="ej. martes y miércoles de 10 a 12" /></div>
+<div class="field"><label class="q">rotación de personal de piso</label><div class="opts col"><label class="opt"><input type="radio" name="rotacion" value="baja (casi no se va nadie)"><span>baja (casi no se va nadie)</span></label><label class="opt"><input type="radio" name="rotacion" value="media (algunos cambios al año)"><span>media (algunos cambios al año)</span></label><label class="opt"><input type="radio" name="rotacion" value="alta (entra gente nueva cada mes)"><span>alta (entra gente nueva cada mes)</span></label></div></div>
+
+        </fieldset>
+        <fieldset class="step" data-title="capacitación hoy">
+          <h2>cómo capacitan hoy</h2>
+          <p class="sub">no hay respuestas malas: nos dice desde dónde arrancamos.</p>
+          
+<div class="field"><label class="q">cuando entra alguien nuevo, ¿cómo aprende?</label><div class="opts col"><label class="opt"><input type="radio" name="induccion" value="hay una inducción formal con material"><span>hay una inducción formal con material</span></label><label class="opt"><input type="radio" name="induccion" value="lo acompaña un compañero unos días"><span>lo acompaña un compañero unos días</span></label><label class="opt"><input type="radio" name="induccion" value="aprende sobre la marcha"><span>aprende sobre la marcha</span></label><label class="opt"><input type="radio" name="induccion" value="depende de quién lo reciba"><span>depende de quién lo reciba</span></label></div></div>
+<div class="field"><label class="q">¿cuánto dura la inducción de alguien nuevo?</label><div class="opts"><label class="opt"><input type="radio" name="duracion_induccion" value="1 día o menos"><span>1 día o menos</span></label><label class="opt"><input type="radio" name="duracion_induccion" value="2 a 5 días"><span>2 a 5 días</span></label><label class="opt"><input type="radio" name="duracion_induccion" value="más de una semana"><span>más de una semana</span></label><label class="opt"><input type="radio" name="duracion_induccion" value="no hay inducción"><span>no hay inducción</span></label></div></div>
+<div class="field"><label class="q">¿qué tienen por escrito?</label><div class="opts"><label class="opt chk"><input type="checkbox" name="documentos[]" value="manual de servicio"><span>manual de servicio</span></label><label class="opt chk"><input type="checkbox" name="documentos[]" value="pasos de servicio"><span>pasos de servicio</span></label><label class="opt chk"><input type="checkbox" name="documentos[]" value="scripts o guiones de venta"><span>scripts o guiones de venta</span></label><label class="opt chk"><input type="checkbox" name="documentos[]" value="fichas del menú"><span>fichas del menú</span></label><label class="opt chk"><input type="checkbox" name="documentos[]" value="protocolo de quejas"><span>protocolo de quejas</span></label><label class="opt chk"><input type="checkbox" name="documentos[]" value="checklists de apertura y cierre"><span>checklists de apertura y cierre</span></label><label class="opt chk"><input type="checkbox" name="documentos[]" value="reglamento interno"><span>reglamento interno</span></label><label class="opt chk"><input type="checkbox" name="documentos[]" value="nada por escrito"><span>nada por escrito</span></label></div></div>
+<div class="field"><label class="q">¿quién capacita hoy?</label><div class="opts"><label class="opt"><input type="radio" name="quien_capacita" value="el dueño"><span>el dueño</span></label><label class="opt"><input type="radio" name="quien_capacita" value="el gerente"><span>el gerente</span></label><label class="opt"><input type="radio" name="quien_capacita" value="un capitán o mesero con experiencia"><span>un capitán o mesero con experiencia</span></label><label class="opt"><input type="radio" name="quien_capacita" value="nadie en específico"><span>nadie en específico</span></label></div></div>
+<div class="field"><label class="q">¿han tomado capacitaciones de servicio antes? ¿qué funcionó y qué no?</label><textarea name="capacitaciones_previas" placeholder="opcional"></textarea></div>
+
+        </fieldset>
+        <fieldset class="step" data-title="experiencia">
+          <h2>la experiencia de tu cliente</h2>
+          <p class="sub">lo que vive tu cliente de que llega a que se va.</p>
+          
+<div class="grid2">
+<div class="field"><label class="q">calificación en Google</label><input type="text" name="google" placeholder="ej. 4.3" /></div>
+<div class="field"><label class="q">número de reseñas aproximado</label><input type="text" name="resenas" placeholder="ej. 350" /></div>
+</div>
+<div class="field"><label class="q">¿cómo saben hoy si el cliente salió contento?</label><div class="opts"><label class="opt chk"><input type="checkbox" name="medicion_cx[]" value="reseñas en Google o redes"><span>reseñas en Google o redes</span></label><label class="opt chk"><input type="checkbox" name="medicion_cx[]" value="encuestas o QR"><span>encuestas o QR</span></label><label class="opt chk"><input type="checkbox" name="medicion_cx[]" value="lo que dicen los meseros"><span>lo que dicen los meseros</span></label><label class="opt chk"><input type="checkbox" name="medicion_cx[]" value="quejas directas al gerente"><span>quejas directas al gerente</span></label><label class="opt chk"><input type="checkbox" name="medicion_cx[]" value="cliente misterioso"><span>cliente misterioso</span></label><label class="opt chk"><input type="checkbox" name="medicion_cx[]" value="no lo medimos"><span>no lo medimos</span></label></div></div>
+<div class="field"><label class="q">¿qué quejas o comentarios se repiten más?</label><p class="help">marca las que apliquen</p><div class="opts"><label class="opt chk"><input type="checkbox" name="quejas[]" value="tiempos de espera"><span>tiempos de espera</span></label><label class="opt chk"><input type="checkbox" name="quejas[]" value="actitud o trato"><span>actitud o trato</span></label><label class="opt chk"><input type="checkbox" name="quejas[]" value="errores en la orden"><span>errores en la orden</span></label><label class="opt chk"><input type="checkbox" name="quejas[]" value="no conocen el menú"><span>no conocen el menú</span></label><label class="opt chk"><input type="checkbox" name="quejas[]" value="no nos recomiendan nada"><span>no nos recomiendan nada</span></label><label class="opt chk"><input type="checkbox" name="quejas[]" value="tardan en cobrar"><span>tardan en cobrar</span></label><label class="opt chk"><input type="checkbox" name="quejas[]" value="no nos atienden al llegar"><span>no nos atienden al llegar</span></label><label class="opt chk"><input type="checkbox" name="quejas[]" value="limpieza"><span>limpieza</span></label><label class="opt chk"><input type="checkbox" name="quejas[]" value="inconsistencia entre turnos o sucursales"><span>inconsistencia entre turnos o sucursales</span></label></div></div>
+<div class="field"><label class="q">¿qué quieres que diga tu cliente cuando se va?</label><textarea name="frase_cliente" placeholder="ej. "me atendieron como en casa y me recomendaron justo lo que quería""></textarea></div>
+
+        </fieldset>
+        <fieldset class="step" data-title="venta en piso">
+          <h2>la venta en piso</h2>
+          <p class="sub">para medir el antes y el después con números.</p>
+          
+<div class="grid2">
+<div class="field"><label class="q">ticket promedio por persona</label><input type="text" name="ticket" placeholder="ej. $320" /></div>
+<div class="field"><label class="q">venta mensual aproximada por sucursal</label><select name="venta_mensual"><option value="">elige una opción</option><option>menos de $300 mil</option><option>$300 a $600 mil</option><option>$600 mil a $1.2 millones</option><option>$1.2 a $2.5 millones</option><option>más de $2.5 millones</option><option>prefiero no decir</option></select></div>
+</div>
+<div class="field"><label class="q">¿tu equipo sugiere o recomienda productos?</label><div class="opts col"><label class="opt"><input type="radio" name="sugiere" value="sí, siempre y con guion"><span>sí, siempre y con guion</span></label><label class="opt"><input type="radio" name="sugiere" value="algunos sí, otros no"><span>algunos sí, otros no</span></label><label class="opt"><input type="radio" name="sugiere" value="casi nunca"><span>casi nunca</span></label><label class="opt"><input type="radio" name="sugiere" value="no lo sé"><span>no lo sé</span></label></div></div>
+<div class="field"><label class="q">¿qué te gustaría que vendieran más?</label><div class="opts"><label class="opt chk"><input type="checkbox" name="empujar[]" value="bebidas"><span>bebidas</span></label><label class="opt chk"><input type="checkbox" name="empujar[]" value="coctelería o vino"><span>coctelería o vino</span></label><label class="opt chk"><input type="checkbox" name="empujar[]" value="entradas"><span>entradas</span></label><label class="opt chk"><input type="checkbox" name="empujar[]" value="postres"><span>postres</span></label><label class="opt chk"><input type="checkbox" name="empujar[]" value="café"><span>café</span></label><label class="opt chk"><input type="checkbox" name="empujar[]" value="platillos de mayor margen"><span>platillos de mayor margen</span></label><label class="opt chk"><input type="checkbox" name="empujar[]" value="promociones del mes"><span>promociones del mes</span></label><label class="opt chk"><input type="checkbox" name="empujar[]" value="productos para llevar"><span>productos para llevar</span></label></div></div>
+<div class="grid2">
+<div class="field"><label class="q">¿qué punto de venta usan?</label><input type="text" name="pos" placeholder="ej. Soft Restaurant, Parrot, Toast" /></div>
+<div class="field"><label class="q">¿reporta ventas por mesero o cajero?</label><div class="opts"><label class="opt"><input type="radio" name="ventas_por_mesero" value="sí"><span>sí</span></label><label class="opt"><input type="radio" name="ventas_por_mesero" value="no"><span>no</span></label><label class="opt"><input type="radio" name="ventas_por_mesero" value="no sé"><span>no sé</span></label></div></div>
+</div>
+<div class="field"><label class="q">¿tienen comisiones o incentivos por venta?</label><div class="opts"><label class="opt"><input type="radio" name="incentivos" value="sí"><span>sí</span></label><label class="opt"><input type="radio" name="incentivos" value="no"><span>no</span></label><label class="opt"><input type="radio" name="incentivos" value="antes sí"><span>antes sí</span></label></div></div>
+
+        </fieldset>
+        <fieldset class="step" data-title="lo que necesitas">
+          <h2>lo que necesitas</h2>
+          <p class="sub">así armamos la propuesta a tu medida, sin cosas de más.</p>
+          
+<div class="field"><label class="q">¿qué te gustaría resolver con nosotros?</label><p class="help">marca todo lo que aplique</p><div class="opts col"><label class="opt chk"><input type="checkbox" name="necesidades[]" value="saber cómo estamos atendiendo hoy (diagnóstico)"><span>saber cómo estamos atendiendo hoy (diagnóstico)</span></label><label class="opt chk"><input type="checkbox" name="necesidades[]" value="escribir manuales de servicio por puesto"><span>escribir manuales de servicio por puesto</span></label><label class="opt chk"><input type="checkbox" name="necesidades[]" value="scripts de servicio y protocolos (quejas, apertura, cierre)"><span>scripts de servicio y protocolos (quejas, apertura, cierre)</span></label><label class="opt chk"><input type="checkbox" name="necesidades[]" value="capacitar y certificar al equipo"><span>capacitar y certificar al equipo</span></label><label class="opt chk"><input type="checkbox" name="necesidades[]" value="formar líderes que capaciten a los nuevos"><span>formar líderes que capaciten a los nuevos</span></label><label class="opt chk"><input type="checkbox" name="necesidades[]" value="inducción para personal nuevo"><span>inducción para personal nuevo</span></label><label class="opt chk"><input type="checkbox" name="necesidades[]" value="estrategias de venta sugerida para meseros"><span>estrategias de venta sugerida para meseros</span></label><label class="opt chk"><input type="checkbox" name="necesidades[]" value="esquema de incentivos por venta"><span>esquema de incentivos por venta</span></label><label class="opt chk"><input type="checkbox" name="necesidades[]" value="auditorías y seguimiento después de la capacitación"><span>auditorías y seguimiento después de la capacitación</span></label></div></div>
+<div class="field"><label class="q">¿te interesa que regresemos a auditar que el equipo sí lo aplique?</label><div class="opts"><label class="opt"><input type="radio" name="seguimiento" value="sí, una visita"><span>sí, una visita</span></label><label class="opt"><input type="radio" name="seguimiento" value="sí, varias durante el año"><span>sí, varias durante el año</span></label><label class="opt"><input type="radio" name="seguimiento" value="no por ahora"><span>no por ahora</span></label><label class="opt"><input type="radio" name="seguimiento" value="no sé, recomiéndame"><span>no sé, recomiéndame</span></label></div></div>
+<div class="field"><label class="q">modalidad preferida</label><div class="opts"><label class="opt"><input type="radio" name="modalidad" value="presencial"><span>presencial</span></label><label class="opt"><input type="radio" name="modalidad" value="remota"><span>remota</span></label><label class="opt"><input type="radio" name="modalidad" value="mixta"><span>mixta</span></label></div></div>
+<div class="field"><label class="q">¿para cuándo lo necesitas?</label><div class="opts"><label class="opt"><input type="radio" name="urgencia" value="lo antes posible"><span>lo antes posible</span></label><label class="opt"><input type="radio" name="urgencia" value="en el próximo mes"><span>en el próximo mes</span></label><label class="opt"><input type="radio" name="urgencia" value="en 2 o 3 meses"><span>en 2 o 3 meses</span></label><label class="opt"><input type="radio" name="urgencia" value="antes de una apertura o temporada"><span>antes de una apertura o temporada</span></label></div></div>
+<div class="field"><label class="q">presupuesto que tienes contemplado</label><p class="help">más IVA. nos ayuda a proponerte lo que sí te hace sentido</p><select name="presupuesto"><option value="">elige una opción</option><option>menos de $15 mil</option><option>$15 a $30 mil</option><option>$30 a $60 mil</option><option>$60 a $100 mil</option><option>más de $100 mil</option><option>aún no lo defino</option></select></div>
+<div class="field"><label class="q">¿requieres factura?</label><div class="opts"><label class="opt"><input type="radio" name="factura" value="sí"><span>sí</span></label><label class="opt"><input type="radio" name="factura" value="no"><span>no</span></label></div></div>
+
+        </fieldset>
+        <fieldset class="step" data-title="cierre">
+          <h2>lo más importante</h2>
+          <p class="sub">dos respuestas que nos ayudan mucho.</p>
+          
+<div class="field"><label class="q">en tus palabras, ¿cuál es el problema número uno de tu servicio hoy? <span class="req">*</span></label><textarea name="dolor" placeholder="ej. los meseros solo toman la orden, nadie sugiere y el ticket no sube" required></textarea></div>
+<div class="field"><label class="q">en 3 meses, ¿cómo sabrías que valió la pena?</label><textarea name="exito" placeholder="ej. ticket promedio arriba de $380 y cero quejas de trato"></textarea></div>
+<div class="field"><label class="q">¿cómo nos conociste?</label><input type="text" name="referencia" placeholder="opcional, ej. instagram, recomendación" /></div>
+<div class="field"><label class="q">cualquier cosa que debamos saber</label><textarea name="notas" placeholder="opcional"></textarea></div>
+<p class="help">al enviar, aceptas que Gaastro te contacte para enviarte tu propuesta. no compartimos tu información con terceros.</p>
+
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" class="btn btn-line" id="back" style="visibility:hidden">atrás</button>
+          <div style="display:flex;gap:12px">
+            <button type="button" class="btn btn-azul" id="next">siguiente</button>
+            <button type="submit" class="btn btn-amar" id="send" style="display:none">enviar respuestas</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="thanks" id="thanks">
+        <div class="ic">✓</div>
+        <h2>¡listo, gracias!</h2>
+        <p>recibimos tus respuestas. Alonso las revisa y te manda por whatsapp tu propuesta con alcance y precio para que la revises con calma.</p>
+        <a class="wa" id="waBtn" href="https://wa.me/524421374663?text=Hola%2C%20acabo%20de%20llenar%20el%20cuestionario%20de%20Servicio%20y%20Experiencia." target="_blank" rel="noopener">escribir por whatsapp</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Gaastro® · <a href="https://gaastro.mx" target="_blank" rel="noopener">gaastro.mx</a> · restaurantes rentables y bajo control.</div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('form');
+  var steps=[].slice.call(form.querySelectorAll('.step'));
+  var total=steps.length,cur=0;
+  var back=document.getElementById('back'),next=document.getElementById('next'),send=document.getElementById('send');
+  var bar=document.getElementById('progBar'),pLabel=document.getElementById('progLabel'),pTitle=document.getElementById('progTitle');
+  function render(scroll){
+    steps.forEach(function(s,i){s.classList.toggle('active',i===cur);});
+    bar.style.width=((cur+1)/total*100)+'%';
+    pLabel.textContent='paso '+(cur+1)+' de '+total;
+    pTitle.textContent=steps[cur].getAttribute('data-title');
+    back.style.visibility=cur===0?'hidden':'visible';
+    next.style.display=cur===total-1?'none':'inline-flex';
+    send.style.display=cur===total-1?'inline-flex':'none';
+    if(scroll)document.getElementById('progWrap').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function validate(i){
+    var els=steps[i].querySelectorAll('input,select,textarea');
+    for(var k=0;k<els.length;k++){if(!els[k].checkValidity()){els[k].reportValidity();return false;}}
+    return true;
+  }
+  next.addEventListener('click',function(){if(validate(cur)){cur++;render(true);}});
+  back.addEventListener('click',function(){if(cur>0){cur--;render(true);}});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!validate(cur))return;
+    send.disabled=true;send.textContent='enviando…';
+    var fd=new FormData(form),m={},o=[];fd.forEach(function(v,k){if(m[k]===undefined){m[k]=v;o.push(k);}else{m[k]+=', '+v;}});var body=o.map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(m[k]);}).join('&');
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(done).catch(done);
+  });
+  function done(){
+    form.style.display='none';
+    document.getElementById('progWrap').style.display='none';
+    var t=document.getElementById('thanks');t.classList.add('on');
+    var neg=(form.querySelector('[name=negocio]')||{}).value||'';
+    if(neg){document.getElementById('waBtn').href='https://wa.me/524421374663?text='+encodeURIComponent('Hola, soy de '+neg+'. Acabo de llenar el cuestionario de Servicio y Experiencia.');}
+    t.scrollIntoView({behavior:'smooth'});
+  }
+  render(false);
+})();
+</script>
+</body>
+</html>
