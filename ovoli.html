@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Propuesta · Creación de Menú · OVOLI Family Club · Gaastro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#132BD6;--azul-osc:#0d1f9c;--azul-dark:#0a1560;--amarillo:#F3CA40;
+  --negro:#141414;--tinta:#1a1e2e;--gris:#5b6070;--gris-cl:#e6e8ef;--blanco:#fff;--crema:#f5f6fb;--radio:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,Arial,sans-serif;color:var(--negro);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+h1,h2,h3,h4{line-height:1.08;letter-spacing:-.025em;text-transform:lowercase}
+h2{font-size:2.4rem;font-weight:900;margin-bottom:12px}
+h3{font-size:1.25rem;font-weight:800}
+p{margin-bottom:12px}
+.eyebrow{font-weight:900;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;color:var(--azul);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";width:26px;height:3px;background:var(--amarillo);border-radius:2px}
+section{padding:78px 0;position:relative}
+.lead{font-size:1.18rem;color:var(--gris);max-width:780px}
+em{color:var(--azul);font-style:normal;font-weight:900}
+.btn{display:inline-flex;align-items:center;gap:.55em;font-family:inherit;font-weight:800;font-size:1.02rem;text-transform:lowercase;padding:17px 34px;border-radius:999px;border:2px solid transparent;cursor:pointer;text-decoration:none;transition:transform .16s ease,box-shadow .16s ease}
+.btn:hover{transform:translateY(-3px)}
+.btn-amar{background:var(--amarillo);color:var(--negro);box-shadow:0 12px 30px rgba(243,202,64,.45)}
+.btn-amar:hover{box-shadow:0 18px 40px rgba(243,202,64,.55)}
+.btn-azul{background:var(--azul);color:#fff;box-shadow:0 12px 30px rgba(19,43,214,.35)}
+.logo{font-weight:900;font-size:1.45rem;letter-spacing:-.03em}
+.logo .dot{color:var(--azul)}
+
+.top{background:var(--negro);color:#fff;padding:15px 0}
+.top .wrap{display:flex;align-items:center;justify-content:space-between}
+.top .logo{color:#fff}.top .logo .dot{color:var(--amarillo)}
+.top .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--amarillo);font-weight:800}
+
+.cover{background:radial-gradient(1200px 600px at 80% -10%,#1e3af0 0%,transparent 55%),linear-gradient(155deg,#0a1560 0%,#132BD6 70%);color:#fff;padding:96px 0 88px;overflow:hidden}
+.cover:before{content:"";position:absolute;right:-120px;top:60px;width:360px;height:360px;background:var(--amarillo);opacity:.14;border-radius:64px;transform:rotate(28deg)}
+.cover:after{content:"";position:absolute;left:-90px;bottom:-90px;width:260px;height:260px;border:3px solid rgba(255,255,255,.12);border-radius:50%}
+.cover .wrap{position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(243,202,64,.16);border:1px solid rgba(243,202,64,.5);color:var(--amarillo);font-weight:800;font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;padding:8px 16px;border-radius:999px;margin-bottom:24px}
+.badge .d{width:8px;height:8px;background:var(--amarillo);border-radius:50%}
+.cover h1{font-size:3.4rem;font-weight:900;margin-bottom:20px;max-width:18ch;line-height:1.03}
+.cover h1 em{color:var(--amarillo)}
+.cover .lead{color:rgba(255,255,255,.92);font-size:1.26rem;max-width:650px}
+.chips{display:flex;gap:11px;flex-wrap:wrap;margin:30px 0 34px}
+.chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);padding:10px 18px;border-radius:999px;font-size:.85rem;font-weight:700;backdrop-filter:blur(4px)}
+.chip.amar{background:var(--amarillo);color:var(--negro);border-color:var(--amarillo)}
+.cstats{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.cstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:16px 22px;flex:1;min-width:150px}
+.cstat .n{font-size:1.7rem;font-weight:900;color:var(--amarillo);display:block;line-height:1}
+.cstat .l{font-size:.8rem;color:rgba(255,255,255,.82);margin-top:4px}
+@media(max-width:860px){.cover h1{font-size:2.1rem}.cover{padding:64px 0 60px}h2{font-size:1.7rem}}
+
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+.dsec{background:var(--crema)}
+.reto{background:#fff;border-radius:var(--radio);padding:30px 28px;border:1.5px solid var(--gris-cl);border-top:6px solid var(--azul);box-shadow:0 8px 30px rgba(19,43,214,.05);transition:transform .16s}
+.reto:hover{transform:translateY(-4px)}
+.reto .rn{display:inline-flex;width:38px;height:38px;border-radius:11px;background:var(--azul);color:#fff;font-weight:900;align-items:center;justify-content:center;margin-bottom:14px}
+.reto h3{font-size:1.1rem;line-height:1.22;margin-bottom:8px}
+.reto p{font-size:.94rem;color:var(--gris);margin:0}
+
+.dark{background:var(--tinta);color:#fff}
+.dark .eyebrow{color:var(--amarillo)}.dark .eyebrow:before{background:var(--amarillo)}
+.dark .lead{color:rgba(255,255,255,.84)}
+.dquote{margin-top:30px;padding:20px 28px;border-left:4px solid var(--amarillo);font-size:1.15rem;font-style:italic;color:rgba(255,255,255,.9);max-width:700px}
+
+.divider{width:56px;height:5px;background:var(--amarillo);border-radius:3px;margin:20px 0}
+.note{background:#fff8e1;border:1.5px solid var(--amarillo);border-radius:var(--radio);padding:22px 26px;font-size:1rem}
+.note b{color:var(--negro)}
+
+.area{background:#fff;border:1.5px solid var(--gris-cl);border-radius:var(--radio);padding:28px 26px;box-shadow:0 8px 30px rgba(0,0,0,.04);transition:transform .16s}
+.area:hover{transform:translateY(-4px)}
+.area .ahead{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.area .ic{width:50px;height:50px;border-radius:15px;background:linear-gradient(150deg,var(--azul),var(--azul-osc));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:900;flex-shrink:0;box-shadow:0 8px 20px rgba(19,43,214,.28)}
+.area .ak{font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.16em;color:var(--azul)}
+.area h3{font-size:1.14rem;line-height:1.12}
+.area p{font-size:.95rem;color:var(--gris);margin:0}
+
+.phase{background:#fff;border:1.5px solid var(--gris-cl);border-radius:var(--radio);padding:26px 22px;border-top:6px solid var(--azul)}
+.phase .fnum{font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--azul)}
+.phase .fq{display:inline-block;background:#eef1ff;color:var(--azul);font-size:.72rem;font-weight:800;padding:5px 13px;border-radius:999px;margin:9px 0 12px}
+.phase h3{font-size:1.05rem;margin-bottom:8px}
+.phase p{font-size:.9rem;color:var(--gris);margin:0}
+
+.entreg{background:var(--crema)}
+ul.clean{list-style:none;display:grid;gap:11px}
+ul.clean li{position:relative;padding-left:30px;color:#3a3f4f;font-size:1rem}
+ul.clean li:before{content:"✓";position:absolute;left:0;top:2px;width:20px;height:20px;background:var(--azul);color:#fff;border-radius:6px;font-size:.74rem;font-weight:900;display:flex;align-items:center;justify-content:center}
+
+.resenas{background:#fff}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px}
+@media(max-width:860px){.qgrid{grid-template-columns:1fr}}
+.qcard{background:var(--crema);border:1.5px solid var(--gris-cl);border-radius:var(--radio);padding:32px 30px;box-shadow:0 10px 34px rgba(0,0,0,.05)}
+.qcard .qmark{font-family:Georgia,serif;font-size:3.6rem;line-height:.5;color:var(--amarillo);font-weight:900;height:26px}
+.qcard .stars{color:var(--amarillo);font-size:1.05rem;letter-spacing:3px;margin:0 0 14px}
+.qcard .qt{font-size:1.06rem;color:#2b2f3d;font-style:italic;line-height:1.55;margin:0 0 18px}
+.qcard .qwho{font-weight:900;color:var(--negro);font-size:1rem}
+.qcard .qwho span{display:block;font-weight:600;font-style:normal;color:var(--gris);font-size:.82rem;text-transform:lowercase;margin-top:2px}
+
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
+@media(max-width:860px){.tiers{grid-template-columns:1fr}}
+.tier{background:#fff;color:var(--negro);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;box-shadow:0 20px 50px rgba(0,0,0,.28);position:relative}
+.tier.dest{outline:3px solid var(--amarillo);outline-offset:-3px}
+.tier.dest:before{content:"más elegido";position:absolute;top:-13px;left:24px;background:var(--amarillo);color:var(--negro);font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;padding:5px 12px;border-radius:999px}
+.tier .tk{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--azul)}
+.tier .tn{font-size:1.5rem;font-weight:900;margin:4px 0 0}
+.tier .tr{color:var(--gris);font-size:.86rem;margin-bottom:14px}
+.tier .tp{font-size:2rem;font-weight:900;color:var(--negro);line-height:1}
+.tier .tp small{display:block;font-size:.76rem;color:var(--gris);font-weight:700;margin-top:3px}
+.tier .inc{list-style:none;display:grid;gap:7px;margin-top:16px}
+.tier .inc li{position:relative;padding-left:22px;font-size:.86rem;color:#3a3f4f}
+.tier .inc li:before{content:"✓";position:absolute;left:0;color:var(--azul);font-weight:900}
+.tier .foto-tag{margin-top:16px;background:var(--amarillo);color:var(--negro);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;padding:8px 12px;border-radius:999px;text-align:center}
+.inv{background:var(--tinta);color:#fff;overflow:hidden}
+.inv:before{content:"";position:absolute;left:-100px;top:40px;width:300px;height:300px;border:3px solid rgba(255,255,255,.06);border-radius:50%}
+.inv .wrap{position:relative;z-index:2}
+.inv .eyebrow{color:var(--amarillo)}.inv .eyebrow:before{background:var(--amarillo)}
+.invgrid{display:grid;grid-template-columns:1fr .95fr;gap:26px;margin-top:10px}
+@media(max-width:860px){.invgrid{grid-template-columns:1fr}}
+.invbox{background:#fff;color:var(--negro);border-radius:24px;padding:34px;box-shadow:0 26px 60px rgba(0,0,0,.3)}
+.invbox .pk{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--azul)}
+.invbox .big{font-size:3rem;font-weight:900;color:var(--negro);line-height:1;margin:8px 0 2px}
+.invbox .big span{color:var(--azul);font-size:1.3rem}
+.invbox .sub{color:var(--gris);font-size:.92rem;margin-bottom:18px}
+.pkt{width:100%;border-collapse:collapse;font-size:.93rem;margin-top:4px}
+.pkt th,.pkt td{padding:11px 10px;border-bottom:1px solid var(--gris-cl);text-align:left}
+.pkt thead th{color:var(--azul);text-transform:lowercase;font-size:.82rem;font-weight:900}
+.pkt td.r{text-align:right;font-weight:900;color:var(--negro);white-space:nowrap}
+.pkt tbody tr:last-child td{border-bottom:none}
+.foto{margin-top:18px;background:linear-gradient(120deg,#eef1ff,#f8f9ff);border:1.5px solid var(--azul);border-radius:16px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.foto .k{font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--azul)}
+.foto .t{font-weight:800;font-size:.98rem;color:var(--negro)}
+.foto .amt{font-weight:900;color:var(--azul);white-space:nowrap}
+.invside h3{color:#fff;margin-bottom:14px;font-size:1.3rem}
+.invside ul{list-style:none;display:grid;gap:11px}
+.invside ul li{position:relative;padding-left:28px;color:rgba(255,255,255,.9);font-size:.98rem}
+.invside ul li:before{content:"✓";position:absolute;left:0;top:0;color:var(--amarillo);font-weight:900}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.pay .box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px;text-align:center}
+.pay .box .p{font-size:1.5rem;font-weight:900;color:var(--amarillo)}
+.pay .box .s{font-size:.8rem;color:rgba(255,255,255,.82)}
+.invside .fine{color:rgba(255,255,255,.6);font-size:.82rem;margin-top:16px}
+
+.conds h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--azul);margin-bottom:14px}
+.conds ul{list-style:none;display:grid;gap:9px}
+.conds li{position:relative;padding-left:20px;font-size:.94rem;color:var(--gris)}
+.conds li:before{content:"·";position:absolute;left:5px;font-weight:900;color:var(--azul);font-size:1.3rem;top:-4px}
+
+.cta{background:radial-gradient(700px 400px at 50% 0%,#f7d868,transparent 70%),var(--amarillo);text-align:center}
+.cta h2{font-size:2.6rem}
+@media(max-width:860px){.cta h2{font-size:1.9rem}}
+
+.foot{background:var(--negro);color:#fff;text-align:center;padding:48px 0}
+.foot p{color:rgba(255,255,255,.6);font-size:.85rem;margin:0}
+.foot .ig{color:var(--amarillo);font-weight:800;font-size:.85rem;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <span class="logo">gaastro<span class="dot">·</span></span>
+  <span class="tag">propuesta de creación de menú</span>
+</div></div>
+
+<!-- HERO -->
+<header class="cover"><div class="wrap">
+  <span class="badge"><span class="d"></span> propuesta hecha a la medida para ovoli family club</span>
+  <h1>un menú <em>creado desde cero</em> para enamorar a las familias y dejar rentabilidad</h1>
+  <p class="lead">Desarrollamos todo el menú de tu ludoteca con cafetería: recetas probadas, fichas técnicas, costeo, menú infantil, capacitación y fotografía. Un menú que sabe rico, que opera fácil y que gana dinero.</p>
+  <div class="chips">
+    <span class="chip amar">creación y desarrollo de menú</span>
+    <span class="chip">cafetería + menú infantil</span>
+    <span class="chip">pruebas, fichas y costeo</span>
+    <span class="chip">fotografía incluida</span>
+    <span class="chip">vigencia: 18 nov 2026</span>
+  </div>
+  <a class="btn btn-amar" href="https://wa.me/524421374663?text=Hola%2C%20soy%20Desiree%20de%20OVOLI%20Family%20Club.%20Vi%20la%20propuesta%20de%20creaci%C3%B3n%20de%20men%C3%BA%20y%20quiero%20avanzar." target="_blank" rel="noopener">quiero avanzar</a>
+  <div class="cstats">
+    <div class="cstat"><span class="n">+20</span><span class="l">restaurantes en consultoría</span></div>
+    <div class="cstat"><span class="n">+1,000</span><span class="l">restaurantes usan nuestros formatos</span></div>
+    <div class="cstat"><span class="n">+600</span><span class="l">alumnos en nuestros cursos</span></div>
+    <div class="cstat"><span class="n">+50 mil</span><span class="l">de comunidad en redes</span></div>
+  </div>
+</div></header>
+
+<!-- EL RETO -->
+<section class="dsec"><div class="wrap">
+  <div class="eyebrow">tu momento</div>
+  <h2>abrir con un menú que funcione desde el día uno</h2>
+  <p class="lead" style="margin-bottom:32px">OVOLI nace con una visión clara: un espacio para que las familias coman rico y sano mientras los niños juegan. El reto es que ese menú no solo guste, también tiene que ser fácil de ejecutar y dejar margen.</p>
+  <div class="grid g3">
+    <div class="reto"><div class="rn">1</div><h3>un menú rico que además deje dinero</h3><p>Que cada platillo esté pensado para gustar y, al mismo tiempo, para ser rentable.</p></div>
+    <div class="reto"><div class="rn">2</div><h3>recetas que cualquiera pueda ejecutar</h3><p>Estandarizadas y documentadas, para que salgan igual sin depender de una sola persona.</p></div>
+    <div class="reto"><div class="rn">3</div><h3>pensado para toda la familia</h3><p>Opciones para adultos y un menú infantil a la altura de una ludoteca.</p></div>
+  </div>
+</div></section>
+
+<!-- LA SOLUCIÓN -->
+<section><div class="wrap">
+  <div class="eyebrow">la solución</div>
+  <h2>un menú diseñado para vender y para operar</h2>
+  <div class="divider"></div>
+  <p class="lead">No entregamos solo recetas ricas. Diseñamos tu menú completo desde la raíz: lo conceptualizamos contigo, probamos cada receta hasta dejarla perfecta, la estandarizamos en fichas técnicas, la costeamos para que sepas cuánto ganas, capacitamos a tu equipo y lo dejamos retratado con fotografía profesional. Listo para abrir y para crecer.</p>
+  <div class="note" style="margin-top:22px"><b>Creado por un chef, no por un ingeniero.</b> Gaastro nace de operar restaurantes de verdad. Diseñamos tu menú pensando a la vez en el sabor, en la cocina y en el número.</div>
+</div></section>
+
+<!-- QUÉ INCLUYE -->
+<section class="dsec"><div class="wrap">
+  <div class="eyebrow">qué incluye</div>
+  <h2>el menú completo, de la idea al plato</h2>
+  <p class="lead" style="margin-bottom:34px">Todo lo que necesitas para abrir con un menú terminado y profesional. Nada a medias.</p>
+  <div class="grid g2">
+    <div class="area"><div class="ahead"><div class="ic">1</div><div><div class="ak">incluido</div><h3>desarrollo y pruebas de recetas</h3></div></div><p>Conceptualizamos cada platillo y hacemos rondas de prueba hasta dejar el sabor, la textura y la porción en su punto, con tu visto bueno.</p></div>
+    <div class="area"><div class="ahead"><div class="ic">2</div><div><div class="ak">incluido</div><h3>bebidas de cafetería</h3></div></div><p>Café, bebidas frías y calientes, parfaits y acompañamientos, desarrollados y estandarizados igual que la comida.</p></div>
+    <div class="area"><div class="ahead"><div class="ic">3</div><div><div class="ak">incluido</div><h3>menú infantil</h3></div></div><p>Opciones pensadas para niños, ricas y prácticas, a la altura de una ludoteca family club y con buen margen.</p></div>
+    <div class="area"><div class="ahead"><div class="ic">4</div><div><div class="ak">incluido</div><h3>fichas técnicas y costeo</h3></div></div><p>Ficha técnica de cada ítem (ingredientes, gramajes y procedimiento) y costeo con precio sugerido y margen por platillo.</p></div>
+    <div class="area"><div class="ahead"><div class="ic">5</div><div><div class="ak">incluido</div><h3>capacitación al equipo</h3></div></div><p>Capacitamos a tu cocina para ejecutar cada receta de forma estándar, siempre igual, con o sin ti presente.</p></div>
+    <div class="area"><div class="ahead"><div class="ic">6</div><div><div class="ak">incluido</div><h3>fotografía de catálogo y comercial</h3></div></div><p>Sesión profesional de todo el menú: fotos para tu carta, tus redes y tu publicidad desde el primer día.</p></div>
+  </div>
+</div></section>
+
+<!-- CÓMO FUNCIONA -->
+<section><div class="wrap">
+  <div class="eyebrow">cómo funciona</div>
+  <h2>del concepto al menú terminado</h2>
+  <p class="lead" style="margin-bottom:32px">Modalidad híbrida: desarrollo y documentación a distancia, con visitas presenciales en los momentos clave (pruebas finales y capacitación en tu cocina de Atizapán).</p>
+  <div class="grid g4">
+    <div class="phase"><div class="fnum">fase 1</div><div class="fq">1 a 2 semanas</div><h3>conceptualización</h3><p>Definimos contigo la lista final de platillos y bebidas, los conceptos y la estructura del menú.</p></div>
+    <div class="phase"><div class="fnum">fase 2</div><div class="fq">3 a 5 semanas</div><h3>desarrollo y pruebas</h3><p>Creamos y probamos cada receta en rondas, hasta dejar sabor y porción aprobados.</p></div>
+    <div class="phase"><div class="fnum">fase 3</div><div class="fq">1 a 2 semanas</div><h3>fichas y costeo</h3><p>Estandarizamos todo en fichas técnicas y costeamos cada ítem con su precio sugerido.</p></div>
+    <div class="phase"><div class="fnum">fase 4</div><div class="fq">1 a 2 semanas</div><h3>capacitación y foto</h3><p>Capacitamos a tu equipo en las recetas y hacemos la sesión de fotografía del menú.</p></div>
+  </div>
+</div></section>
+
+<!-- ENTREGABLES -->
+<section class="entreg"><div class="wrap">
+  <div class="eyebrow">qué te llevas</div>
+  <h2>los entregables del proyecto</h2>
+  <div class="grid g2" style="margin-top:8px">
+    <ul class="clean">
+      <li>Menú completo desarrollado y aprobado (adultos, bebidas y menú infantil)</li>
+      <li>Ficha técnica de cada platillo y bebida</li>
+      <li>Costeo de cada ítem con precio sugerido y margen</li>
+    </ul>
+    <ul class="clean">
+      <li>Recetario estándar listo para tu cocina</li>
+      <li>Capacitación de tu equipo en las recetas</li>
+      <li>Banco de fotos de catálogo y comercial del menú</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- RESEÑAS -->
+<section class="resenas"><div class="wrap">
+  <div class="eyebrow">lo que dicen</div>
+  <h2>restaurantes que ya dieron el paso</h2>
+  <p class="lead" style="margin-bottom:6px">+20 restaurantes transformados en consultoría, de aperturas a negocios que necesitaban orden y rentabilidad.</p>
+  <div class="qgrid">
+    <div class="qcard">
+      <div class="qmark">&ldquo;</div>
+      <div class="stars">★★★★★</div>
+      <p class="qt">haber trabajado con ustedes fue una de las mejores decisiones que pude tomar; fue un game changer para poner todo en orden y sentar las bases del crecimiento. hoy, un año después de terminar el proyecto, estamos abriendo nuestra segunda sucursal y nada de esto hubiera pasado sin ustedes. ¡gracias infinitas por tanto!</p>
+      <div class="qwho">Daniela N.<span>restaurante · consultoría integral</span></div>
+    </div>
+    <div class="qcard">
+      <div class="qmark">&ldquo;</div>
+      <div class="stars">★★★★★</div>
+      <p class="qt">todo ha sido excelente. valeria, súper amable y muy preparada. en el camino ya he ido mejorando mis recetas, pero cada vez me doy más cuenta de lo necesario que era. de lo único que me arrepiento es no haberlos contratado desde antes 😂</p>
+      <div class="qwho">Octavio C.<span>restaurante · proyecto de costeo</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- INVERSIÓN -->
+<section class="inv"><div class="wrap">
+  <div class="eyebrow">inversión</div>
+  <h2>elige el paquete según tu menú</h2>
+  <p class="lead" style="color:rgba(255,255,255,.84);margin-bottom:8px">Tres paquetes por número de ítems. Entre más completo tu menú, menor el costo por receta. En los tres, la fotografía ya va incluida.</p>
+  <div class="tiers">
+    <div class="tier">
+      <div class="tk">paquete 1</div>
+      <div class="tn">18 ítems</div>
+      <div class="tr">$1,500 por receta</div>
+      <div class="tp">$27,000<small>+ IVA · con IVA $31,320</small></div>
+      <ul class="inc">
+        <li>Desarrollo y pruebas de recetas</li>
+        <li>Fichas técnicas y costeo</li>
+        <li>Bebidas y menú infantil</li>
+        <li>Capacitación al equipo</li>
+      </ul>
+      <div class="foto-tag">fotografía incluida</div>
+    </div>
+    <div class="tier dest">
+      <div class="tk">paquete 2</div>
+      <div class="tn">25 ítems</div>
+      <div class="tr">$1,400 por receta</div>
+      <div class="tp">$35,000<small>+ IVA · con IVA $40,600</small></div>
+      <ul class="inc">
+        <li>Desarrollo y pruebas de recetas</li>
+        <li>Fichas técnicas y costeo</li>
+        <li>Bebidas y menú infantil</li>
+        <li>Capacitación al equipo</li>
+      </ul>
+      <div class="foto-tag">fotografía incluida</div>
+    </div>
+    <div class="tier">
+      <div class="tk">paquete 3</div>
+      <div class="tn">32 ítems</div>
+      <div class="tr">$1,300 por receta</div>
+      <div class="tp">$41,600<small>+ IVA · con IVA $48,256</small></div>
+      <ul class="inc">
+        <li>Desarrollo y pruebas de recetas</li>
+        <li>Fichas técnicas y costeo</li>
+        <li>Bebidas y menú infantil</li>
+        <li>Capacitación al equipo</li>
+      </ul>
+      <div class="foto-tag">fotografía incluida</div>
+    </div>
+  </div>
+  <div class="invgrid" style="margin-top:28px">
+    <div class="invside">
+      <h3>todos los paquetes incluyen</h3>
+      <ul>
+        <li>Desarrollo y pruebas de cada receta hasta aprobarla</li>
+        <li>Ficha técnica y costeo de cada ítem</li>
+        <li>Bebidas de cafetería y menú infantil</li>
+        <li>Capacitación de tu equipo en las recetas</li>
+        <li>Fotografía de catálogo y comercial del menú</li>
+      </ul>
+    </div>
+    <div class="invside">
+      <h3>forma de pago</h3>
+      <div class="pay">
+        <div class="box"><div class="p">50%</div><div class="s">para arrancar</div></div>
+        <div class="box"><div class="p">50%</div><div class="s">contra entrega</div></div>
+      </div>
+      <p class="fine">Montos en pesos mexicanos, más IVA. El paquete se elige según el número de ítems de tu menú. Viáticos y traslados a Atizapán se confirman al agendar las visitas presenciales.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta"><div class="wrap">
+  <div class="eyebrow" style="color:var(--negro);justify-content:center">siguiente paso</div>
+  <h2>creemos el menú de ovoli</h2>
+  <p class="lead" style="color:var(--negro);margin:0 auto 28px">Esta propuesta tiene vigencia hasta el 18 de noviembre de 2026. El siguiente paso es cerrar la lista de platillos y bebidas para arrancar.</p>
+  <a class="btn btn-azul" href="https://wa.me/524421374663?text=Hola%2C%20soy%20Desiree%20de%20OVOLI%20Family%20Club.%20Quiero%20arrancar%20la%20creaci%C3%B3n%20del%20men%C3%BA." target="_blank" rel="noopener">quiero arrancar</a>
+</div></section>
+
+<!-- CONDICIONES -->
+<section><div class="wrap">
+  <div class="eyebrow">condiciones</div>
+  <div class="grid g2">
+    <div class="conds">
+      <h4>qué no incluye</h4>
+      <ul>
+        <li>Compra de insumos, equipo de cocina o utensilios</li>
+        <li>Diseño gráfico de la carta (se puede sumar aparte)</li>
+        <li>Trámites legales o sanitarios</li>
+        <li>Viáticos y traslados a Atizapán</li>
+      </ul>
+    </div>
+    <div class="conds">
+      <h4>qué necesitamos de ti</h4>
+      <ul>
+        <li>La lista final de platillos y bebidas a desarrollar</li>
+        <li>Acceso a tu cocina para pruebas finales y capacitación</li>
+        <li>Insumos para las rondas de prueba de recetas</li>
+        <li>Una persona de contacto que nos apoye</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.82rem;color:var(--gris);margin-top:22px">Propuesta hecha a la medida para OVOLI Family Club. Vigencia: 30 días naturales a partir del envío. Elige el paquete según el número de ítems de tu menú; la fotografía va incluida en los tres. Precios en pesos mexicanos, más IVA.</p>
+</div></section>
+
+<div class="foot"><div class="wrap">
+  <span class="logo" style="color:#fff">gaastro<span class="dot" style="color:var(--amarillo)">·</span></span>
+  <p style="margin:10px 0 6px">creación y desarrollo de menú · propuesta para ovoli family club</p>
+  <p><a class="ig" href="https://instagram.com/gaastro.mx" target="_blank" rel="noopener">@gaastro.mx</a></p>
+</div></div>
+
+</body>
+</html>
