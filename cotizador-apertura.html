@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cotizador de Apertura — Gaastro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--negro:#101114;--azul:#132BD6;--amarillo:#F3CA40;--blanco:#fff;--gris:#6b7280;--gris-cl:rgba(255,255,255,.06);--radio:14px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:var(--negro);color:var(--blanco);min-height:100dvh;display:flex;flex-direction:column}
+
+/* HEADER */
+.hdr{padding:20px 32px;display:flex;align-items:center;gap:24px;border-bottom:1px solid rgba(255,255,255,.07)}
+.logo{font-size:1.05rem;font-weight:900;letter-spacing:.04em;white-space:nowrap}
+.logo span{color:var(--amarillo)}
+.prog-wrap{flex:1;max-width:360px}
+.prog-bar{height:4px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}
+.prog-fill{height:100%;background:var(--amarillo);border-radius:99px;transition:width .45s ease}
+.prog-info{display:flex;justify-content:space-between;margin-top:5px}
+.prog-label,.prog-step{font-size:.7rem;color:var(--gris)}
+.prog-step{color:rgba(255,255,255,.35)}
+
+/* STAGE */
+.stage{flex:1;display:flex;justify-content:center;padding:36px 20px 56px}
+.card{width:100%;max-width:680px}
+
+/* INTRO */
+#intro{animation:fadeUp .4s ease both}
+.intro-eye{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amarillo);margin-bottom:12px}
+.intro-title{font-size:clamp(2rem,5.5vw,2.8rem);font-weight:900;line-height:1.15;margin-bottom:14px}
+.intro-title span{color:var(--amarillo)}
+.intro-sub{font-size:.97rem;color:rgba(255,255,255,.55);line-height:1.72;margin-bottom:30px;max-width:500px}
+.intro-pills{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.pill{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:6px}
+.pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amarillo);display:block}
+.btn-start{display:inline-flex;align-items:center;gap:10px;padding:15px 34px;border-radius:var(--radio);background:var(--amarillo);color:var(--negro);font-size:.97rem;font-weight:800;border:none;cursor:pointer;transition:opacity .15s,transform .12s}
+.btn-start:hover{opacity:.88;transform:translateY(-1px)}
+
+/* BLOCKS */
+.block-screen{display:none;animation:fadeUp .35s ease both}
+.block-screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.blk-eye{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amarillo);margin-bottom:8px}
+.blk-title{font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:800;line-height:1.3;margin-bottom:28px}
+
+/* QUESTIONS */
+.questions{display:flex;flex-direction:column;gap:28px}
+.qitem{display:flex;flex-direction:column;gap:10px}
+.qlabel{font-size:.88rem;font-weight:700;color:rgba(255,255,255,.85);line-height:1.4}
+.qlabel .req{color:var(--amarillo);margin-left:2px}
+
+/* radio / checkbox options */
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts.inline{flex-direction:row;flex-wrap:wrap;gap:8px}
+.opt-btn{
+  display:flex;align-items:center;gap:11px;
+  padding:12px 15px;border-radius:10px;
+  border:1.5px solid rgba(255,255,255,.1);
+  background:var(--gris-cl);cursor:pointer;
+  transition:border-color .15s,background .15s;
+  user-select:none;font-size:.88rem;font-weight:500;
+}
+.opt-btn:hover{border-color:rgba(255,255,255,.25)}
+.opt-btn.selected{border-color:var(--amarillo);background:rgba(243,202,64,.08)}
+.opt-btn input{display:none}
+.opt-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.25);flex-shrink:0;transition:border-color .15s,background .15s;display:flex;align-items:center;justify-content:center}
+.opt-btn.selected .opt-dot{border-color:var(--amarillo);background:var(--amarillo)}
+.opt-dot::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--negro);display:none}
+.opt-btn.selected .opt-dot::after{display:block}
+/* checkbox */
+.opt-box{width:16px;height:16px;border-radius:4px;border:2px solid rgba(255,255,255,.25);flex-shrink:0;transition:border-color .15s,background .15s;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;color:var(--negro)}
+.opt-btn.selected .opt-box{border-color:var(--amarillo);background:var(--amarillo)}
+
+/* text / number / textarea inputs */
+.qinput{
+  padding:13px 16px;border-radius:10px;
+  border:1.5px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  color:var(--blanco);font-size:.93rem;font-family:'Inter',sans-serif;
+  outline:none;transition:border-color .18s;width:100%;
+}
+.qinput:focus{border-color:var(--azul)}
+.qinput::placeholder{color:rgba(255,255,255,.22)}
+.qinput-num{max-width:160px}
+textarea.qinput{resize:vertical;min-height:88px;line-height:1.6}
+
+/* NAV */
+.blk-nav{display:flex;align-items:center;justify-content:space-between;margin-top:36px;gap:12px}
+.btn-back{font-size:.85rem;font-weight:600;color:var(--gris);background:none;border:none;cursor:pointer;padding:8px 0;transition:color .15s}
+.btn-back:hover{color:var(--blanco)}
+.btn-next{padding:14px 32px;border-radius:var(--radio);background:var(--azul);color:var(--blanco);font-size:.93rem;font-weight:700;border:none;cursor:pointer;transition:opacity .15s,transform .12s;margin-left:auto}
+.btn-next:hover:not(:disabled){opacity:.88;transform:translateY(-1px)}
+.btn-next:disabled{opacity:.35;cursor:not-allowed}
+
+/* CONTACT */
+#contactStep{display:none;animation:fadeUp .35s ease both}
+.ct-title{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;line-height:1.25;margin-bottom:10px}
+.ct-title span{color:var(--amarillo)}
+.ct-sub{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:26px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fgroup{display:flex;flex-direction:column;gap:6px}
+.fgroup label{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.07em}
+
+/* RESULT / GRACIAS */
+#gracias{display:none;animation:fadeUp .4s ease both}
+.gra-eye{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--amarillo);margin-bottom:12px}
+.gra-title{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1.15;margin-bottom:14px}
+.gra-title span{color:var(--amarillo)}
+.gra-sub{font-size:.97rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;max-width:500px}
+.res-cta{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:var(--radio);background:var(--amarillo);color:var(--negro);font-size:.97rem;font-weight:800;text-decoration:none;transition:opacity .15s,transform .12s}
+.res-cta:hover{opacity:.88;transform:translateY(-1px)}
+.btn-restart{display:block;margin-top:14px;font-size:.8rem;color:var(--gris);background:none;border:none;cursor:pointer;text-decoration:underline}
+.btn-restart:hover{color:var(--blanco)}
+
+@media(max-width:560px){
+  .hdr{padding:14px 18px}.prog-wrap{max-width:200px}
+  .frow{grid-template-columns:1fr}
+  .opts.inline{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="logo">g<span>·</span>aastro</div>
+  <div class="prog-wrap" id="progWrap" style="display:none">
+    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+    <div class="prog-info">
+      <span class="prog-label" id="progLabel">Bloque 1 de 7</span>
+      <span class="prog-step" id="progStep">El concepto</span>
+    </div>
+  </div>
+</header>
+
+<main class="stage">
+<div class="card">
+
+<!-- INTRO -->
+<div id="intro">
+  <p class="intro-eye">cotización · consultoría de apertura</p>
+  <h1 class="intro-title">cuéntanos sobre<br><span>tu restaurante.</span></h1>
+  <p class="intro-sub">Este cuestionario nos permite entender el tamaño y complejidad de tu proyecto para prepararte una propuesta a la medida.</p>
+  <div class="intro-pills">
+    <span class="pill">33 preguntas</span>
+    <span class="pill">7 bloques</span>
+    <span class="pill">menos de 5 minutos</span>
+  </div>
+  <button class="btn-start" onclick="startForm()">comenzar →</button>
+</div>
+
+<!-- BLOCKS -->
+<div id="blocksArea"></div>
+
+<!-- CONTACT -->
+<div id="contactStep">
+  <p class="blk-eye">último paso</p>
+  <h2 class="ct-title">¿cómo te<br><span>contactamos?</span></h2>
+  <p class="ct-sub">Déjanos tus datos para enviarte la propuesta y profundizar en tu proyecto.</p>
+  <form id="netlifyForm" name="cotizador-apertura" netlify data-netlify="true" onsubmit="return false;">
+    <input type="hidden" name="form-name" value="cotizador-apertura">
+    <!-- hidden answer fields filled by JS -->
+    <input type="hidden" name="respuestas" id="hRespuestas">
+    <div class="questions" style="gap:14px">
+      <div class="frow">
+        <div class="fgroup">
+          <label for="cNombre">Tu nombre *</label>
+          <input class="qinput" type="text" id="cNombre" name="nombre" placeholder="Ana García" required autocomplete="given-name">
+        </div>
+        <div class="fgroup">
+          <label for="cRestaurante">Nombre del restaurante</label>
+          <input class="qinput" type="text" id="cRestaurante" name="restaurante" placeholder="El nombre o el concepto">
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fgroup">
+          <label for="cTel">WhatsApp *</label>
+          <input class="qinput" type="tel" id="cTel" name="telefono" placeholder="+52 33 1234 5678" required autocomplete="tel">
+        </div>
+        <div class="fgroup">
+          <label for="cEmail">Email</label>
+          <input class="qinput" type="email" id="cEmail" name="email" placeholder="ana@mirestaurante.mx" autocomplete="email">
+        </div>
+      </div>
+    </div>
+    <div class="blk-nav" style="margin-top:28px">
+      <button type="button" class="btn-back" onclick="backFromContact()">← atrás</button>
+      <button type="button" class="btn-next" id="btnSubmit" onclick="submitForm()">ver mi propuesta →</button>
+    </div>
+  </form>
+</div>
+
+<!-- GRACIAS -->
+<div id="gracias">
+  <p class="gra-eye">¡listo!</p>
+  <h2 class="gra-title">recibimos tu<br><span>información.</span></h2>
+  <p class="gra-sub">El equipo de Gaastro revisará tu proyecto y te contactará en menos de 24 horas con una propuesta personalizada.</p>
+  <a class="res-cta" id="waLink" href="#" target="_blank" rel="noopener">hablar con el equipo →</a>
+  <button class="btn-restart" onclick="restart()">llenar de nuevo</button>
+</div>
+
+</div>
+</main>
+
+<script>
+// ── DATA ─────────────────────────────────────────────────────────────────
+var blocks = [
+  {
+    eye:"bloque 1 de 7", title:"El concepto",
+    qs:[
+      {id:"q1",  label:"¿Cómo se llama (o se llamará) el restaurante?", type:"text", ph:"Nombre o idea de nombre", req:true},
+      {id:"q2",  label:"¿Qué tipo de restaurante es?", type:"radio", req:true, opts:[
+        "Café / bakery","Fast casual","Casual dining","Bar / cantina","Sports bar","Fine dining","Cocina temática o étnica","Food truck / dark kitchen","Otro"
+      ]},
+      {id:"q3",  label:"Descríbelo en una frase — ¿qué experiencia quieren dar?", type:"textarea", ph:"Ej: una taquería moderna con ambiente industrial para jóvenes profesionales", req:true},
+      {id:"q4",  label:"¿Cuál será el ticket promedio por persona?", type:"radio", req:true, opts:[
+        "Menos de $150 MXN","$150 — $300 MXN","$300 — $500 MXN","Más de $500 MXN"
+      ]},
+      {id:"q5",  label:"¿A quién va dirigido el restaurante?", type:"check", req:true, opts:[
+        "Familias","Jóvenes / universitarios","Ejecutivos / corporativo","Turistas","Público general"
+      ]},
+      {id:"q6",  label:"¿Qué tan definido está el concepto hoy?", type:"radio", req:true, opts:[
+        "Nombre y concepto 100% definidos","Nombre definido, concepto en desarrollo","Todo está en desarrollo"
+      ]}
+    ]
+  },
+  {
+    eye:"bloque 2 de 7", title:"El menú",
+    qs:[
+      {id:"q7",  label:"¿Cuántos platillos tendrá el menú (aproximado)?", type:"number", ph:"Ej: 35", req:true},
+      {id:"q8",  label:"¿Cuántas bebidas tendrá el menú (aproximado)?", type:"number", ph:"Ej: 15", req:true},
+      {id:"q9",  label:"¿Incluirá bar o coctelería?", type:"radio", req:true, opts:["Sí","No","Está en evaluación"]},
+      {id:"q10", label:"¿Ya tienen chef o cocinero definido?", type:"radio", req:true, opts:[
+        "Sí, ya lo tenemos","Estamos en búsqueda","Todavía no"
+      ]},
+      {id:"q11", label:"¿Quién desarrollará el menú?", type:"radio", req:true, opts:[
+        "El chef lidera el desarrollo","Gaastro lo desarrolla desde cero","Trabajo conjunto entre el chef y Gaastro"
+      ]},
+      {id:"q12", label:"¿Tienen recetas o base de menú, o parten de cero?", type:"radio", req:true, opts:[
+        "Tenemos recetas y base definida","Tenemos algunas ideas pero nada documentado","Partimos completamente de cero"
+      ]}
+    ]
+  },
+  {
+    eye:"bloque 3 de 7", title:"El local",
+    qs:[
+      {id:"q13", label:"¿Ya tienen local?", type:"radio", req:true, opts:[
+        "Sí, ya firmamos contrato","Estamos en búsqueda","Todavía no"
+      ]},
+      {id:"q14", label:"¿El local ya existe o será construcción nueva?", type:"radio", req:true, opts:[
+        "Ya existe, lo vamos a adaptar","Será construcción nueva","Todavía no lo tenemos"
+      ]},
+      {id:"q15", label:"¿Cuántos metros cuadrados tendrá (aproximado)?", type:"radio", req:true, opts:[
+        "Menos de 50 m²","50 — 100 m²","100 — 200 m²","Más de 200 m²","No lo sé aún"
+      ]},
+      {id:"q16", label:"¿Cuántos comensales podrá atender al mismo tiempo?", type:"radio", req:true, opts:[
+        "Menos de 30","30 — 60","60 — 100","Más de 100"
+      ]},
+      {id:"q17", label:"¿Tendrá terraza o área exterior?", type:"radio", req:true, opts:["Sí","No","Está en evaluación"]},
+      {id:"q18", label:"¿Ofrecerán servicio a domicilio o para llevar?", type:"radio", req:true, opts:["Sí","No","Está en evaluación"]}
+    ]
+  },
+  {
+    eye:"bloque 4 de 7", title:"La operación",
+    qs:[
+      {id:"q19", label:"¿Cuántos días a la semana operarán?", type:"radio", req:true, opts:["5 días","6 días","7 días","Variable / por definir"]},
+      {id:"q20", label:"¿En qué horario operarán?", type:"radio", req:true, opts:[
+        "Solo desayunos","Desayunos y comidas","Solo comidas","Comidas y cenas","Todo el día (desayuno, comida y cena)","Solo cenas","Otro"
+      ]},
+      {id:"q21", label:"¿Planean tener más de una sucursal desde el inicio?", type:"radio", req:true, opts:[
+        "Sí, abrimos varias al mismo tiempo","No, solo una por ahora (pero queremos escalar)","Solo una sucursal"
+      ]},
+      {id:"q22", label:"¿Qué servicios ofrecerán? (selecciona todos los que apliquen)", type:"check", req:true, opts:[
+        "Servicio en mesa","Barra / mostrador","Domicilio / delivery","Para llevar","Eventos privados","Catering"
+      ]}
+    ]
+  },
+  {
+    eye:"bloque 5 de 7", title:"El equipo",
+    qs:[
+      {id:"q23", label:"¿Cuántas personas trabajarán en el restaurante en total?", type:"radio", req:true, opts:[
+        "1 — 5 personas","6 — 10 personas","11 — 20 personas","Más de 20 personas","No lo sé aún"
+      ]},
+      {id:"q24", label:"¿Qué parte del equipo ya tienen definida?", type:"check", req:true, opts:[
+        "Solo los socios o dueños","Tenemos chef / cocinero","Tenemos personal de sala","Tenemos administrador","Nadie más allá de los socios","Prácticamente todo el equipo"
+      ]},
+      {id:"q25", label:"¿Quién administrará el restaurante en el día a día?", type:"radio", req:true, opts:[
+        "Un socio o dueño directamente","Un administrador o gerente contratado","Todavía no está definido"
+      ]},
+      {id:"q26", label:"¿Tienen experiencia previa en la industria restaurantera?", type:"radio", req:true, opts:[
+        "Sí, tenemos experiencia comprobada en restaurantes","Algo de experiencia, pero no en gestión formal","Es nuestra primera vez en la industria"
+      ]}
+    ]
+  },
+  {
+    eye:"bloque 6 de 7", title:"Inversión y tiempos",
+    qs:[
+      {id:"q27", label:"¿Cuentan con la inversión para el proyecto?", type:"radio", req:true, opts:[
+        "Sí, ya contamos con la inversión completa","Sí, estamos en proceso de conseguirla","Todavía no, estamos evaluando opciones"
+      ]},
+      {id:"q28", label:"¿Cuál es el rango de inversión total del proyecto?", type:"radio", req:true, opts:[
+        "Menos de $500,000 MXN","$500,000 — $1,000,000 MXN","$1,000,000 — $3,000,000 MXN","Más de $3,000,000 MXN","Prefiero no decirlo"
+      ]},
+      {id:"q29", label:"¿Cuándo planean abrir el restaurante?", type:"radio", req:true, opts:[
+        "Menos de 3 meses","3 — 6 meses","6 — 12 meses","Más de 1 año","Todavía no está definido"
+      ]},
+      {id:"q30", label:"¿Tienen una fecha límite o compromiso fijo de apertura?", type:"radio", req:true, opts:[
+        "Sí, hay una fecha fija e inamovible","Hay una fecha tentativa pero puede moverse","No hay fecha definida, vamos a nuestro ritmo"
+      ]}
+    ]
+  },
+  {
+    eye:"bloque 7 de 7", title:"Extras y ciudad",
+    qs:[
+      {id:"q31", label:"¿En qué ciudad será el restaurante?", type:"text", ph:"Ej: Guadalajara, Monterrey, Mérida…", req:true},
+      {id:"q32", label:"¿Qué servicios adicionales les interesaría incluir?", type:"check", req:false, opts:[
+        "Branding (naming, logo, identidad visual)","Estrategia de marketing y posicionamiento","Fotografía del menú","POS / ERP (g·OS)"
+      ]},
+      {id:"q33", label:"¿Algo más que quieran compartir sobre el proyecto?", type:"textarea", ph:"Cuéntanos cualquier detalle que consideres relevante…", req:false}
+    ]
+  }
+];
+
+// ── STATE ────────────────────────────────────────────────────────────────
+var answers = {};
+var currentBlock = 0;
+
+// ── START ────────────────────────────────────────────────────────────────
+function startForm(){
+  document.getElementById('intro').style.display='none';
+  document.getElementById('progWrap').style.display='flex';
+  renderBlock(0);
+}
+
+// ── RENDER ───────────────────────────────────────────────────────────────
+function renderBlock(idx){
+  var area=document.getElementById('blocksArea');
+  area.innerHTML='';
+  area.style.display='block';
+  var b=blocks[idx];
+  var div=document.createElement('div');
+  div.className='block-screen active';
+
+  var qsHtml=b.qs.map(function(q){return renderQ(q,idx);}).join('');
+  var backBtn=idx>0?'<button type="button" class="btn-back" onclick="goBack()">← atrás</button>':'<span></span>';
+  var isLast=idx===blocks.length-1;
+  div.innerHTML=
+    '<p class="blk-eye">'+b.eye+'</p>'+
+    '<h2 class="blk-title">'+b.title+'</h2>'+
+    '<div class="questions">'+qsHtml+'</div>'+
+    '<div class="blk-nav">'+backBtn+
+      '<button type="button" class="btn-next" id="btnNext" onclick="nextBlock('+idx+')" disabled>'+
+      (isLast?'continuar →':'siguiente →')+'</button></div>';
+  area.appendChild(div);
+  updateProgress(idx);
+  checkBlockValid(idx);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderQ(q,bIdx){
+  var labelHtml='<span class="qlabel">'+q.label+(q.req?'<span class="req">*</span>':'')+'</span>';
+  var inputHtml='';
+  if(q.type==='text'||q.type==='number'){
+    var val=answers[q.id]||'';
+    inputHtml='<input class="qinput'+(q.type==='number'?' qinput-num':'')+'" type="'+(q.type==='number'?'number':'text')+
+      '" id="'+q.id+'" name="'+q.id+'" placeholder="'+(q.ph||'')+'" value="'+String(val).replace(/"/g,'&quot;')+
+      '" oninput="onInput(\''+q.id+'\',this.value,'+bIdx+')" min="0" max="999">';
+  } else if(q.type==='textarea'){
+    var tval=answers[q.id]||'';
+    inputHtml='<textarea class="qinput" id="'+q.id+'" name="'+q.id+'" placeholder="'+(q.ph||'')+
+      '" oninput="onInput(\''+q.id+'\',this.value,'+bIdx+')">'+tval+'</textarea>';
+  } else if(q.type==='radio'){
+    var optsHtml=q.opts.map(function(o){
+      var sel=answers[q.id]===o;
+      return '<label class="opt-btn'+(sel?' selected':'')+'">'+
+        '<input type="radio" name="'+q.id+'" value="'+o+'" '+(sel?'checked':'')+
+        ' onchange="onRadio(\''+q.id+'\',\''+o.replace(/'/g,"\\'")+'\',' +bIdx+')">'+
+        '<span class="opt-dot"></span><span>'+o+'</span></label>';
+    }).join('');
+    inputHtml='<div class="opts">'+optsHtml+'</div>';
+  } else if(q.type==='check'){
+    var arr=answers[q.id]||[];
+    var optsHtml=q.opts.map(function(o){
+      var sel=arr.indexOf(o)!==-1;
+      return '<label class="opt-btn'+(sel?' selected':'')+'">'+
+        '<input type="checkbox" name="'+q.id+'" value="'+o+'" '+(sel?'checked':'')+
+        ' onchange="onCheck(\''+q.id+'\',\''+o.replace(/'/g,"\\'")+'\',' +bIdx+')">'+
+        '<span class="opt-box">'+(sel?'✓':'')+'</span><span>'+o+'</span></label>';
+    }).join('');
+    inputHtml='<div class="opts">'+optsHtml+'</div>';
+  }
+  return '<div class="qitem">'+labelHtml+inputHtml+'</div>';
+}
+
+// ── EVENTS ───────────────────────────────────────────────────────────────
+function onInput(qid,val,bIdx){answers[qid]=val;checkBlockValid(bIdx);}
+function onRadio(qid,val,bIdx){
+  answers[qid]=val;
+  document.querySelectorAll('[name="'+qid+'"]').forEach(function(el){
+    el.closest('.opt-btn').classList.toggle('selected',el.value===val);
+  });
+  checkBlockValid(bIdx);
+}
+function onCheck(qid,val,bIdx){
+  if(!answers[qid])answers[qid]=[];
+  var arr=answers[qid];
+  var pos=arr.indexOf(val);
+  if(pos===-1)arr.push(val); else arr.splice(pos,1);
+  var el=document.querySelector('[name="'+qid+'"][value="'+val+'"]');
+  if(el){
+    var btn=el.closest('.opt-btn');
+    btn.classList.toggle('selected',arr.indexOf(val)!==-1);
+    var box=btn.querySelector('.opt-box');
+    if(box)box.textContent=arr.indexOf(val)!==-1?'✓':'';
+  }
+  checkBlockValid(bIdx);
+}
+
+function checkBlockValid(bIdx){
+  var b=blocks[bIdx];
+  var valid=b.qs.every(function(q){
+    if(!q.req)return true;
+    var a=answers[q.id];
+    if(q.type==='text'||q.type==='textarea'||q.type==='number')return a&&String(a).trim()!=='';
+    if(q.type==='radio')return!!a;
+    if(q.type==='check')return Array.isArray(a)&&a.length>0;
+    return true;
+  });
+  var btn=document.getElementById('btnNext');
+  if(btn)btn.disabled=!valid;
+}
+
+// ── NAVIGATION ────────────────────────────────────────────────────────────
+function nextBlock(idx){
+  if(!blockValid(idx))return;
+  if(idx<blocks.length-1){currentBlock=idx+1;renderBlock(currentBlock);}
+  else{showContact();}
+}
+function goBack(){
+  if(currentBlock>0){currentBlock--;renderBlock(currentBlock);}
+}
+function blockValid(idx){
+  var b=blocks[idx];
+  return b.qs.every(function(q){
+    if(!q.req)return true;
+    var a=answers[q.id];
+    if(q.type==='text'||q.type==='textarea'||q.type==='number')return a&&String(a).trim()!=='';
+    if(q.type==='radio')return!!a;
+    if(q.type==='check')return Array.isArray(a)&&a.length>0;
+    return true;
+  });
+}
+
+function updateProgress(idx){
+  var pct=Math.round(((idx+1)/blocks.length)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progLabel').textContent='Bloque '+(idx+1)+' de '+blocks.length;
+  document.getElementById('progStep').textContent=blocks[idx].title;
+}
+
+// ── CONTACT ──────────────────────────────────────────────────────────────
+function showContact(){
+  document.getElementById('blocksArea').style.display='none';
+  document.getElementById('progWrap').style.display='none';
+  document.getElementById('contactStep').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function backFromContact(){
+  document.getElementById('contactStep').style.display='none';
+  document.getElementById('progWrap').style.display='flex';
+  currentBlock=blocks.length-1;
+  renderBlock(currentBlock);
+}
+
+// ── SUBMIT ───────────────────────────────────────────────────────────────
+function buildSummary(){
+  var lines=[];
+  blocks.forEach(function(b){
+    lines.push('=== '+b.title.toUpperCase()+' ===');
+    b.qs.forEach(function(q){
+      var a=answers[q.id];
+      if(!a||(Array.isArray(a)&&a.length===0))return;
+      var val=Array.isArray(a)?a.join(', '):a;
+      lines.push(q.label.replace(/<[^>]*>/g,'')+': '+val);
+    });
+  });
+  return lines.join('\n');
+}
+
+function submitForm(){
+  var nombre=(document.getElementById('cNombre').value||'').trim();
+  var tel=(document.getElementById('cTel').value||'').trim();
+  if(!nombre||!tel){
+    document.getElementById('cNombre').focus();
+    return;
+  }
+  var summary=buildSummary();
+  document.getElementById('hRespuestas').value=summary;
+
+  // Build all hidden fields dynamically and submit
+  var formData={'form-name':'cotizador-apertura','nombre':nombre,
+    'restaurante':(document.getElementById('cRestaurante').value||'').trim(),
+    'telefono':tel,'email':(document.getElementById('cEmail').value||'').trim(),
+    'respuestas':summary};
+
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams(formData).toString()
+  }).catch(function(){});
+
+  // Build WA message
+  var restaurante=formData.restaurante||answers['q1']||'';
+  var tipo=answers['q2']||'';
+  var ciudad=answers['q31']||'';
+  var platillos=answers['q7']||'';
+  var inversion=answers['q28']||'';
+  var apertura=answers['q29']||'';
+  var extras=(answers['q32']||[]).join(', ');
+
+  var msg='Hola,%20completé%20el%20cuestionario%20de%20apertura%20de%20Gaastro.%0A%0A'+
+    encodeURIComponent('Restaurante: '+restaurante)+
+    (tipo?'%0A'+encodeURIComponent('Tipo: '+tipo):'')+
+    (ciudad?'%0A'+encodeURIComponent('Ciudad: '+ciudad):'')+
+    (platillos?'%0A'+encodeURIComponent('Platillos: ~'+platillos):'')+
+    (inversion?'%0A'+encodeURIComponent('Inversión: '+inversion):'')+
+    (apertura?'%0A'+encodeURIComponent('Apertura: '+apertura):'')+
+    (extras?'%0A'+encodeURIComponent('Extras: '+extras):'')+
+    '%0A%0A'+encodeURIComponent('Nombre: '+nombre)+
+    (tel?'%0A'+encodeURIComponent('Tel: '+tel):'');
+
+  document.getElementById('waLink').href='https://wa.me/524421374663?text='+msg;
+  document.getElementById('contactStep').style.display='none';
+  document.getElementById('gracias').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function restart(){
+  answers={};currentBlock=0;
+  document.getElementById('gracias').style.display='none';
+  document.getElementById('intro').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
