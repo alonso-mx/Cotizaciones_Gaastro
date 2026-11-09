@@ -185,39 +185,44 @@
     <p class="q-eyebrow">último paso</p>
     <h2 class="contact-title">¿a dónde te enviamos<br><span>tu diagnóstico?</span></h2>
     <p class="contact-sub">Déjanos tus datos para que nuestro equipo pueda contactarte y profundizar en tu caso.</p>
-    <div class="fields">
-      <div class="field-row">
-        <div class="field">
-          <label>Tu nombre</label>
-          <input type="text" id="cNombre" placeholder="Ana García" autocomplete="given-name">
+    <form id="contactForm" name="diagnostico-gaastro" netlify data-netlify="true" onsubmit="return false;">
+      <input type="hidden" name="form-name" value="diagnostico-gaastro">
+      <input type="hidden" name="resultado" id="hResultado" value="">
+      <input type="hidden" name="puntos" id="hPuntos" value="">
+      <div class="fields">
+        <div class="field-row">
+          <div class="field">
+            <label for="cNombre">Tu nombre</label>
+            <input type="text" id="cNombre" name="nombre" placeholder="Ana García" autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="cRestaurante">Restaurante</label>
+            <input type="text" id="cRestaurante" name="restaurante" placeholder="Nombre del restaurante">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="cTel">WhatsApp / teléfono</label>
+            <input type="tel" id="cTel" name="telefono" placeholder="+52 33 1234 5678" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="cEmail">Email</label>
+            <input type="email" id="cEmail" name="email" placeholder="ana@mirestaurante.mx" autocomplete="email">
+          </div>
         </div>
         <div class="field">
-          <label>Restaurante</label>
-          <input type="text" id="cRestaurante" placeholder="Nombre del restaurante">
+          <label for="cCiudad">Ciudad</label>
+          <input type="text" id="cCiudad" name="ciudad" placeholder="Guadalajara, Jalisco">
         </div>
       </div>
-      <div class="field-row">
-        <div class="field">
-          <label>WhatsApp / teléfono</label>
-          <input type="tel" id="cTel" placeholder="+52 33 1234 5678" autocomplete="tel">
-        </div>
-        <div class="field">
-          <label>Email</label>
-          <input type="email" id="cEmail" placeholder="ana@mirestaurante.mx" autocomplete="email">
+      <div class="contact-nav">
+        <button type="button" class="btn-back" onclick="backToQuiz()">← atrás</button>
+        <div style="display:flex;align-items:center;gap:16px;margin-left:auto">
+          <button type="button" class="contact-skip" onclick="showResult(true)">saltar este paso</button>
+          <button type="button" class="btn-result" id="btnResult" onclick="showResult(false)">ver mi resultado →</button>
         </div>
       </div>
-      <div class="field">
-        <label>Ciudad</label>
-        <input type="text" id="cCiudad" placeholder="Guadalajara, Jalisco">
-      </div>
-    </div>
-    <div class="contact-nav">
-      <button class="btn-back" onclick="backToQuiz()">← atrás</button>
-      <div style="display:flex;align-items:center;gap:16px;margin-left:auto">
-        <button class="contact-skip" onclick="showResult(true)">saltar este paso</button>
-        <button class="btn-result" id="btnResult" onclick="showResult(false)">ver mi resultado →</button>
-      </div>
-    </div>
+    </form>
   </div>
 
   <!-- RESULT -->
@@ -411,31 +416,64 @@ function backToQuiz(){
   renderQuestion(current);
 }
 
-function showResult(skip){
+function calcTotals(){
   var totals={A:0,I:0,D:0,E:0};
   questions.forEach(function(q,qi){
     if(answers[qi]===undefined)return;
     var sc=q.opts[answers[qi]].score;
     Object.keys(sc).forEach(function(k){totals[k]+=sc[k];});
   });
+  return totals;
+}
+
+function submitToNetlify(formData){
+  return fetch('/',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams(formData).toString()
+  }).catch(function(){/* silent fail — don't block result */});
+}
+
+function showResult(skip){
+  var totals=calcTotals();
   var winner=Object.keys(totals).reduce(function(a,b){return totals[a]>=totals[b]?a:b;});
   var svc=services[winner];
 
-  // Build WA message with contact info
-  var nombre=skip?'':encodeURIComponent((document.getElementById('cNombre').value||'').trim());
-  var restaurante=skip?'':encodeURIComponent((document.getElementById('cRestaurante').value||'').trim());
-  var tel=skip?'':encodeURIComponent((document.getElementById('cTel').value||'').trim());
-  var email=skip?'':encodeURIComponent((document.getElementById('cEmail').value||'').trim());
-  var ciudad=skip?'':encodeURIComponent((document.getElementById('cCiudad').value||'').trim());
+  var nombre=(document.getElementById('cNombre').value||'').trim();
+  var restaurante=(document.getElementById('cRestaurante').value||'').trim();
+  var tel=(document.getElementById('cTel').value||'').trim();
+  var email=(document.getElementById('cEmail').value||'').trim();
+  var ciudad=(document.getElementById('cCiudad').value||'').trim();
+
+  // Set hidden fields and submit to Netlify (only when user provided data)
+  if(!skip && (nombre||tel||email)){
+    document.getElementById('hResultado').value=labels[winner];
+    document.getElementById('hPuntos').value=
+      Object.keys(totals).map(function(k){return labels[k]+': '+totals[k]+'pts';}).join(' | ');
+    submitToNetlify({
+      'form-name':'diagnostico-gaastro',
+      'nombre':nombre,'restaurante':restaurante,
+      'telefono':tel,'email':email,'ciudad':ciudad,
+      'resultado':labels[winner],
+      'puntos':document.getElementById('hPuntos').value
+    });
+  }
+
+  // Build WA prefilled message
+  var nombreEnc=encodeURIComponent(nombre);
+  var restEnc=encodeURIComponent(restaurante);
+  var ciudadEnc=encodeURIComponent(ciudad);
+  var telEnc=encodeURIComponent(tel);
+  var emailEnc=encodeURIComponent(email);
 
   var extra='';
   if(!skip){
     var parts=[];
-    if(nombre)parts.push('Nombre:%20'+nombre);
-    if(restaurante)parts.push('Restaurante:%20'+restaurante);
-    if(ciudad)parts.push('Ciudad:%20'+ciudad);
-    if(tel)parts.push('Tel:%20'+tel);
-    if(email)parts.push('Email:%20'+email);
+    if(nombre)parts.push('Nombre:%20'+nombreEnc);
+    if(restaurante)parts.push('Restaurante:%20'+restEnc);
+    if(ciudad)parts.push('Ciudad:%20'+ciudadEnc);
+    if(tel)parts.push('Tel:%20'+telEnc);
+    if(email)parts.push('Email:%20'+emailEnc);
     if(parts.length)extra='%0A'+parts.join('%0A');
   }
 
