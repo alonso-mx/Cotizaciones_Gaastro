@@ -55,6 +55,20 @@
   .opt-text{font-size:.93rem;font-weight:500;line-height:1.4}
   .opt-sub{font-size:.78rem;color:var(--gris);margin-top:3px}
 
+  .txt-answer{
+    width:100%;padding:16px 20px;border-radius:var(--radio);
+    border:1.5px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.04);
+    color:var(--blanco);font-size:1.1rem;font-family:'Inter',sans-serif;font-weight:500;
+    outline:none;transition:border-color .18s;margin-top:4px;
+  }
+  .txt-answer:focus{border-color:var(--azul)}
+  .txt-answer::placeholder{color:rgba(255,255,255,.22)}
+
+  .q-hint{font-size:.78rem;font-weight:600;color:var(--amarillo);margin-bottom:16px;letter-spacing:.02em}
+  .opt-check{width:22px;height:22px;border-radius:6px;border:1.5px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:var(--negro);flex-shrink:0;margin-left:auto;transition:background .15s,border-color .15s}
+  .opt.selected .opt-check{background:var(--amarillo);border-color:var(--amarillo)}
+
   .q-nav{display:flex;align-items:center;justify-content:space-between;margin-top:26px;gap:12px}
   .btn-back{font-size:.85rem;font-weight:600;color:var(--gris);background:none;border:none;cursor:pointer;padding:8px 0;transition:color .15s}
   .btn-back:hover{color:var(--blanco)}
@@ -217,10 +231,7 @@
       </div>
       <div class="contact-nav">
         <button type="button" class="btn-back" onclick="backToQuiz()">← atrás</button>
-        <div style="display:flex;align-items:center;gap:16px;margin-left:auto">
-          <button type="button" class="contact-skip" onclick="showResult(true)">saltar este paso</button>
-          <button type="button" class="btn-result" id="btnResult" onclick="showResult(false)">ver mi resultado →</button>
-        </div>
+        <button type="button" class="btn-result" id="btnResult" onclick="showResult(false)">ver mi resultado →</button>
       </div>
     </form>
   </div>
@@ -246,6 +257,8 @@ var questions = [
   {
     eye:"pregunta 2 de 7",
     title:"¿Cuál describe mejor tu situación?",
+    hint:"puedes seleccionar más de una",
+    multi:true,
     opts:[
       {icon:"💰",text:"No sé cuánto me cuesta cada platillo",sub:"Pongo precios sin saber si gano o pierdo",score:{I:4}},
       {icon:"🚀",text:"Quiero abrir un restaurante profesionalmente",sub:"Con todo estructurado desde el inicio",score:{A:4}},
@@ -256,13 +269,9 @@ var questions = [
   },
   {
     eye:"pregunta 3 de 7",
-    title:"¿Dónde está (o estará) tu restaurante?",
-    opts:[
-      {icon:"🌵",text:"Guadalajara o área metropolitana",score:{I:2,A:2}},
-      {icon:"🏔️",text:"Monterrey o CDMX",score:{I:2,A:2}},
-      {icon:"📍",text:"Otra ciudad de México",sub:"Fuera de las principales zonas metropolitanas",score:{D:3,E:1}},
-      {icon:"🗺️",text:"Aún no lo tengo definido",score:{A:2,D:1}}
-    ]
+    title:"¿En qué ciudad está tu restaurante?",
+    type:"text",
+    placeholder:"Ej: Guadalajara, Querétaro, Tijuana…"
   },
   {
     eye:"pregunta 4 de 7",
@@ -357,38 +366,81 @@ function renderQuestion(idx){
   area.innerHTML='';
   area.style.display='block';
   var q=questions[idx];
+  var isMulti=!!q.multi;
+  var isText=q.type==='text';
   var div=document.createElement('div');
   div.className='q-screen active';
-  var optsHtml=q.opts.map(function(o,i){
-    var sel=(answers[idx]===i)?' selected':'';
-    var sub=o.sub?'<div class="opt-sub">'+o.sub+'</div>':'';
-    return '<div class="opt'+sel+'" onclick="selectOpt('+idx+','+i+')">'+
-      '<div class="opt-icon">'+o.icon+'</div>'+
-      '<div class="opt-text">'+o.text+sub+'</div></div>';
-  }).join('');
   var backBtn=idx>0?'<button class="btn-back" onclick="goBack()">← atrás</button>':'<span></span>';
   var isLast=idx===questions.length-1;
-  div.innerHTML=
-    '<p class="q-eyebrow">'+q.eye+'</p>'+
-    '<h2 class="q-title">'+q.title+'</h2>'+
-    '<div class="options">'+optsHtml+'</div>'+
-    '<div class="q-nav">'+backBtn+
-      '<button class="btn-next" id="btnNext" onclick="nextQ('+idx+')"'+
-      (answers[idx]===undefined?' disabled':'')+'>'+
-      (isLast?'continuar →':'siguiente →')+'</button>'+
-    '</div>';
+  var nextLabel=isLast?'continuar →':'siguiente →';
+
+  if(isText){
+    var val=typeof answers[idx]==='string'?answers[idx]:'';
+    div.innerHTML=
+      '<p class="q-eyebrow">'+q.eye+'</p>'+
+      '<h2 class="q-title">'+q.title+'</h2>'+
+      '<div class="field" style="margin-top:4px">'+
+        '<input type="text" id="txtAnswer" class="txt-answer" placeholder="'+(q.placeholder||'')+'" value="'+val.replace(/"/g,'&quot;')+'" oninput="onTextInput('+idx+',this.value)" onkeydown="if(event.key===\'Enter\'&&this.value.trim())nextQ('+idx+')">'+
+      '</div>'+
+      '<div class="q-nav">'+backBtn+
+        '<button class="btn-next" id="btnNext" onclick="nextQ('+idx+')"'+(val.trim()?'':' disabled')+'>'+nextLabel+'</button>'+
+      '</div>';
+  } else {
+    var optsHtml=q.opts.map(function(o,i){
+      var isSel=isMulti
+        ?(Array.isArray(answers[idx])&&answers[idx].indexOf(i)!==-1)
+        :answers[idx]===i;
+      var sel=isSel?' selected':'';
+      var sub=o.sub?'<div class="opt-sub">'+o.sub+'</div>':'';
+      var chk=isMulti?'<div class="opt-check">'+(isSel?'✓':'')+'</div>':'';
+      return '<div class="opt'+sel+'" onclick="selectOpt('+idx+','+i+','+isMulti+')">'+
+        '<div class="opt-icon">'+o.icon+'</div>'+
+        '<div class="opt-text">'+o.text+sub+'</div>'+chk+'</div>';
+    }).join('');
+    var hint=q.hint?'<p class="q-hint">'+q.hint+'</p>':'';
+    var hasAnswer=isMulti?(Array.isArray(answers[idx])&&answers[idx].length>0):(answers[idx]!==undefined);
+    div.innerHTML=
+      '<p class="q-eyebrow">'+q.eye+'</p>'+
+      '<h2 class="q-title">'+q.title+'</h2>'+
+      hint+
+      '<div class="options">'+optsHtml+'</div>'+
+      '<div class="q-nav">'+backBtn+
+        '<button class="btn-next" id="btnNext" onclick="nextQ('+idx+')"'+
+        (hasAnswer?'':' disabled')+'>'+nextLabel+'</button>'+
+      '</div>';
+  }
   area.appendChild(div);
   updateProgress(idx);
+  if(isText){setTimeout(function(){var el=document.getElementById('txtAnswer');if(el)el.focus();},50);}
 }
 
-function selectOpt(qIdx,oIdx){
-  answers[qIdx]=oIdx;
-  document.querySelectorAll('.opt').forEach(function(el,i){el.classList.toggle('selected',i===oIdx);});
-  document.getElementById('btnNext').disabled=false;
+function onTextInput(qIdx,val){
+  answers[qIdx]=val;
+  var btn=document.getElementById('btnNext');
+  if(btn)btn.disabled=!val.trim();
+}
+
+function selectOpt(qIdx,oIdx,isMulti){
+  if(isMulti){
+    if(!Array.isArray(answers[qIdx]))answers[qIdx]=[];
+    var arr=answers[qIdx];
+    var pos=arr.indexOf(oIdx);
+    if(pos===-1)arr.push(oIdx); else arr.splice(pos,1);
+    // re-render to update checkmarks
+    renderQuestion(qIdx);
+  } else {
+    answers[qIdx]=oIdx;
+    document.querySelectorAll('.opt').forEach(function(el,i){el.classList.toggle('selected',i===oIdx);});
+    document.getElementById('btnNext').disabled=false;
+  }
 }
 
 function nextQ(idx){
-  if(answers[idx]===undefined)return;
+  var q=questions[idx];
+  var ans=answers[idx];
+  if(ans===undefined||ans===null)return;
+  if(q.multi&&(!Array.isArray(ans)||ans.length===0))return;
+  if(q.type==='text'&&(!ans||!String(ans).trim()))return;
   if(idx<questions.length-1){current=idx+1;renderQuestion(current);}
   else{showContact();}
 }
@@ -416,12 +468,30 @@ function backToQuiz(){
   renderQuestion(current);
 }
 
+var GDL_CITIES=['guadalajara','zapopan','tlaquepaque','tonalá','tonala','tlajomulco','el salto','san pedro'];
+
+function cityScore(val){
+  var v=(val||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  for(var i=0;i<GDL_CITIES.length;i++){
+    if(v.indexOf(GDL_CITIES[i])!==-1)return{I:2,A:2};
+  }
+  return{D:3,E:1};
+}
+
 function calcTotals(){
   var totals={A:0,I:0,D:0,E:0};
   questions.forEach(function(q,qi){
-    if(answers[qi]===undefined)return;
-    var sc=q.opts[answers[qi]].score;
-    Object.keys(sc).forEach(function(k){totals[k]+=sc[k];});
+    if(answers[qi]===undefined||answers[qi]===null)return;
+    if(q.type==='text'){
+      var sc=cityScore(answers[qi]);
+      Object.keys(sc).forEach(function(k){totals[k]+=sc[k];});
+      return;
+    }
+    var idxs=Array.isArray(answers[qi])?answers[qi]:[answers[qi]];
+    idxs.forEach(function(oIdx){
+      var sc=q.opts[oIdx].score;
+      Object.keys(sc).forEach(function(k){totals[k]+=sc[k];});
+    });
   });
   return totals;
 }
@@ -446,6 +516,8 @@ function showResult(skip){
   var ciudad=(document.getElementById('cCiudad').value||'').trim();
 
   // Set hidden fields and submit to Netlify (only when user provided data)
+  // Q3 is city text answer
+  var ciudadDiag=typeof answers[2]==='string'?answers[2]:'';
   if(!skip && (nombre||tel||email)){
     document.getElementById('hResultado').value=labels[winner];
     document.getElementById('hPuntos').value=
@@ -453,7 +525,9 @@ function showResult(skip){
     submitToNetlify({
       'form-name':'diagnostico-gaastro',
       'nombre':nombre,'restaurante':restaurante,
-      'telefono':tel,'email':email,'ciudad':ciudad,
+      'telefono':tel,'email':email,
+      'ciudad':ciudad||ciudadDiag,
+      'ciudad_restaurante':ciudadDiag,
       'resultado':labels[winner],
       'puntos':document.getElementById('hPuntos').value
     });
