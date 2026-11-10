@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '296160575746078');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=296160575746078&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Propuesta de Asesoría · Diego Ortiz × Gaastro</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+:root{ --cliente: "Diego Ortiz"; }
+
+/* ── Cover ───────────────────────────────────────── */
+.cover{background:var(--negro);color:#fff;min-height:95vh;display:flex;align-items:center;padding:80px 0;position:relative;overflow:hidden}
+.cover .mark-bg{position:absolute;right:-60px;bottom:-40px;width:560px;opacity:.06;pointer-events:none}
+.cover-inner{position:relative;z-index:2;max-width:800px}
+.prop-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.chip-prop{font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;padding:6px 16px;border-radius:999px}
+.chip-prop.azul{background:var(--azul);color:#fff}
+.chip-prop.amar{background:var(--amarillo);color:var(--negro)}
+.chip-prop.gris{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18)}
+.cover h1{font-size:clamp(2.4rem,6vw,4.6rem);color:#fff;line-height:1.05;margin-bottom:20px}
+.cover h1 em{color:var(--amarillo);font-style:normal}
+.cover .sub{font-size:1.15rem;color:rgba(255,255,255,.72);max-width:50ch;margin-bottom:36px;line-height:1.55}
+.cover-cta{display:flex;gap:14px;flex-wrap:wrap}
+.cover-stats{display:flex;gap:36px;margin-top:52px;padding-top:30px;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+.cstat .n{font-size:1.8rem;font-weight:900;color:var(--amarillo);line-height:1;display:block}
+.cstat small{font-size:.75rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;display:block}
+.vigencia-bar{display:inline-flex;align-items:center;gap:10px;background:rgba(243,202,64,.12);border:1px solid rgba(243,202,64,.3);border-radius:10px;padding:12px 20px;margin-top:32px;font-size:.88rem;color:rgba(255,255,255,.8)}
+.vigencia-bar strong{color:var(--amarillo)}
+
+/* ── Problema ────────────────────────────────────── */
+.dolor-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.dolor{background:#fff;border-radius:var(--radio);padding:28px 26px;border:1.5px solid var(--gris-cl);border-left:5px solid var(--azul)}
+.dolor .dnum{font-size:.68rem;font-weight:900;color:var(--azul);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.dolor h3{font-size:1.05rem;font-weight:900;text-transform:lowercase;color:var(--negro);margin-bottom:8px;line-height:1.2}
+.dolor p{font-size:.9rem;color:var(--gris);margin:0;line-height:1.5}
+
+/* ── Dark sec ────────────────────────────────────── */
+.dark-sec{background:var(--negro);color:#fff;padding:96px 0}
+.dark-sec .eyebrow{color:var(--amarillo)}
+.dark-sec h2{color:#fff}
+.costo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.costo-stat{border-radius:var(--radio);padding:32px 26px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+.costo-stat .val{font-size:2.8rem;font-weight:900;color:var(--amarillo);line-height:1;margin-bottom:10px}
+.costo-stat h3{font-size:.96rem;font-weight:800;color:#fff;text-transform:lowercase;margin-bottom:6px}
+.costo-stat p{font-size:.86rem;color:rgba(255,255,255,.6);margin:0;line-height:1.5}
+.dark-quote{margin-top:52px;padding:24px 32px;border-left:4px solid var(--amarillo);font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.8);max-width:600px}
+
+/* ── Solución ────────────────────────────────────── */
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.sol-texto .divider{width:52px;height:4px;background:var(--amarillo);border-radius:2px;margin:20px 0}
+.sol-texto p{font-size:1.05rem;color:#2c2e38;margin-bottom:14px;line-height:1.6}
+.sol-check{list-style:none;padding:0;display:grid;gap:10px;margin-top:20px}
+.sol-check li{display:flex;align-items:flex-start;gap:12px;font-size:.96rem;color:#2c2e38}
+.sol-check li:before{content:"✓";font-weight:900;color:var(--azul);flex-shrink:0;margin-top:1px}
+.sol-img{border-radius:var(--radio);overflow:hidden;aspect-ratio:4/3;background:var(--gris-cl)}
+.sol-img img{width:100%;height:100%;object-fit:cover}
+
+/* ── Módulos ─────────────────────────────────────── */
+.mods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px}
+.mod{border-radius:var(--radio);overflow:hidden;border:1.5px solid var(--gris-cl)}
+.mod-header{padding:22px 24px;background:var(--azul);color:#fff}
+.mod-header.m2{background:var(--negro)}
+.mod-header.m3{background:var(--amarillo)}
+.mod-header.m3 .mod-num,.mod-header.m3 .mod-title{color:var(--negro)}
+.mod-num{font-size:.68rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:8px}
+.mod-title{font-size:1.1rem;font-weight:900;color:#fff;line-height:1.2}
+.mod-sesiones{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.55);margin-top:6px}
+.mod-header.m3 .mod-sesiones{color:rgba(0,0,0,.45)}
+.mod-body{padding:22px 24px;background:#fff}
+.mod-items{list-style:none;padding:0;display:grid;gap:8px}
+.mod-items li{font-size:.86rem;color:#2c2e38;padding-left:18px;position:relative;line-height:1.35}
+.mod-items li:before{content:"→";position:absolute;left:0;color:var(--azul);font-weight:900;font-size:.75rem;top:1px}
+
+/* ── Entregables ─────────────────────────────────── */
+.entreg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.entreg{border-radius:var(--radio);padding:22px 20px;background:#fff;border:1.5px solid var(--gris-cl);display:flex;gap:16px;align-items:flex-start;transition:border-color .15s,transform .15s}
+.entreg:hover{border-color:var(--azul);transform:translateY(-3px)}
+.entreg .ico{width:42px;height:42px;border-radius:11px;background:var(--azul);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem}
+.entreg h3{font-size:.96rem;font-weight:800;text-transform:lowercase;margin-bottom:4px;color:var(--negro)}
+.entreg p{font-size:.83rem;color:var(--gris);margin:0;line-height:1.45}
+
+/* ── Credencial ──────────────────────────────────── */
+.azul-sec{background:var(--azul);color:#fff;padding:96px 0}
+.alonso-grid{display:grid;grid-template-columns:220px 1fr auto;gap:52px;align-items:start}
+.alonso-foto{width:220px;flex-shrink:0}
+.alonso-foto img{width:100%;border-radius:var(--radio);aspect-ratio:3/4;object-fit:cover;border:4px solid rgba(255,255,255,.15)}
+.alonso-texto .eyebrow{color:var(--amarillo)}
+.alonso-texto h2{color:#fff;margin-top:10px}
+.alonso-div{width:50px;height:4px;background:var(--amarillo);border-radius:2px;margin:20px 0}
+.alonso-texto p{font-size:1.02rem;color:rgba(255,255,255,.85);margin-bottom:14px;line-height:1.6}
+.alonso-texto .highlight{font-weight:800;color:#fff}
+.anums{display:grid;gap:0;min-width:200px}
+.anum{padding:22px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.anum:first-child{padding-top:0}
+.anum:last-child{border-bottom:0;padding-bottom:0}
+.anum .av{font-size:2.6rem;font-weight:900;color:var(--amarillo);line-height:1;margin-bottom:6px}
+.anum p{font-size:.9rem;color:rgba(255,255,255,.78);margin:0;line-height:1.45}
+
+/* ── Precio — asesoría ───────────────────────────── */
+.precio-sec{background:var(--gris-cl);padding:100px 0}
+.precio-sec .eyebrow{color:var(--azul)}
+.asesoria-wrap{max-width:720px;margin:0 auto}
+.asesoria-card{background:#fff;border-radius:var(--radio);border:1.5px solid var(--gris-cl);padding:36px 40px;margin-top:46px}
+.asesoria-card h3{font-size:1.3rem;font-weight:900;text-transform:lowercase;color:var(--negro);margin-bottom:4px}
+.asesoria-card .modal{font-size:.78rem;color:var(--gris);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:22px}
+.paq-sep{height:1px;background:var(--gris-cl);margin:20px 0}
+.paq-items{list-style:none;padding:0;display:grid;gap:9px;margin:0}
+.paq-items li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;line-height:1.35;color:#2c2e38}
+.paq-items li:before{content:"✓";color:var(--azul);font-weight:900;flex-shrink:0;margin-top:1px}
+
+/* payment options */
+.pagos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.pago-opt{border-radius:var(--radio);padding:28px 24px;background:#fff;border:1.5px solid var(--gris-cl);text-align:center;position:relative;transition:border-color .15s,transform .15s,box-shadow .15s}
+.pago-opt:hover{border-color:var(--azul);transform:translateY(-3px);box-shadow:0 12px 32px rgba(19,43,214,.1)}
+.pago-opt.best{border-color:var(--azul);box-shadow:0 16px 40px rgba(19,43,214,.14)}
+.pago-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;padding:5px 14px;border-radius:999px;background:var(--azul);color:#fff}
+.pago-label{font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--gris);margin-bottom:14px}
+.pago-precio{font-size:2.4rem;font-weight:900;color:var(--negro);line-height:1}
+.pago-mxn{font-size:.8rem;font-weight:700;color:var(--gris);margin-top:3px}
+.pago-total{font-size:.78rem;color:var(--gris);margin-top:6px}
+.pago-desc{font-size:.78rem;color:rgba(19,43,214,.8);font-weight:700;margin-top:6px}
+
+/* ── CTA ─────────────────────────────────────────── */
+.cta-sec{background:var(--amarillo);padding:96px 0;text-align:center}
+.cta-sec h2{color:var(--negro);font-size:clamp(2rem,4.5vw,3.2rem)}
+.cta-sec .sub{font-size:1.1rem;color:#3a3206;max-width:44ch;margin:14px auto 36px;line-height:1.55}
+.wa-btn{display:inline-flex;align-items:center;gap:12px;background:var(--negro);color:#fff;font-weight:800;font-size:1.05rem;padding:18px 38px;border-radius:999px;transition:transform .15s,box-shadow .15s;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(0,0,0,.32)}
+.vig-nota{margin-top:18px;font-size:.86rem;color:#6b5a10}
+.vig-nota strong{color:var(--negro)}
+
+/* ── Responsive ──────────────────────────────────── */
+@media(max-width:900px){
+  .cover{min-height:auto;padding:72px 0}
+  .dolor-grid,.costo-stats,.sol-grid,.mods-grid,.entreg-grid,.pagos-grid{grid-template-columns:1fr}
+  .alonso-grid{grid-template-columns:1fr;gap:32px}
+  .alonso-foto{width:160px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-logo" href="#">g<span>·</span>aastro</a>
+    <a class="btn btn-amar" href="#propuesta">ver inversión</a>
+  </div>
+</nav>
+
+<!-- ══ COVER ══ -->
+<section class="cover">
+  <div class="wrap">
+    <div class="cover-inner">
+      <div class="prop-chips">
+        <span class="chip-prop azul">asesoría digital</span>
+        <span class="chip-prop amar">Diego Ortiz</span>
+        <span class="chip-prop gris">🇨🇴 Colombia</span>
+      </div>
+      <h1>aprende a gestionar<br>tu restaurante <em>con números.</em></h1>
+      <p class="sub">Un programa de 12 sesiones para que domines el costeo, la ingeniería de menú y el punto de equilibrio de tu negocio — desde donde estés.</p>
+      <div class="cover-cta">
+        <a class="btn btn-amar" href="#propuesta">ver propuesta</a>
+        <a class="btn btn-outline-blanco" href="#proceso">ver plan de trabajo</a>
+      </div>
+      <div class="cover-stats">
+        <div class="cstat"><span class="n">12</span><small>sesiones de capacitación</small></div>
+        <div class="cstat"><span class="n">3</span><small>módulos de trabajo</small></div>
+        <div class="cstat"><span class="n">45–60'</span><small>por sesión</small></div>
+        <div class="cstat"><span class="n">100%</span><small>remoto · a tu ritmo</small></div>
+      </div>
+      <div class="vigencia-bar">
+        📅 propuesta válida hasta el <strong>9 de diciembre de 2026</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROBLEMA ══ -->
+<section id="problema">
+  <div class="wrap">
+    <p class="eyebrow">el problema</p>
+    <h2>gestionar un restaurante sin las herramientas correctas es operar a ciegas.</h2>
+    <p class="sec-sub">La mayoría de los restauranteros toman decisiones importantes — precios, carta, compras — sin la información que necesitan para tomarlas bien.</p>
+    <div class="dolor-grid">
+      <div class="dolor">
+        <div class="dnum">01</div>
+        <h3>"no sé si mis precios están bien"</h3>
+        <p>Sin costeo real no hay forma de saber si cada platillo que vendes te genera utilidad o te está costando dinero.</p>
+      </div>
+      <div class="dolor">
+        <div class="dnum">02</div>
+        <h3>"mis recetas salen diferentes cada vez"</h3>
+        <p>Sin estandarización el sabor, el costo y la experiencia del cliente varían dependiendo de quién esté en cocina ese día.</p>
+      </div>
+      <div class="dolor">
+        <div class="dnum">03</div>
+        <h3>"no sé cuánto necesito vender para no perder"</h3>
+        <p>Sin punto de equilibrio no puedes planear, no puedes proyectar y no puedes tomar decisiones financieras con confianza.</p>
+      </div>
+      <div class="dolor">
+        <div class="dnum">04</div>
+        <h3>"mi carta no está vendiendo lo que debería"</h3>
+        <p>Sin ingeniería de menú no sabes cuáles platillos te conviene impulsar y cuáles te están restando rentabilidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONSECUENCIA ══ -->
+<section class="dark-sec">
+  <div class="wrap">
+    <p class="eyebrow">por qué importa</p>
+    <h2>los restaurantes que no controlan sus números trabajan para los costos, no para ellos.</h2>
+    <div class="costo-stats">
+      <div class="costo-stat">
+        <div class="val">60%</div>
+        <h3>de restaurantes cierra antes de los 3 años</h3>
+        <p>La principal causa: no entender los números del negocio ni cómo operarlo con rentabilidad.</p>
+      </div>
+      <div class="costo-stat">
+        <div class="val">30–40%</div>
+        <h3>de las ventas se van en costos de alimentos sin control</h3>
+        <p>Un food cost sin gestión puede consumir silenciosamente toda la rentabilidad del negocio.</p>
+      </div>
+      <div class="costo-stat">
+        <div class="val">+20%</div>
+        <h3>de mejora en utilidad al implementar ingeniería de menú</h3>
+        <p>Reorganizar una carta con datos puede cambiar completamente el margen de un restaurante.</p>
+      </div>
+    </div>
+    <div class="dark-quote">
+      "El restaurantero que domina sus costos toma decisiones, el que no los domina solo reacciona."
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOLUCIÓN ══ -->
+<section>
+  <div class="wrap">
+    <div class="sol-grid">
+      <div class="sol-texto">
+        <p class="eyebrow">la solución</p>
+        <h2>12 sesiones para que tú lo aprendas, lo apliques y lo domines.</h2>
+        <div class="divider"></div>
+        <p>No es una consultoría donde alguien hace el trabajo por ti. Es un programa donde tú aprendes a hacerlo — con guía directa, materiales y acompañamiento en cada paso.</p>
+        <p>Al terminar, tendrás las herramientas y el conocimiento para gestionar tu restaurante con claridad, tomar mejores decisiones y hacer crecer tu negocio.</p>
+        <ul class="sol-check">
+          <li>Teoría aplicada directamente a tu restaurante</li>
+          <li>Sesiones de revisión para resolver dudas y ajustar</li>
+          <li>Materiales, formatos y templates listos para usar</li>
+          <li>Ritmo adaptado a tu disponibilidad</li>
+          <li>100% remoto — funcionamos desde cualquier ciudad</li>
+        </ul>
+      </div>
+      <div class="sol-img">
+        <img src="img/foto-costeo.jpg" alt="Sesión de asesoría Gaastro" onerror="this.style.background='#1a1d2e'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLAN DE TRABAJO ══ -->
+<section class="que" id="proceso">
+  <div class="wrap">
+    <p class="eyebrow">plan de trabajo</p>
+    <h2>3 módulos · 12 sesiones.</h2>
+    <p class="sec-sub">El programa está estructurado en tres módulos progresivos. Cada módulo incluye sesiones de teoría y capacitación de 45 a 60 minutos, más hasta 2 sesiones de revisión de 15 a 20 minutos por sesión para resolver dudas y aplicar lo aprendido.</p>
+    <div class="mods-grid">
+      <div class="mod">
+        <div class="mod-header m1">
+          <div class="mod-num">módulo 01</div>
+          <div class="mod-title">Costeo y estandarización</div>
+          <div class="mod-sesiones">sesiones 1 — 4</div>
+        </div>
+        <div class="mod-body">
+          <ul class="mod-items">
+            <li>Fundamentos de costeo de alimentos y bebidas</li>
+            <li>Creación de fichas técnicas y recetario operativo</li>
+            <li>Cálculo de costo real por platillo</li>
+            <li>Food cost: cómo calcularlo e interpretarlo</li>
+            <li>Fijación de precios de venta con margen real</li>
+            <li>Estandarización de porciones y procesos de cocina</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mod">
+        <div class="mod-header m2">
+          <div class="mod-num">módulo 02</div>
+          <div class="mod-title">Ingeniería de menú</div>
+          <div class="mod-sesiones">sesiones 5 — 8</div>
+        </div>
+        <div class="mod-body">
+          <ul class="mod-items">
+            <li>Qué es la ingeniería de menú y por qué cambia el negocio</li>
+            <li>Análisis de popularidad y rentabilidad de cada platillo</li>
+            <li>Clasificación de la carta: estrellas, arados, vacas y perros</li>
+            <li>Estrategias para impulsar los platillos correctos</li>
+            <li>Optimización de la oferta: qué conservar, modificar o eliminar</li>
+            <li>Diseño de precios y presentación estratégica de la carta</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mod">
+        <div class="mod-header m3">
+          <div class="mod-num">módulo 03</div>
+          <div class="mod-title">Punto de equilibrio</div>
+          <div class="mod-sesiones">sesiones 9 — 12</div>
+        </div>
+        <div class="mod-body">
+          <ul class="mod-items">
+            <li>Costos fijos y variables de un restaurante</li>
+            <li>Cálculo del punto de equilibrio mensual</li>
+            <li>Escenarios: cuánto necesito vender para ganar X</li>
+            <li>Indicadores clave de operación (KPIs)</li>
+            <li>Proyecciones y planeación financiera básica</li>
+            <li>Cómo leer y actuar sobre tus números cada mes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ENTREGABLES ══ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">lo que incluye</p>
+    <h2>todo lo que necesitas para aplicarlo desde el día uno.</h2>
+    <div class="entreg-grid">
+      <div class="entreg">
+        <div class="ico">🎓</div>
+        <div>
+          <h3>12 sesiones de capacitación</h3>
+          <p>45 a 60 minutos cada una, en vivo por videollamada. Teoría, ejemplos y aplicación directa a tu restaurante.</p>
+        </div>
+      </div>
+      <div class="entreg">
+        <div class="ico">🔄</div>
+        <div>
+          <h3>sesiones de revisión</h3>
+          <p>Hasta 2 sesiones de revisión (15–20 min) por sesión de capacitación — para resolver dudas y ajustar la aplicación.</p>
+        </div>
+      </div>
+      <div class="entreg">
+        <div class="ico">📋</div>
+        <div>
+          <h3>materiales y formatos</h3>
+          <p>Todos los materiales, templates y formatos de trabajo utilizados durante el programa.</p>
+        </div>
+      </div>
+      <div class="entreg">
+        <div class="ico">📊</div>
+        <div>
+          <h3>plantillas de costeo</h3>
+          <p>Fichas técnicas, calculadora de food cost y modelo de punto de equilibrio listos para usar en tu operación.</p>
+        </div>
+      </div>
+      <div class="entreg">
+        <div class="ico">🗺️</div>
+        <div>
+          <h3>matriz de ingeniería de menú</h3>
+          <p>Herramienta de análisis de tu carta: popularidad, rentabilidad y clasificación de cada platillo.</p>
+        </div>
+      </div>
+      <div class="entreg">
+        <div class="ico">🌐</div>
+        <div>
+          <h3>100% remoto</h3>
+          <p>El programa funciona desde cualquier ciudad. Solo necesitas conexión a internet y ganas de aprender.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CREDENCIAL ══ -->
+<section class="azul-sec">
+  <div class="wrap">
+    <div class="alonso-grid">
+      <div class="alonso-foto">
+        <img src="img/alonso.jpg" alt="Alonso Herrera · Gaastro" onerror="this.parentElement.style.background='rgba(255,255,255,.08)'">
+      </div>
+      <div class="alonso-texto">
+        <p class="eyebrow">quien te guía</p>
+        <h2>Alonso Herrera.</h2>
+        <div class="alonso-div"></div>
+        <p>Consultor gastronómico con más de <span class="highlight">3 años trabajando con restaurantes</span> en México y Latinoamérica. Especialista en costeo, estandarización e ingeniería de menú.</p>
+        <p>Ha trabajado con más de <span class="highlight">20 restaurantes</span>, documentando y costeando más de <span class="highlight">800 platillos</span> con un enfoque práctico, directo y aplicable desde el primer día.</p>
+        <p>Fundador de <span class="highlight">Gaastro</span> — sistema de costeo y gestión para restaurantes.</p>
+      </div>
+      <div class="anums">
+        <div class="anum"><div class="av">+20</div><p>restaurantes<br>asesorados</p></div>
+        <div class="anum"><div class="av">+800</div><p>platillos<br>documentados</p></div>
+        <div class="anum"><div class="av">3+</div><p>años de<br>experiencia</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INVERSIÓN ══ -->
+<section class="precio-sec" id="propuesta">
+  <div class="wrap">
+    <p class="eyebrow">inversión</p>
+    <h2>programa de asesoría digital.</h2>
+    <p class="sec-sub">Un solo programa. Tres opciones de pago para adaptarnos a ti.</p>
+    <div class="asesoria-wrap">
+      <div class="asesoria-card">
+        <h3>asesoría en gestión de restaurante</h3>
+        <p class="modal">programa completo · 12 sesiones · remoto</p>
+        <div class="paq-sep"></div>
+        <ul class="paq-items">
+          <li>12 sesiones de capacitación (45–60 min c/u)</li>
+          <li>Hasta 24 sesiones de revisión (15–20 min c/u)</li>
+          <li>Módulo 1: costeo y estandarización (sesiones 1–4)</li>
+          <li>Módulo 2: ingeniería de menú (sesiones 5–8)</li>
+          <li>Módulo 3: punto de equilibrio (sesiones 9–12)</li>
+          <li>Materiales, formatos y plantillas de trabajo</li>
+          <li>Acceso a grabaciones de las sesiones</li>
+          <li>Modalidad 100% remota por videollamada</li>
+        </ul>
+      </div>
+
+      <div class="pagos-grid">
+        <div class="pago-opt best">
+          <div class="pago-badge">mejor precio</div>
+          <div class="pago-label">1 solo pago</div>
+          <div class="pago-precio">$24,000</div>
+          <div class="pago-mxn">MXN · pago completo al iniciar</div>
+          <div class="pago-desc">ahorra $2,000 vs cuotas</div>
+        </div>
+        <div class="pago-opt">
+          <div class="pago-label">2 pagos</div>
+          <div class="pago-precio">$13,000</div>
+          <div class="pago-mxn">MXN · por pago</div>
+          <div class="pago-total">total $26,000 MXN</div>
+        </div>
+        <div class="pago-opt">
+          <div class="pago-label">3 pagos</div>
+          <div class="pago-precio">$9,500</div>
+          <div class="pago-mxn">MXN · por pago</div>
+          <div class="pago-total">total $28,500 MXN</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:.82rem;color:var(--gris);margin-top:28px">precios en pesos mexicanos (MXN). los pagos en cuotas se definen en contrato.</p>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-sec" id="cta">
+  <div class="wrap">
+    <h2>¿listo para empezar?</h2>
+    <p class="sub">Escríbenos y agendamos una llamada para resolver dudas y arrancar tu programa.</p>
+    <a class="wa-btn" href="https://wa.me/524421374663?text=Hola%2C%20soy%20Diego%20Ortiz%20y%20quiero%20confirmar%20la%20asesor%C3%ADa%20digital%20de%20Gaastro." target="_blank" rel="noopener">
+      <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.857L.057 23.757a.5.5 0 0 0 .619.633l6.094-1.597A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.015-1.374l-.36-.214-3.724.976.993-3.624-.234-.373A9.818 9.818 0 1 1 12 21.818z"/></svg>
+      confirmar mi programa
+    </a>
+    <p class="vig-nota">propuesta válida hasta el <strong>9 de diciembre de 2026.</strong></p>
+  </div>
+</section>
+
+<!-- ══ CONDICIONES ══ -->
+<section class="conds">
+  <div class="wrap">
+    <ul>
+      <li>Las sesiones se realizan por videollamada (Zoom, Meet o la plataforma de tu preferencia).</li>
+      <li>El primer pago debe realizarse antes de la primera sesión para agendar el programa.</li>
+      <li>En el esquema de 2 o 3 pagos, las cuotas siguientes se definen en contrato según el avance del programa.</li>
+      <li>Las sesiones de revisión se agendan a demanda, con un máximo de 2 por sesión de capacitación.</li>
+      <li>Gaastro se reserva el derecho de ajustar el contenido de cada sesión según las necesidades específicas del restaurante.</li>
+      <li>Esta propuesta tiene vigencia hasta el 9 de diciembre de 2026.</li>
+    </ul>
+  </div>
+</section>
+
+<script>
+// Nav scroll behavior
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60)},{passive:true});
+</script>
+</body>
+</html>
