@@ -156,6 +156,41 @@
 .btn-wa{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--azul);color:#fff;font-weight:900;font-size:1.02rem;padding:18px 32px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .12s,box-shadow .12s;width:100%;font-family:inherit;letter-spacing:-.01em}
 .btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(19,43,214,.32)}
 
+/* ─── Caso de éxito ─── */
+.caso-sec{background:var(--negro);color:#fff;padding:100px 0}
+.caso-sec .eyebrow{color:var(--amarillo)}
+.caso-sec h2{color:#fff}
+.caso-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;margin-top:52px}
+.caso-stats-wrap{display:grid;gap:18px}
+.caso-stat{border-radius:var(--radio);padding:34px 30px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+.caso-stat .cv{font-size:3.6rem;font-weight:900;color:var(--amarillo);line-height:1;margin-bottom:8px}
+.caso-stat h3{font-size:.9rem;font-weight:900;color:#fff;text-transform:lowercase;margin-bottom:4px}
+.caso-stat p{font-size:.82rem;color:rgba(255,255,255,.52);margin:0;line-height:1.45}
+.caso-texto h3{font-size:1.6rem;font-weight:900;text-transform:lowercase;color:#fff;margin-bottom:16px}
+.caso-texto p{font-size:.97rem;color:rgba(255,255,255,.75);margin-bottom:12px;line-height:1.65}
+.caso-fine{font-size:.74rem;color:rgba(255,255,255,.35);margin-top:20px;line-height:1.55;border-top:1px solid rgba(255,255,255,.1);padding-top:14px;font-style:italic}
+
+/* ─── Payment selector ─── */
+.pago-select-wrap{padding:30px 38px;border-bottom:1.5px solid var(--gris-cl)}
+.pago-select-wrap .cfg-label{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.15em;color:var(--gris);margin-bottom:16px}
+.pago-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.pago-tab{border:1.5px solid var(--gris-cl);border-radius:12px;padding:14px 16px;cursor:pointer;transition:border-color .15s,background .15s;text-align:center;user-select:none}
+.pago-tab:hover{border-color:#9baeff}
+.pago-tab.on{border-color:var(--azul);background:#f0f3ff}
+.pago-tab .pt-name{font-size:.92rem;font-weight:900;color:var(--negro)}
+.pago-tab.on .pt-name{color:var(--azul)}
+.pago-tab .pt-sub{font-size:.72rem;font-weight:700;color:var(--gris);margin-top:3px}
+.pago-tab.on .pt-sub{color:var(--azul)}
+.pago-breakdown{display:grid;gap:10px;margin-top:4px}
+.pago-row{border-radius:10px;border:1.5px solid var(--gris-cl);padding:14px 18px;background:#fafbff;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pago-row .pr-label{font-size:.78rem;font-weight:800;color:var(--negro)}
+.pago-row .pr-desc{font-size:.72rem;color:var(--gris);margin-top:2px}
+.pago-row .pr-amt{font-size:1.1rem;font-weight:900;color:var(--negro);white-space:nowrap}
+.pago-total-line{display:flex;align-items:center;justify-content:space-between;padding:12px 4px 0;border-top:1px dashed var(--gris-cl);margin-top:4px}
+.pago-total-line .ptl{font-size:.74rem;font-weight:800;color:var(--gris);text-transform:uppercase;letter-spacing:.1em}
+.pago-total-line .pta{font-size:1rem;font-weight:900;color:var(--negro)}
+.pago-int-note{font-size:.74rem;color:var(--gris);font-style:italic;margin-top:8px}
+
 /* ─── Sol check (condiciones) ─── */
 .sol-check{list-style:none;padding:0;display:grid;gap:10px;margin-top:28px;max-width:600px}
 .sol-check li{display:flex;align-items:flex-start;gap:12px;font-size:.96rem;color:#2c2e38;line-height:1.5}
@@ -202,6 +237,7 @@
       <h1>abrimos <em>tu café</em><br>desde cero.</h1>
       <p class="sub">De la idea al primer cliente. Planeación de concepto, diseño de menú, operación y apertura — todo en un proyecto con acompañamiento completo del día 1 al día de inauguración.</p>
       <div class="vigencia-bar">⏳ propuesta válida hasta el <strong>15 de diciembre de 2026</strong></div>
+      <div class="vigencia-bar" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);margin-top:10px">🚫 pausamos del <strong style="color:#fff">19 de diciembre al 4 de enero</strong> — agenda antes de esa fecha</div>
       <div class="cover-stats">
         <div class="cstat"><span class="n">10</span><small>años de experiencia</small></div>
         <div class="cstat"><span class="n">+10</span><small>aperturas exitosas</small></div>
@@ -463,7 +499,10 @@
     <h2>proyectos que hemos <span style="color:var(--azul)">construido</span></h2>
     <p style="color:var(--gris);font-size:1.05rem;max-width:48ch;margin-top:12px;line-height:1.55">Restaurantes, cafés y barras construidas desde cero. Cada foto representa un proyecto completo — no solo consultoría puntual.</p>
     <div class="port-grid">
-      <div class="port-foto"><img src="img/port-1.jpg" alt="Portafolio Gaastro" loading="lazy"/></div>
+      <div class="port-foto" style="position:relative">
+        <img src="img/port-1.jpg" alt="Bottega · apertura completa" loading="lazy"/>
+        <div style="position:absolute;bottom:10px;left:10px;background:var(--amarillo);color:var(--negro);font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;padding:4px 10px;border-radius:6px">Bottega ★</div>
+      </div>
       <div class="port-foto"><img src="img/port-2.jpg" alt="Portafolio Gaastro" loading="lazy"/></div>
       <div class="port-foto"><img src="img/port-3.jpg" alt="Portafolio Gaastro" loading="lazy"/></div>
       <div class="port-foto"><img src="img/port-4.jpg" alt="Portafolio Gaastro" loading="lazy"/></div>
@@ -471,6 +510,35 @@
       <div class="port-foto"><img src="img/port-6.jpg" alt="Portafolio Gaastro" loading="lazy"/></div>
       <div class="port-foto"><img src="img/port-7.jpg" alt="Portafolio Gaastro" loading="lazy"/></div>
       <div class="port-foto"><img src="img/port-8.jpg" alt="Portafolio Gaastro" loading="lazy"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASO DE ÉXITO: BOTTEGA -->
+<section class="caso-sec">
+  <div class="wrap">
+    <div class="eyebrow">caso de éxito</div>
+    <h2>bottega — apertura que superó toda proyección</h2>
+    <p style="color:rgba(255,255,255,.65);font-size:1.02rem;max-width:54ch;margin-top:12px;line-height:1.6">Apertura dirigida de inicio a fin con todos los servicios de la propuesta. Resultado: ventas que rompieron la meta desde el primer mes de operación.</p>
+    <div class="caso-grid">
+      <div class="caso-stats-wrap">
+        <div class="caso-stat">
+          <div class="cv">150%</div>
+          <h3>de la meta de venta · mes 1</h3>
+          <p>Primer mes de operación. Meta de venta superada en un 50% sobre la proyección establecida en el plan financiero inicial.</p>
+        </div>
+        <div class="caso-stat">
+          <div class="cv">180%</div>
+          <h3>de la meta de venta · mes 2</h3>
+          <p>Segundo mes con operación estabilizada. Crecimiento sostenido sobre la meta gracias a procesos definidos y equipo entrenado.</p>
+        </div>
+      </div>
+      <div class="caso-texto">
+        <h3>qué hicimos en bottega</h3>
+        <p>Dirigimos el proyecto completo desde brief de marca: diseño de concepto, menú desde cero, supervisión de construcción, selección de equipo y mobiliario, contratación y capacitación del equipo, implementación de operación y sistemas — más branding, fotografía, marketing de apertura y g·OS.</p>
+        <p>No fue solo consultoría. Fue co-dirigir el negocio hasta que estuvo listo para volar solo.</p>
+        <p class="caso-fine">* Resultados alcanzados con implementación completa de todos los servicios de la propuesta (consultoría de apertura + marketing y posicionamiento + fotografía de menú + g·OS POS/ERP + branding e identidad visual), coordinados en su totalidad por Gaastro. Los resultados individuales dependen de las condiciones del mercado, el concepto, el local y la implementación del plan. El porcentaje de venta se calcula sobre la meta de break-even proyectada en el plan financiero de apertura.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -586,21 +654,24 @@
         </div>
       </div>
 
-      <!-- PAGO SPLIT -->
-      <div class="cfg-split">
-        <div class="cfg-label">esquema de pagos</div>
-        <div class="cfg-split-row">
-          <div class="cfg-pago">
-            <div class="plabel">1er pago — al iniciar</div>
-            <div class="pamt" id="pago1">$55,000</div>
-            <div class="pdesc">50% al firma de contrato</div>
+      <!-- PAGO SELECTOR -->
+      <div class="pago-select-wrap">
+        <div class="cfg-label">elige tu esquema de pago</div>
+        <div class="pago-tabs" id="pagoTabs">
+          <div class="pago-tab on" data-plan="2">
+            <div class="pt-name">2 pagos</div>
+            <div class="pt-sub">sin interés</div>
           </div>
-          <div class="cfg-pago">
-            <div class="plabel">2do pago — a la apertura</div>
-            <div class="pamt" id="pago2">$55,000</div>
-            <div class="pdesc">50% al día de apertura</div>
+          <div class="pago-tab" data-plan="3">
+            <div class="pt-name">3 pagos</div>
+            <div class="pt-sub">+5% de interés</div>
+          </div>
+          <div class="pago-tab" data-plan="6">
+            <div class="pt-name">6 pagos</div>
+            <div class="pt-sub">+10% de interés</div>
           </div>
         </div>
+        <div class="pago-breakdown" id="pagoBreakdown"></div>
       </div>
 
       <!-- CTA -->
@@ -628,6 +699,7 @@
       <li>Contrato con cláusulas de confidencialidad incluido sin costo</li>
       <li>Alcance definitivo y add-ons seleccionados quedan fijados en contrato</li>
       <li>Viáticos de traslado a Mérida no incluidos en el precio base; se cotizarán por separado según el calendario de visitas acordado</li>
+      <li><strong>Periodo de pausa:</strong> Gaastro no opera del <strong>19 de diciembre de 2026 al 4 de enero de 2027</strong>. Los proyectos iniciados antes de esa fecha se reanudan el 5 de enero sin afectar el plan de trabajo total</li>
     </ul>
   </div>
 </section>
@@ -641,6 +713,8 @@
 
 <script>
 var BASE = 110000;
+var selectedPlan = 2;
+
 var addons = [
   {id:'mkt',   label:'marketing y posicionamiento',    desc:'estrategia de lanzamiento, redes sociales y campañas de apertura en Mérida', price:18000, selected:false},
   {id:'foto',  label:'fotografía de menú',              desc:'sesión profesional del menú completo para redes y materiales impresos',      price:12000, selected:false},
@@ -649,7 +723,7 @@ var addons = [
 ];
 
 function fmt(n){
-  return '$' + n.toLocaleString('es-MX');
+  return '$' + Math.round(n).toLocaleString('es-MX');
 }
 
 function calcTotal(){
@@ -661,6 +735,71 @@ function calcTotal(){
   var discAmt = Math.round(addonsSum * pct);
   var total = BASE + addonsSum - discAmt;
   return {sel:sel, addonsSum:addonsSum, pct:pct, discAmt:discAmt, total:total};
+}
+
+function getPaymentPlans(total){
+  var t2 = total;
+  var t3 = Math.round(total * 1.05);
+  var t6 = Math.round(total * 1.10);
+  var half = Math.round(t2 / 2);
+  var p3a = Math.round(t3 * 0.4);
+  var p3b = Math.round(t3 * 0.3);
+  var p3c = t3 - p3a - p3b;
+  var p6a = Math.round(t6 * 0.3);
+  var p6m = Math.round(t6 * 0.14);
+  var p6last = t6 - p6a - p6m * 4;
+  return {
+    2: {
+      interest: 0,
+      finalTotal: t2,
+      rows: [
+        {label:'1er pago · al arranque',         amt: half,       desc:'50% al firma de contrato'},
+        {label:'2do pago · a la apertura',        amt: t2 - half,  desc:'50% al día de apertura'}
+      ]
+    },
+    3: {
+      interest: 5,
+      finalTotal: t3,
+      rows: [
+        {label:'1er pago · al arranque',                amt: p3a, desc:'40% al firma de contrato'},
+        {label:'2do pago · semana antes de apertura',   amt: p3b, desc:'30% una semana antes de la apertura'},
+        {label:'3er pago · entrega final',              amt: p3c, desc:'30% a la entrega final del proyecto'}
+      ]
+    },
+    6: {
+      interest: 10,
+      finalTotal: t6,
+      rows: [
+        {label:'1er pago · al arranque',   amt: p6a,    desc:'30% al firma de contrato'},
+        {label:'2do pago · mes 1',         amt: p6m,    desc:'14% mensual — independiente del avance del proyecto'},
+        {label:'3er pago · mes 2',         amt: p6m,    desc:'14% mensual'},
+        {label:'4to pago · mes 3',         amt: p6m,    desc:'14% mensual'},
+        {label:'5to pago · mes 4',         amt: p6m,    desc:'14% mensual'},
+        {label:'6to pago · mes 5',         amt: p6last, desc:'14% mensual · pago final'}
+      ]
+    }
+  };
+}
+
+function renderPayment(total){
+  var plans = getPaymentPlans(total);
+  var plan = plans[selectedPlan];
+  var bd = document.getElementById('pagoBreakdown');
+  var html = '';
+  plan.rows.forEach(function(r){
+    html += '<div class="pago-row">'
+      + '<div><div class="pr-label">'+r.label+'</div><div class="pr-desc">'+r.desc+'</div></div>'
+      + '<div class="pr-amt">'+fmt(r.amt)+'</div>'
+      + '</div>';
+  });
+  if(plan.interest > 0){
+    html += '<div class="pago-total-line">'
+      + '<div class="ptl">total con interés</div>'
+      + '<div class="pta">'+fmt(plan.finalTotal)+' MXN</div>'
+      + '</div>';
+    html += '<div class="pago-int-note">+'+plan.interest+'% de interés sobre el monto base. Total a pagar: '+fmt(plan.finalTotal)+' MXN (sin IVA).</div>';
+  }
+  bd.innerHTML = html;
 }
 
 function animateNum(el, target){
@@ -682,11 +821,7 @@ function update(){
 
   var totEl = document.getElementById('totalDisplay');
   animateNum(totEl, c.total);
-  document.getElementById('totalIVA').textContent = fmt(Math.round(c.total * 1.16)) + ' MXN con IVA';
-
-  var half = Math.round(c.total / 2);
-  document.getElementById('pago1').textContent = fmt(half);
-  document.getElementById('pago2').textContent = fmt(c.total - half);
+  document.getElementById('totalIVA').textContent = fmt(c.total * 1.16) + ' MXN con IVA';
 
   var badge = document.getElementById('discBadge');
   var dtext = document.getElementById('discText');
@@ -705,8 +840,12 @@ function update(){
     }
   }
 
+  renderPayment(c.total);
+
   var selNames = c.sel.map(function(a){ return '• ' + a.label; }).join('\n');
-  var msg = 'Hola Alonso, me interesa la propuesta de apertura para ANPA.\n\nServicios seleccionados:\n• Consultoría de apertura completa ($110,000)' + (selNames ? '\n' + selNames : '') + '\n\nTotal: ' + fmt(c.total) + ' MXN (sin IVA)\n\n¿Podemos agendar una llamada?';
+  var plans = getPaymentPlans(c.total);
+  var planLabels = {2:'2 pagos (sin interés)', 3:'3 pagos (+5% interés)', 6:'6 pagos (+10% interés)'};
+  var msg = 'Hola Alonso, me interesa la propuesta de apertura para ANPA.\n\nServicios seleccionados:\n• Consultoría de apertura completa ($110,000)' + (selNames ? '\n' + selNames : '') + '\n\nTotal: ' + fmt(c.total) + ' MXN (sin IVA)\nEsquema de pago: ' + planLabels[selectedPlan] + '\n\n¿Podemos agendar una llamada?';
   document.getElementById('btnWA').href = 'https://wa.me/524421374663?text=' + encodeURIComponent(msg);
 }
 
@@ -731,10 +870,20 @@ function buildAddons(){
     });
     grid.appendChild(row);
   });
-  update();
 }
 
+// Payment tab selection
+document.getElementById('pagoTabs').addEventListener('click', function(e){
+  var tab = e.target.closest('.pago-tab');
+  if(!tab) return;
+  document.querySelectorAll('.pago-tab').forEach(function(t){ t.classList.remove('on'); });
+  tab.classList.add('on');
+  selectedPlan = parseInt(tab.getAttribute('data-plan'));
+  update();
+});
+
 buildAddons();
+update();
 </script>
 
 </body>
