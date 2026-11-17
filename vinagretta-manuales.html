@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>vinagretta · manuales operativos · ga·astro</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#132BD6;
+  --azul-osc:#0d1f9c;
+  --amarillo:#F3CA40;
+  --negro:#101114;
+  --gris:#5b5e6b;
+  --gris-cl:#eef0f5;
+  --blanco:#ffffff;
+  --radio:18px;
+  --max:1100px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Archivo',system-ui,Arial,sans-serif;color:var(--negro);background:var(--blanco);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+h1,h2,h3{line-height:1.05;letter-spacing:-.02em;font-weight:900;text-transform:lowercase}
+h2{font-size:clamp(1.9rem,4vw,3rem)}
+.eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.18em;font-size:.76rem;color:var(--azul)}
+.btn{display:inline-flex;align-items:center;gap:.5em;font-family:inherit;font-weight:800;font-size:1rem;text-transform:lowercase;padding:15px 28px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-amar{background:var(--amarillo);color:var(--negro);box-shadow:0 8px 22px rgba(243,202,64,.35)}
+.btn-outline{background:transparent;border-color:rgba(255,255,255,.5);color:#fff}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--gris-cl)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo-txt{font-weight:900;font-size:1.4rem;letter-spacing:-.03em;color:var(--negro)}
+.logo-txt .dot{color:var(--azul)}
+
+/* COVER */
+.cover{background:var(--negro);color:#fff;padding:88px 0 96px;position:relative;overflow:hidden}
+.cover:before{content:"";position:absolute;right:-140px;top:-140px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(19,43,214,.5),transparent 68%);pointer-events:none}
+.cover-inner{position:relative;z-index:2;max-width:820px}
+.prop-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.chip-prop{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.13em;padding:6px 16px;border-radius:999px}
+.chip-prop.azul{background:var(--azul);color:#fff}
+.chip-prop.amar{background:var(--amarillo);color:var(--negro)}
+.chip-prop.gris{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18)}
+.cover h1{font-size:clamp(2.4rem,6vw,4.4rem);color:#fff;line-height:1;margin-bottom:20px}
+.cover h1 em{color:var(--amarillo);font-style:normal}
+.cover .sub{font-size:1.13rem;color:rgba(255,255,255,.72);max-width:52ch;margin-bottom:36px;line-height:1.55}
+.cover-cta{display:flex;gap:14px;flex-wrap:wrap}
+.cover-stats{display:flex;gap:40px;margin-top:52px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12);flex-wrap:wrap}
+.cstat .n{font-size:1.8rem;font-weight:900;color:var(--amarillo);line-height:1;display:block}
+.cstat small{font-size:.74rem;color:rgba(255,255,255,.52);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;display:block}
+.vigencia-bar{display:inline-flex;align-items:center;gap:10px;background:rgba(243,202,64,.12);border:1px solid rgba(243,202,64,.3);border-radius:10px;padding:12px 20px;margin-top:28px;font-size:.86rem;color:rgba(255,255,255,.8)}
+.vigencia-bar strong{color:var(--amarillo)}
+
+/* PROBLEMA */
+.dolor-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.dolor{background:#fff;border-radius:var(--radio);padding:28px 26px;border:1.5px solid var(--gris-cl);border-left:5px solid var(--azul)}
+.dolor .dnum{font-size:.66rem;font-weight:900;color:var(--azul);letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.dolor h3{font-size:1.05rem;font-weight:900;text-transform:lowercase;color:var(--negro);margin-bottom:8px;line-height:1.2}
+.dolor p{font-size:.9rem;color:var(--gris);margin:0;line-height:1.5}
+
+/* CONSECUENCIA dark */
+.dark-sec{background:var(--negro);color:#fff}
+.dark-sec .eyebrow{color:var(--amarillo)}
+.dark-sec h2{color:#fff}
+.costo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+.costo-stat{border-radius:var(--radio);padding:30px 24px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+.costo-stat .val{font-size:2.6rem;font-weight:900;color:var(--amarillo);line-height:1;margin-bottom:10px}
+.costo-stat h3{font-size:.95rem;font-weight:800;color:#fff;text-transform:lowercase;margin-bottom:6px}
+.costo-stat p{font-size:.86rem;color:rgba(255,255,255,.58);margin:0;line-height:1.5}
+.dark-quote{margin-top:48px;padding:22px 28px;border-left:4px solid var(--amarillo);font-size:1.08rem;font-style:italic;color:rgba(255,255,255,.8);max-width:600px}
+
+/* ENTREGABLES */
+.entreg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+.entreg{border-radius:var(--radio);padding:28px 24px;background:#fff;border:1.5px solid var(--gris-cl);transition:border-color .15s,transform .15s}
+.entreg:hover{border-color:var(--azul);transform:translateY(-3px)}
+.entreg .ico{width:46px;height:46px;border-radius:12px;background:var(--azul);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:18px}
+.entreg h3{font-size:1.05rem;font-weight:900;text-transform:lowercase;color:var(--negro);margin-bottom:8px}
+.entreg p{font-size:.88rem;color:var(--gris);margin:0 0 14px;line-height:1.5}
+.entreg ul{list-style:none;padding:0;display:grid;gap:6px}
+.entreg ul li{font-size:.82rem;color:var(--gris);padding-left:16px;position:relative;line-height:1.35}
+.entreg ul li:before{content:"▪";position:absolute;left:0;color:var(--azul)}
+
+/* PROCESO */
+.pasos{display:grid;gap:0;margin-top:46px;max-width:760px}
+.paso{display:grid;grid-template-columns:52px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--gris-cl)}
+.paso:last-child{border-bottom:none}
+.paso-num{width:44px;height:44px;border-radius:50%;background:var(--azul);color:#fff;font-weight:900;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.paso-body h3{font-size:1rem;font-weight:900;text-transform:lowercase;color:var(--negro);margin-bottom:5px}
+.paso-body p{font-size:.9rem;color:var(--gris);line-height:1.5;margin:0}
+
+/* ALONSO */
+.azul-sec{background:var(--azul);color:#fff;padding:96px 0}
+.alonso-grid{display:grid;grid-template-columns:200px 1fr auto;gap:52px;align-items:start}
+.alonso-foto img{width:200px;border-radius:var(--radio);aspect-ratio:3/4;object-fit:cover;border:4px solid rgba(255,255,255,.15)}
+.alonso-texto .eyebrow{color:var(--amarillo)}
+.alonso-texto h2{color:#fff;margin-top:10px}
+.alonso-div{width:50px;height:4px;background:var(--amarillo);border-radius:2px;margin:20px 0}
+.alonso-texto p{font-size:1rem;color:rgba(255,255,255,.85);margin-bottom:12px;line-height:1.6}
+.alonso-texto strong{color:#fff}
+.anums{display:grid;gap:0;min-width:190px}
+.anum{padding:20px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.anum:first-child{padding-top:0}
+.anum:last-child{border-bottom:0;padding-bottom:0}
+.anum .av{font-size:2.4rem;font-weight:900;color:var(--amarillo);line-height:1;margin-bottom:5px}
+.anum p{font-size:.88rem;color:rgba(255,255,255,.75);margin:0;line-height:1.4}
+
+/* PRECIO */
+.precio-sec{background:var(--gris-cl);padding:100px 0}
+.precio-sec .eyebrow{color:var(--azul)}
+.asesoria-wrap{max-width:740px;margin:0 auto}
+.asesoria-card{background:#fff;border-radius:var(--radio);border:1.5px solid var(--gris-cl);padding:34px 38px;margin-top:44px}
+.asesoria-card h3{font-size:1.25rem;font-weight:900;text-transform:lowercase;color:var(--negro);margin-bottom:4px}
+.asesoria-card .modal{font-size:.76rem;color:var(--gris);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:22px}
+.paq-sep{height:1px;background:var(--gris-cl);margin:20px 0}
+.paq-items{list-style:none;padding:0;display:grid;gap:9px}
+.paq-items li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;line-height:1.35;color:#2c2e38}
+.paq-items li:before{content:"✓";color:var(--azul);font-weight:900;flex-shrink:0;margin-top:1px}
+.pagos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.pago-opt{border-radius:var(--radio);padding:28px 22px;background:#fff;border:1.5px solid var(--gris-cl);text-align:center;position:relative;transition:border-color .15s,transform .15s,box-shadow .15s}
+.pago-opt:hover{border-color:var(--azul);transform:translateY(-3px);box-shadow:0 12px 32px rgba(19,43,214,.1)}
+.pago-opt.best{border-color:var(--azul);box-shadow:0 16px 40px rgba(19,43,214,.14)}
+.pago-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.12em;padding:5px 14px;border-radius:999px;background:var(--azul);color:#fff}
+.pago-label{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--gris);margin-bottom:14px}
+.pago-precio{font-size:2.4rem;font-weight:900;color:var(--negro);line-height:1}
+.pago-mxn{font-size:.78rem;font-weight:700;color:var(--gris);margin-top:3px}
+.pago-total{font-size:.76rem;color:var(--gris);margin-top:6px}
+.pago-desc{font-size:.76rem;color:rgba(19,43,214,.8);font-weight:700;margin-top:6px}
+
+/* Tabla IVA */
+.table-wrap{overflow-x:auto}
+.ptable{width:100%;border-collapse:collapse;font-size:.88rem;border-radius:12px;overflow:hidden}
+.ptable thead{background:var(--negro);color:#fff}
+.ptable th{padding:12px 16px;text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+.ptable td{padding:12px 16px;border-bottom:1px solid var(--gris-cl);color:#2c2e38}
+.ptable tr:last-child td{border-bottom:none}
+.ptable .precio{font-weight:800;color:var(--negro)}
+
+/* CTA */
+.cta-sec{background:var(--amarillo);padding:96px 0;text-align:center}
+.cta-sec h2{color:var(--negro);font-size:clamp(2rem,4.5vw,3rem)}
+.cta-sec .sub{font-size:1.08rem;color:#3a3206;max-width:44ch;margin:14px auto 36px;line-height:1.55}
+.wa-btn{display:inline-flex;align-items:center;gap:12px;background:var(--negro);color:#fff;font-weight:800;font-size:1.05rem;padding:18px 38px;border-radius:999px;transition:transform .15s,box-shadow .15s;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 16px 42px rgba(0,0,0,.32)}
+.vig-nota{margin-top:18px;font-size:.86rem;color:#6b5a10}
+.vig-nota strong{color:var(--negro)}
+
+/* CONDICIONES */
+.conds{background:#f0f2f7;padding:40px 0}
+.conds ul{list-style:none;display:grid;gap:8px;max-width:680px;margin:0 auto;padding:0}
+.conds li{font-size:.82rem;color:var(--gris);padding-left:18px;position:relative;line-height:1.5}
+.conds li:before{content:"·";position:absolute;left:5px;font-weight:900;color:var(--azul)}
+
+/* FOOTER */
+footer{background:var(--negro);color:rgba(255,255,255,.55);padding:40px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-weight:900;font-size:1.3rem;letter-spacing:-.02em;color:#fff}
+.footer-logo span{color:var(--azul)}
+.footer-links{display:flex;gap:24px;font-size:.82rem}
+.footer-links a{color:rgba(255,255,255,.55);transition:color .15s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.3);margin-top:20px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .dolor-grid,.costo-stats,.entreg-grid,.pagos-grid{grid-template-columns:1fr}
+  .alonso-grid{grid-template-columns:1fr;gap:28px}
+  .cover h1{font-size:2.4rem}
+  .pasos{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-inner">
+    <span class="logo-txt">ga<span class="dot">·</span>astro</span>
+    <a class="btn btn-amar" href="#inversion">ver inversión</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════
+  COVER
+══════════════════════════════════════════════ -->
+<section class="cover">
+  <div class="wrap">
+    <div class="cover-inner">
+      <div class="prop-chips">
+        <span class="chip-prop azul">manuales operativos · sops · costeo</span>
+        <span class="chip-prop amar">Luis Córdova · Vinagretta Salads</span>
+        <span class="chip-prop gris">coatzacoalcos · noviembre 2026</span>
+      </div>
+      <h1>que el equipo sepa<br>exactamente <em>qué hacer</em><br>aunque no estés.</h1>
+      <p class="sub">documentamos los procesos de Vinagretta, costeamos tu menú y construimos los checklists por turno — para que la operación dependa del sistema, no de la memoria de nadie.</p>
+      <div class="cover-cta">
+        <a class="btn btn-amar" href="#inversion">ver inversión</a>
+        <a class="btn btn-outline" href="#entregables">qué incluye</a>
+      </div>
+      <div class="cover-stats">
+        <div class="cstat"><span class="n">3</span><small>entregables concretos</small></div>
+        <div class="cstat"><span class="n">100%</span><small>remoto</small></div>
+        <div class="cstat"><span class="n">4–5</span><small>semanas</small></div>
+      </div>
+      <div class="vigencia-bar">⏳ propuesta válida hasta el <strong>8 de diciembre de 2026</strong></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  PROBLEMA
+══════════════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">el problema</div>
+    <h2>sin procesos escritos,<br>el negocio depende de ti.</h2>
+    <div class="dolor-grid">
+      <div class="dolor">
+        <div class="dnum">punto 01</div>
+        <h3>el equipo opera de memoria</h3>
+        <p>no hay manual que explique cómo hacer cada cosa. cada persona lo aprendió en el día a día y si alguien falta o entra alguien nuevo, el conocimiento no está en ningún lugar accesible.</p>
+      </div>
+      <div class="dolor">
+        <div class="dnum">punto 02</div>
+        <h3>no sabes exactamente qué te deja cada platillo</h3>
+        <p>vender bien no garantiza ganar bien. sin un costeo real por producto, no hay forma de saber qué margen deja cada ensalada o bowl — ni cuál conviene impulsar más.</p>
+      </div>
+      <div class="dolor">
+        <div class="dnum">punto 03</div>
+        <h3>cada turno arranca diferente</h3>
+        <p>sin un checklist claro de apertura y cierre, la preparación depende de quién está ese día y de su criterio. eso genera variación en la calidad y en el control del inventario.</p>
+      </div>
+      <div class="dolor">
+        <div class="dnum">punto 04</div>
+        <h3>delegar tiene un techo muy bajo</h3>
+        <p>la inconsistencia en la operación no es un problema de personas: es un problema de falta de estructura. con procesos documentados, el equipo puede operar solo con confianza.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  CONSECUENCIA
+══════════════════════════════════════════════ -->
+<section class="dark-sec">
+  <div class="wrap">
+    <div class="eyebrow">lo que cuesta no documentar</div>
+    <h2>el costo de operar sin estructura.</h2>
+    <div class="costo-stats">
+      <div class="costo-stat">
+        <div class="val">0</div>
+        <h3>procesos documentados hoy</h3>
+        <p>si no está escrito, no existe. el conocimiento vive en las personas, no en el negocio — y eso es un riesgo real cada vez que alguien sale o entra.</p>
+      </div>
+      <div class="costo-stat">
+        <div class="val">?%</div>
+        <h3>food cost real por platillo</h3>
+        <p>sin costeo actualizado no sabes si estás ganando o perdiendo en cada venta. el precio de venta que pusiste al arranque puede no reflejar los costos de hoy.</p>
+      </div>
+      <div class="costo-stat">
+        <div class="val">↑</div>
+        <h3>errores que se repiten</h3>
+        <p>los errores en apertura, cierre y operación no son de las personas: son de la falta de un proceso claro. con un checklist, se eliminan antes de que pasen.</p>
+      </div>
+    </div>
+    <blockquote class="dark-quote">documentar no es burocracia: es liberar tu tiempo, darle autonomía a tu equipo y construir una base que te permita crecer sin que todo dependa de que tú estés presente.</blockquote>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  ENTREGABLES
+══════════════════════════════════════════════ -->
+<section id="entregables">
+  <div class="wrap">
+    <div class="eyebrow">qué incluye el proyecto</div>
+    <h2>tres entregables concretos.</h2>
+    <div class="entreg-grid">
+
+      <div class="entreg">
+        <div class="ico">📋</div>
+        <h3>sops por área y rol</h3>
+        <p>procesos estandarizados para cada área de operación de Vinagretta, documentados y listos para que el equipo los use sin necesidad de supervisión constante.</p>
+        <ul>
+          <li>protocolo de apertura y cierre</li>
+          <li>flujo de pedidos: mostrador, OlaClick y WhatsApp</li>
+          <li>proceso de preparación en cocina</li>
+          <li>protocolo de atención al cliente</li>
+          <li>guía de incorporación para nuevos integrantes</li>
+        </ul>
+      </div>
+
+      <div class="entreg">
+        <div class="ico">💰</div>
+        <h3>costeo del menú completo</h3>
+        <p>costeamos cada platillo del menú de Vinagretta con sus insumos reales, recetas estandarizadas y food cost por producto — para que sepas con certeza qué margen deja cada venta.</p>
+        <ul>
+          <li>recetario de ensaladas, bowls, wraps y bebidas</li>
+          <li>costo por insumo y por porción</li>
+          <li>food cost real por platillo (%)</li>
+          <li>tabulador de precios de venta ideal</li>
+          <li>comparativa precio actual vs. precio sugerido</li>
+        </ul>
+      </div>
+
+      <div class="entreg">
+        <div class="ico">✅</div>
+        <h3>checklists operativos</h3>
+        <p>listas de verificación por turno y por área, en formato digital listo para usar — para que cada turno arranque igual, independientemente de quién esté en operación ese día.</p>
+        <ul>
+          <li>checklist de apertura turno mañana</li>
+          <li>checklist de operación en servicio</li>
+          <li>checklist de cierre y corte de caja</li>
+          <li>verificación de mise en place en cocina</li>
+          <li>formato en Notion o PDF editable</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  PROCESO
+══════════════════════════════════════════════ -->
+<section style="background:var(--gris-cl)">
+  <div class="wrap">
+    <div class="eyebrow">cómo funciona</div>
+    <h2>de hoy a los entregables:<br>4 a 5 semanas.</h2>
+    <div class="pasos">
+
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <div class="paso-body">
+          <h3>diagnóstico — semana 1</h3>
+          <p>videollamada de levantamiento: mapeamos cómo opera Vinagretta hoy, qué hace cada rol, cuáles son los puntos de quiebre y qué necesita quedar documentado. revisamos el menú completo con sus precios actuales.</p>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <div class="paso-body">
+          <h3>costeo del menú — semanas 1–2</h3>
+          <p>levantamos el recetario de cada platillo, insumos y porciones. calculamos el food cost real por producto y construimos el tabulador de precios de venta con el margen objetivo. te compartimos un avance para validar antes de cerrar.</p>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <div class="paso-body">
+          <h3>sops y checklists — semanas 2–4</h3>
+          <p>redactamos los procesos por área y rol basados en el diagnóstico. apertura, cierre, cocina, pedidos, atención. construimos los checklists operativos y la guía de incorporación. te mandamos drafts para revisar y ajustar con tu equipo.</p>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="paso-num">4</div>
+        <div class="paso-body">
+          <h3>entrega y revisión final — semana 4–5</h3>
+          <p>entregamos todos los documentos finales: costeo, sops y checklists en su formato definitivo. una sesión de revisión para resolver dudas y hacer ajustes. el material queda listo para implementar de inmediato.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  ALONSO
+══════════════════════════════════════════════ -->
+<section class="azul-sec">
+  <div class="wrap">
+    <div class="alonso-grid">
+      <div class="alonso-foto">
+        <img src="img/alonso.jpg" alt="Alonso Herrera · Gaastro" />
+      </div>
+      <div class="alonso-texto">
+        <div class="eyebrow">quien va a estar contigo</div>
+        <h2>alonso herrera,<br>ga·astro.</h2>
+        <div class="alonso-div"></div>
+        <p>soy Alonso Herrera, fundador de ga·astro. llevo más de 6 años trabajando con restaurantes y negocios de comida en México, construyendo los sistemas, procesos y costos que le dan estructura real a la operación.</p>
+        <p>no soy una agencia ni un consultor genérico. trabajo directamente con cada cliente, entiendo el negocio de fondo antes de documentar nada, y entrego materiales que el equipo puede usar desde el primer día — no PDFs que se guardan en una carpeta y no se vuelven a abrir.</p>
+        <p><strong>cada sop y cada checklist se diseña específicamente para Vinagretta.</strong> no hay plantillas copiadas ni documentos genéricos.</p>
+      </div>
+      <div class="anums">
+        <div class="anum"><div class="av">6+</div><p>años trabajando con negocios gastronómicos</p></div>
+        <div class="anum"><div class="av">40+</div><p>sistemas y procesos implementados en restaurantes</p></div>
+        <div class="anum"><div class="av">100%</div><p>a la medida, sin plantillas genéricas</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  INVERSIÓN
+══════════════════════════════════════════════ -->
+<section class="precio-sec" id="inversion">
+  <div class="wrap">
+    <div class="eyebrow">la inversión</div>
+    <h2>elige el esquema que<br>mejor te acomode.</h2>
+    <div class="asesoria-wrap">
+
+      <div class="asesoria-card">
+        <h3>manuales operativos · sops · costeo</h3>
+        <div class="modal">vinagretta salads · coatzacoalcos · proyecto completo</div>
+        <div class="paq-sep"></div>
+        <ul class="paq-items">
+          <li>sops por área y rol: apertura, cierre, cocina, pedidos y atención</li>
+          <li>costeo del menú completo: recetario, food cost por platillo y tabulador de precios</li>
+          <li>checklists operativos por turno y área (formato Notion o PDF editable)</li>
+          <li>guía de incorporación para nuevos integrantes</li>
+          <li>sesión de revisión y ajustes al finalizar</li>
+          <li>entrega en 4 a 5 semanas · 100% remoto</li>
+        </ul>
+        <div class="paq-sep"></div>
+        <div class="pagos-grid">
+
+          <div class="pago-opt best">
+            <div class="pago-badge">recomendado</div>
+            <div class="pago-label">1 solo pago</div>
+            <div class="pago-precio">$20,000</div>
+            <div class="pago-mxn">MXN + IVA</div>
+            <div class="pago-desc">precio más bajo</div>
+          </div>
+
+          <div class="pago-opt">
+            <div class="pago-label">2 pagos mensuales</div>
+            <div class="pago-precio">$11,000</div>
+            <div class="pago-mxn">MXN + IVA · por pago</div>
+            <div class="pago-total">total $22,000 MXN · +10%</div>
+          </div>
+
+          <div class="pago-opt">
+            <div class="pago-label">3 pagos mensuales</div>
+            <div class="pago-precio">$8,000</div>
+            <div class="pago-mxn">MXN + IVA · por pago</div>
+            <div class="pago-total">total $24,000 MXN · +20%</div>
+          </div>
+
+        </div>
+        <p style="text-align:center;font-size:.8rem;color:var(--gris);margin-top:24px">precios en pesos mexicanos (MXN). el primer pago confirma el inicio del proyecto.</p>
+      </div>
+
+      <div class="table-wrap" style="margin-top:28px">
+        <table class="ptable">
+          <thead>
+            <tr><th>esquema</th><th>subtotal</th><th>iva (16%)</th><th>total con iva</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1 solo pago</td><td class="precio">$20,000</td><td>$3,200</td><td><strong>$23,200</strong></td></tr>
+            <tr><td>2 pagos × $11,000</td><td class="precio">$22,000</td><td>$3,520</td><td><strong>$25,520</strong></td></tr>
+            <tr><td>3 pagos × $8,000</td><td class="precio">$24,000</td><td>$3,840</td><td><strong>$27,840</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  CTA
+══════════════════════════════════════════════ -->
+<section class="cta-sec">
+  <div class="wrap">
+    <h2>arrancamos cuando quieras.</h2>
+    <p class="sub">la propuesta vence el 8 de diciembre. escríbeme hoy y en las próximas semanas Vinagretta ya tiene sus procesos documentados y su costeo listo.</p>
+    <a class="wa-btn" href="https://wa.me/524421374663?text=Hola%20Alonso%2C%20quiero%20arrancar%20con%20los%20manuales%20y%20costeo%20de%20Vinagretta%20Salads.">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.561 4.14 1.535 5.874L.057 23.943l6.233-1.635A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.027-1.382l-.36-.214-3.733.979 1.001-3.656-.234-.376A9.818 9.818 0 0112 2.182c5.418 0 9.818 4.4 9.818 9.818 0 5.419-4.4 9.818-9.818 9.818z"/></svg>
+      hablar con alonso
+    </a>
+    <p class="vig-nota">propuesta válida hasta el <strong>8 de diciembre de 2026</strong>. después de esa fecha no se garantiza disponibilidad ni el mismo precio.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+  CONDICIONES
+══════════════════════════════════════════════ -->
+<div class="conds">
+  <div class="wrap">
+    <ul>
+      <li>el proyecto inicia con el primer pago confirmado. en el esquema de 2 o 3 pagos, los siguientes se coordinan conforme avanza el trabajo.</li>
+      <li>el proyecto es 100% remoto. el levantamiento de información se hace por videollamada.</li>
+      <li>el tiempo de entrega (4–5 semanas) depende de la disponibilidad del cliente para revisar y validar los avances en cada etapa.</li>
+      <li>los entregables son de Vinagretta Salads. toda la información proporcionada es confidencial.</li>
+      <li>los precios de esta propuesta están en pesos mexicanos (MXN) y no incluyen IVA. aplica únicamente durante la vigencia.</li>
+      <li>esta propuesta fue preparada exclusivamente para Luis Córdova y Vinagretta Salads. no es transferible.</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+  FOOTER
+══════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-logo">ga<span>·</span>astro</span>
+      <div class="footer-links">
+        <a href="https://wa.me/524421374663">whatsapp</a>
+        <a href="mailto:alonso@gaastro.mx">alonso@gaastro.mx</a>
+        <a href="https://gaastro.mx">gaastro.mx</a>
+      </div>
+    </div>
+    <p class="footer-copy">propuesta para Luis Córdova · Vinagretta Salads · Coatzacoalcos, Veracruz · noviembre 2026 · © 2026 ga·astro</p>
+  </div>
+</footer>
+
+</body>
+</html>
